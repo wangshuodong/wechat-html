@@ -1,4 +1,4 @@
-package com.wangsd.common.utils;
+package com.wangsd.common.base;
 
 import java.io.Serializable;
 import java.util.Collections;

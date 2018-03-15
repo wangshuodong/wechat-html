@@ -8,7 +8,7 @@
     <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
 
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.wangsd.common.base.BaseMapper" />
+            <property name="mappers" value="com.wangsd.common.base.MyBaseMapper" />
             <!--caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true-->
           <property name="caseSensitive" value="true"/>
         </plugin>
@@ -32,7 +32,7 @@
         </javaTypeResolver>
 
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="com.wangsd.web.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.wangsd.common.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -47,7 +47,7 @@
                 type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象
                 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
         -->
-       <javaClientGenerator type="XMLMAPPER" targetPackage="com.wangsd.web.dao" targetProject="src/main/java">
+       <javaClientGenerator type="XMLMAPPER" targetPackage="com.wangsd.common.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
        </javaClientGenerator>
 

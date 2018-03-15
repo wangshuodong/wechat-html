@@ -37,6 +37,7 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 
     @Autowired
     protected Mapper<T> mapper;
+
     public Mapper<T> getMapper() {
         return mapper;
     }
