@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangsd.web.dao.BillaccountMapper">
+  <resultMap id="BaseResultMap" type="com.wangsd.web.model.Billaccount">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="housing_id" jdbcType="INTEGER" property="housingId" />
+    <result column="roominfo_id" jdbcType="INTEGER" property="roominfoId" />
+    <result column="cost_type" jdbcType="INTEGER" property="costType" />
+    <result column="bill_entry_amount" jdbcType="DOUBLE" property="billEntryAmount" />
+    <result column="acct_period" jdbcType="VARCHAR" property="acctPeriod" />
+    <result column="release_day" jdbcType="VARCHAR" property="releaseDay" />
+    <result column="deadline" jdbcType="VARCHAR" property="deadline" />
+    <result column="relate_id" jdbcType="VARCHAR" property="relateId" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="payDate" jdbcType="TIMESTAMP" property="paydate" />
+    <result column="payType" jdbcType="INTEGER" property="paytype" />
+    <result column="payStatus" jdbcType="BIT" property="paystatus" />
+    <result column="deleteStatus" jdbcType="BIT" property="deletestatus" />
+    <result column="alipay_trade_no" jdbcType="VARCHAR" property="alipayTradeNo" />
+    <result column="weixin_trade_no" jdbcType="VARCHAR" property="weixinTradeNo" />
+    <result column="printStatus" jdbcType="BIT" property="printstatus" />
+    <result column="ticketStatus" jdbcType="INTEGER" property="ticketstatus" />
+    <result column="invoiceSerialNum" jdbcType="VARCHAR" property="invoiceserialnum" />
+    <result column="invoiceCode" jdbcType="VARCHAR" property="invoicecode" />
+    <result column="invoiceNum" jdbcType="VARCHAR" property="invoicenum" />
+    <result column="buyer_user_id" jdbcType="VARCHAR" property="buyerUserId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+</mapper>

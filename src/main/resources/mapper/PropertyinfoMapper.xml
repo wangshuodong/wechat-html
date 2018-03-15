@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangsd.web.dao.PropertyinfoMapper">
+  <resultMap id="BaseResultMap" type="com.wangsd.web.model.Propertyinfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="contact_people" jdbcType="VARCHAR" property="contactPeople" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="contact_address" jdbcType="VARCHAR" property="contactAddress" />
+    <result column="salerTaxNum" jdbcType="VARCHAR" property="salertaxnum" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="alipay_login_id" jdbcType="VARCHAR" property="alipayLoginId" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="alipay_debit_num" jdbcType="VARCHAR" property="alipayDebitNum" />
+    <result column="weixin_debit_num" jdbcType="VARCHAR" property="weixinDebitNum" />
+    <result column="weixin_children_num" jdbcType="VARCHAR" property="weixinChildrenNum" />
+    <result column="api" jdbcType="VARCHAR" property="api" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="nuonuo_appkey" jdbcType="VARCHAR" property="nuonuoAppkey" />
+    <result column="nuonuo_accessToken" jdbcType="VARCHAR" property="nuonuoAccesstoken" />
+    <result column="nuonuo_secret" jdbcType="VARCHAR" property="nuonuoSecret" />
+    <result column="salerAccount" jdbcType="VARCHAR" property="saleraccount" />
+  </resultMap>
+</mapper>
