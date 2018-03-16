@@ -37,30 +37,32 @@ public class WechatController {
     @RequestMapping("/index")
     public String index(String code, String state, Model model) throws IOException {
         String appId = state;
-        Weixinconfig query = new Weixinconfig();
-        query.setAppid(appId);
-        Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
+//        Weixinconfig query = new Weixinconfig();
+//        query.setAppid(appId);
+//        Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
         // 获取网页授权access_token
-        WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppid(), weixinconfig.getAppsecret(), code);
-        // 网页授权接口访问凭证
-        String access_token = weixinOauth2Token.getAccess_token();
-        // 用户标识
-        String openid = weixinOauth2Token.getOpenid();
-        log.info("openid=" + openid);
+//        WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppid(), weixinconfig.getAppsecret(), code);
+//        // 网页授权接口访问凭证
+//        String access_token = weixinOauth2Token.getAccess_token();
+//        // 用户标识
+//        String openid = weixinOauth2Token.getOpenid();
+//        log.info("openid=" + openid);
         // 获取用户信息
         //WechatUserInfo snsUserInfo = WeixinUtil.getWechatUserInfo(access_token, openid);
 
+        String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI0";
+
         Weixinuser query3 = new Weixinuser();
-        query3.setOpenid(appId);
+        query3.setOpenid(openid);
         Weixinuser weixinuser = weixinuserService.selectOne(query3);
         if (weixinuser != null) {
             //直接跳转到账单界面
-            Example example = new Example(Propertyinfo.class);
+            Example example = new Example(Billaccount.class);
             Example.Criteria criteria = example.createCriteria();
             criteria.andEqualTo("roominfoId", weixinuser.getRoominfoid());
             List<Billaccount> list = billaccountService.selectByExample(example);
             model.addAttribute("list", list);
-            return "wechat/housing";
+            return "wechat/billaccount";
         } else {
             List<Housinginfo> list;
             if ("wxcfab4f09fe94c406".equals(appId)) {
@@ -72,7 +74,7 @@ public class WechatController {
                 Propertyinfo query2 = new Propertyinfo();
                 query2.setWeixinDebitNum(appId);
                 Propertyinfo propertyinfo = propertyinfoService.selectOne(query2);
-                Example example = new Example(Propertyinfo.class);
+                Example example = new Example(Housinginfo.class);
                 Example.Criteria criteria = example.createCriteria();
                 criteria.andEqualTo("parentId", propertyinfo.getId());
                 list = housinginfoService.selectByExample(example);

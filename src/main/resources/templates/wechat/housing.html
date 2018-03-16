@@ -14,207 +14,31 @@
 </head>
 
 <body ontouchstart>
-<div th:text="@{1111}"></div>
 <header class='demos-header'>
-    <h1 class="demos-title">表单</h1>
+    <h1 class="demos-title">绑定房屋信息</h1>
 </header>
-<div class="weui-cells__title">单选列表项</div>
-<div class="weui-cells weui-cells_radio">
-    <label class="weui-cell weui-check__label" for="x11">
-        <div class="weui-cell__bd">
-            <p>cell standard</p>
-        </div>
-        <div class="weui-cell__ft">
-            <input type="radio" class="weui-check" name="radio1" id="x11">
-            <span class="weui-icon-checked"></span>
-        </div>
-    </label>
-    <label class="weui-cell weui-check__label" for="x12">
-
-        <div class="weui-cell__bd">
-            <p>cell standard</p>
-        </div>
-        <div class="weui-cell__ft">
-            <input type="radio" name="radio1" class="weui-check" id="x12" checked="checked">
-            <span class="weui-icon-checked"></span>
-        </div>
-    </label>
-    <a href="javascript:void(0);" class="weui-cell weui-cell_link">
-        <div class="weui-cell__bd">添加更多</div>
-    </a>
-</div>
-<div class="weui-cells__title">复选列表项</div>
-<div class="weui-cells weui-cells_checkbox">
-    <label class="weui-cell weui-check__label" for="s11">
-        <div class="weui-cell__hd">
-            <input type="checkbox" class="weui-check" name="checkbox1" id="s11" checked="checked">
-            <i class="weui-icon-checked"></i>
-        </div>
-        <div class="weui-cell__bd">
-            <p>standard is dealt for u.</p>
-        </div>
-    </label>
-    <label class="weui-cell weui-check__label" for="s12">
-        <div class="weui-cell__hd">
-            <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
-            <i class="weui-icon-checked"></i>
-        </div>
-        <div class="weui-cell__bd">
-            <p>standard is dealicient for u.</p>
-        </div>
-    </label>
-    <a href="javascript:void(0);" class="weui-cell weui-cell_link">
-        <div class="weui-cell__bd">添加更多</div>
-    </a>
-</div>
-
-<div class="weui-cells__title">表单</div>
 <div class="weui-cells weui-cells_form">
     <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">qq</label></div>
+        <div class="weui-cell__hd"><label for="name" class="weui-label">职业</label></div>
         <div class="weui-cell__bd">
-            <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入qq号">
+            <input class="weui-input" id="job" type="text" value="">
         </div>
     </div>
-    <div class="weui-cell weui-cell_vcode">
-        <div class="weui-cell__hd">
-            <label class="weui-label">手机号</label>
-        </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="name" class="weui-label">手机</label></div>
         <div class="weui-cell__bd">
-            <input class="weui-input" type="tel" placeholder="请输入手机号">
-        </div>
-        <div class="weui-cell__ft">
-            <button class="weui-vcode-btn">获取验证码</button>
+            <input class="weui-input" id="mobile" type="text" value="">
         </div>
     </div>
     <div class="weui-cell">
-        <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
+        <div class="weui-cell__hd"><label for="name" class="weui-label">爱好</label></div>
         <div class="weui-cell__bd">
-            <input class="weui-input" type="date" value="">
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label for="" class="weui-label">时间</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="datetime-local" value="" placeholder="">
-        </div>
-    </div>
-    <div class="weui-cell weui-cell_vcode">
-        <div class="weui-cell__hd"><label class="weui-label">验证码</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="number" placeholder="请输入验证码">
-        </div>
-        <div class="weui-cell__ft">
-            <img class="weui-vcode-img" src="/weui/images/vcode.jpg">
-        </div>
-    </div>
-</div>
-<div class="weui-cells__tips">底部说明文字底部说明文字</div>
-
-<div class="weui-cells__title">表单报错</div>
-<div class="weui-cells weui-cells_form">
-    <div class="weui-cell weui-cell_warn">
-        <div class="weui-cell__hd"><label for="" class="weui-label">卡号</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="number" pattern="[0-9]*" value="weui input error" placeholder="请输入卡号">
-        </div>
-        <div class="weui-cell__ft">
-            <i class="weui-icon-warn"></i>
+            <input class="weui-input" id="in" type="text" value="画画,唱歌">
         </div>
     </div>
 </div>
 
-
-<div class="weui-cells__title">开关</div>
-<div class="weui-cells weui-cells_form">
-    <div class="weui-cell weui-cell_switch">
-        <div class="weui-cell__bd">标题文字</div>
-        <div class="weui-cell__ft">
-            <input class="weui-switch" type="checkbox">
-        </div>
-    </div>
-    <div class="weui-cell weui-cell_switch">
-        <div class="weui-cell__bd">兼容IE Edge的版本</div>
-        <div class="weui-cell__ft">
-            <label for="switchCP" class="weui-switch-cp">
-                <input id="switchCP" class="weui-switch-cp__input" type="checkbox" checked="checked">
-                <div class="weui-switch-cp__box"></div>
-            </label>
-        </div>
-    </div>
-</div>
-
-<div class="weui-cells__title">文本框</div>
-<div class="weui-cells">
-    <div class="weui-cell">
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="text" placeholder="请输入文本">
-        </div>
-    </div>
-</div>
-
-<div class="weui-cells__title">文本域</div>
-<div class="weui-cells weui-cells_form">
-    <div class="weui-cell">
-        <div class="weui-cell__bd">
-            <textarea class="weui-textarea" placeholder="请输入文本" rows="3"></textarea>
-            <div class="weui-textarea-counter"><span>0</span>/200</div>
-        </div>
-    </div>
-</div>
-
-<div class="weui-cells__title">选择</div>
-<div class="weui-cells">
-
-    <div class="weui-cell weui-cell_select weui-cell_select-before">
-        <div class="weui-cell__hd">
-            <select class="weui-select" name="select2">
-                <option value="1">+86</option>
-                <option value="2">+80</option>
-                <option value="3">+84</option>
-                <option value="4">+87</option>
-            </select>
-        </div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入号码">
-        </div>
-    </div>
-</div>
-<div class="weui-cells__title">选择</div>
-<div class="weui-cells">
-    <div class="weui-cell weui-cell_select">
-        <div class="weui-cell__bd">
-            <select class="weui-select" name="select1">
-                <option selected="" value="1">微信号</option>
-                <option value="2">QQ号</option>
-                <option value="3">Email</option>
-            </select>
-        </div>
-    </div>
-    <div class="weui-cell weui-cell_select weui-cell_select-after">
-        <div class="weui-cell__hd">
-            <label for="" class="weui-label">国家/地区</label>
-        </div>
-        <div class="weui-cell__bd">
-            <select class="weui-select" name="select2">
-                <option value="1">中国</option>
-                <option value="2">美国</option>
-                <option value="3">英国</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<label for="weuiAgree" class="weui-agree">
-    <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox">
-    <span class="weui-agree__text">
-        阅读并同意<a href="javascript:void(0);">《相关条款》</a>
-      </span>
-</label>
-
-<div class="weui-btn-area">
-    <a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">确定</a>
-</div>
 
 <script src="/weui/lib/jquery-2.1.4.js"></script>
 <script src="/weui/lib/fastclick.js"></script>
@@ -227,12 +51,112 @@
 
 
 <script>
-    $("#showTooltips").click(function () {
-        var tel = $('#tel').val();
-        var code = $('#code').val();
-        if (!tel || !/1[3|4|5|7|8]\d{9}/.test(tel)) $.toptip('请输入手机号');
-        else if (!code || !/\d{6}/.test(code)) $.toptip('请输入六位手机验证码');
-        else $.toptip('提交成功', 'success');
+    $("#job").select({
+        title: "选择职业",
+        items: ["法官", "医生", "猎人", "学生", "记者", "其他"],
+        onChange: function(d) {
+            console.log(this, d);
+        },
+        onClose: function() {
+            console.log("close");
+        },
+        onOpen: function() {
+            console.log("open");
+        },
+    });
+
+    $("#mobile").select({
+        title: "选择手机",
+        items: [
+            {
+                title: "iPhone 3GS",
+                value: "001",
+            },
+            {
+                title: "iPhone 5",
+                value: "002",
+            },
+            {
+                title: "iPhone 5S",
+                value: "003",
+            },
+            {
+                title: "iPhone 6",
+                value: "004",
+            },
+            {
+                title: "iPhone 6S",
+                value: "005",
+            },
+            {
+                title: "iPhone 6P",
+                value: "006",
+            },
+            {
+                title: "iPhone 6SP",
+                value: "007",
+            },
+            {
+                title: "iPhone SE",
+                value: "008",
+            },
+            {
+                title: "iPhone 7",
+                value: "009"
+            }
+        ]
+    });
+
+    $("#in").select({
+        title: "您的爱好",
+        multi: true,
+        min: 2,
+        max: 3,
+        items: [
+            {
+                title: "画画",
+                value: 1,
+                description: "额外的数据1"
+            },
+            {
+                title: "打球",
+                value: 2,
+                description: "额外的数据2"
+            },
+            {
+                title: "唱歌",
+                value: 3,
+                description: "额外的数据3"
+            },
+            {
+                title: "游泳",
+                value: 4,
+                description: "额外的数据4"
+            },
+            {
+                title: "健身",
+                value: 5,
+                description: "额外的数据5"
+            },
+            {
+                title: "睡觉",
+                value: 6,
+                description: "额外的数据6"
+            },
+        ],
+        beforeClose: function(values, titles) {
+            if(values.indexOf("6") !== -1) {
+                $.toast("不能选睡觉", "cancel");
+                return false;
+            }
+            return true;
+        },
+        onChange: function(d) {
+            console.log(this, d);
+        },
+        onClose: function (d) {
+            console.log('close')
+        }
     });
 </script>
 </body>
