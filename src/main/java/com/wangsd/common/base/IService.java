@@ -32,7 +32,7 @@ import java.util.List;
  * 通用接口
  */
 @Service
-public interface BaseService<T> {
+public interface IService<T> {
 
     T selectByKey(Object key);
 
@@ -45,6 +45,10 @@ public interface BaseService<T> {
     int updateNotNull(T entity);
 
     List<T> selectByExample(Object example);
+
+    T selectOne(T t);
+
+    List<T> selectAll();
 
     //TODO 其他...
 }

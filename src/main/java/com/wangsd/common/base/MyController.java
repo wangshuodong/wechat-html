@@ -28,7 +28,7 @@ import java.util.Date;
 /**
  * 基础 controller
  */
-public abstract class BaseController {
+public abstract class MyController {
     // 控制器本来就是单例，这样似乎更加合理
     protected Logger logger = LogManager.getLogger(getClass());
 

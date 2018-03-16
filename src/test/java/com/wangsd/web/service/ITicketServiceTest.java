@@ -17,8 +17,9 @@ public class ITicketServiceTest {
     @Test
     public void test() throws Exception {
 
-        ticketService.saveAll();
-
+        //ticketService.saveAll();
+        Ticket ticket = ticketService.selectByKey(1);
+        Ticket ticket2 = ticketService.selectOne(ticket);
     }
 
 }

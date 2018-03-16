@@ -31,9 +31,10 @@ import java.util.List;
 
 /**
  * 通用Service
+ *
  * @param <T>
  */
-public abstract class BaseServiceImpl<T> implements BaseService<T> {
+public abstract class ServiceImpl<T> implements IService<T> {
 
     @Autowired
     protected Mapper<T> mapper;
@@ -77,5 +78,15 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
         //说明：根据Example条件进行查询
         //重点：这个查询支持通过Example类指定查询列，通过selectProperties方法指定查询列
         return mapper.selectByExample(example);
+    }
+
+    @Override
+    public T selectOne(T t) {
+        return mapper.selectOne(t);
+    }
+
+    @Override
+    public List<T> selectAll() {
+        return mapper.selectAll();
     }
 }

@@ -1,13 +1,13 @@
 package com.wangsd.web.service.impl;
 
-import com.wangsd.common.base.BaseServiceImpl;
+import com.wangsd.common.base.ServiceImpl;
 import com.wangsd.web.model.Ticket;
 import com.wangsd.web.service.ITicketService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class TicketServiceImpl extends BaseServiceImpl<Ticket> implements ITicketService {
+public class TicketServiceImpl extends ServiceImpl<Ticket> implements ITicketService {
 
 
     @Transactional

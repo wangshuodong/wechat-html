@@ -8,7 +8,7 @@
     <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
 
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.wangsd.common.base.MyBaseMapper" />
+            <property name="mappers" value="com.wangsd.common.base.MyMapper" />
             <!--caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true-->
           <property name="caseSensitive" value="true"/>
         </plugin>
@@ -54,7 +54,7 @@
         <!--生成对应表及类名
         去掉Mybatis Generator生成的一堆 example
         -->
-        <table tableName="billaccount" domainObjectName="Billaccount" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <!--<table tableName="billaccount" domainObjectName="Billaccount" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="housinginfo" domainObjectName="Housinginfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
@@ -70,6 +70,13 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="ticket" domainObjectName="Ticket" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="weixinconfig" domainObjectName="Weixinconfig" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        -->
+        <table tableName="weixinuser" domainObjectName="Weixinuser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 

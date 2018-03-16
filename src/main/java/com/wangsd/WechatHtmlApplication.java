@@ -1,6 +1,6 @@
 package com.wangsd;
 
-import com.wangsd.common.base.MyBaseMapper;
+import com.wangsd.common.base.MyMapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ServletComponentScan
 //启注解事务管理
 @EnableTransactionManagement  // 启注解事务管理，等同于xml配置方式的 <tx:annotation-driven />
-@MapperScan(basePackages = "com.wangsd.web.dao", markerInterface = MyBaseMapper.class)
+@MapperScan(basePackages = "com.wangsd.web.dao", markerInterface = MyMapper.class)
 public class WechatHtmlApplication extends SpringBootServletInitializer {
 
 	@Override
