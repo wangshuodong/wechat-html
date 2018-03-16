@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangsd.web.dao.TicketMapper">
+  <resultMap id="BaseResultMap" type="com.wangsd.web.model.Ticket">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="billaccount_id" jdbcType="INTEGER" property="billaccountId" />
+    <result column="title_name" jdbcType="VARCHAR" property="titleName" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="register_no" jdbcType="VARCHAR" property="registerNo" />
+    <result column="amount" jdbcType="DOUBLE" property="amount" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+</mapper>
