@@ -1,6 +1,7 @@
 package com.wangsd.web.service;
 
-import com.wangsd.common.model.Housinginfo;
+import com.wangsd.common.base.Page;
+import com.wangsd.web.model.Housinginfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,10 @@ public class IHousinginfoServiceTest {
 
     @Test
     public void queryHousinginfoList() {
-
-        List<Housinginfo> list = housinginfoService.queryHousinginfoList(null);
+        Page<Housinginfo> page = new Page<>();
+        page.setPage(1);
+        page.setRows(10);
+        List<Housinginfo> list = housinginfoService.queryHousinginfoList(page);
         System.out.println(list.size());
     }
 }

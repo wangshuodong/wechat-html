@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wangsd.common.dao.HousinginfoMapper">
-    <resultMap id="BaseResultMap" type="com.wangsd.common.model.Housinginfo">
+<mapper namespace="com.wangsd.web.dao.HousinginfoMapper">
+    <resultMap id="BaseResultMap" type="com.wangsd.web.model.Housinginfo">
         <!--
           WARNING - @mbg.generated
         -->
@@ -24,7 +24,7 @@
         <result column="water_unit" jdbcType="DOUBLE" property="waterUnit"/>
     </resultMap>
 
-    <select id="queryHousinginfoList" resultType="com.wangsd.common.model.Housinginfo">
+    <select id="queryHousinginfoList" resultType="com.wangsd.web.model.Housinginfo">
         select * from housinginfo
         <if test="parentId != null and parentId != ''">
             and parent_id = #{parentId}

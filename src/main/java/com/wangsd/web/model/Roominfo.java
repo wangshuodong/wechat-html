@@ -1,4 +1,4 @@
-package com.wangsd.common.model;
+package com.wangsd.web.model;
 
 import java.util.Date;
 import javax.persistence.*;
