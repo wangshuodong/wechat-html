@@ -4,16 +4,21 @@ import com.wangsd.common.utils.WeixinUtil;
 import com.wangsd.web.model.*;
 import com.wangsd.web.pojo.WeixinOauth2Token;
 import com.wangsd.web.service.*;
+import net.sf.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import tk.mybatis.mapper.entity.Example;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/wechat")
@@ -40,7 +45,7 @@ public class WechatController {
 //        Weixinconfig query = new Weixinconfig();
 //        query.setAppid(appId);
 //        Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
-        // 获取网页授权access_token
+//        //获取网页授权access_token
 //        WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppid(), weixinconfig.getAppsecret(), code);
 //        // 网页授权接口访问凭证
 //        String access_token = weixinOauth2Token.getAccess_token();
@@ -79,9 +84,80 @@ public class WechatController {
                 criteria.andEqualTo("parentId", propertyinfo.getId());
                 list = housinginfoService.selectByExample(example);
             }
-            model.addAttribute("list", list);
+            List<Map<String, String>> retList = new ArrayList<>();
+            if (list != null) {
+                for (Housinginfo info : list) {
+                    Map map = new HashMap();
+                    map.put("title", info.getName());
+                    map.put("value", info.getId());
+                    retList.add(map);
+                }
+            }
+            model.addAttribute("list", JSONArray.fromObject(retList));
             return "wechat/housing";
         }
 
+    }
+
+    @RequestMapping("/queryBuilding")
+    @ResponseBody
+    public List<Map<String, String>> queryBuilding(Roominfo roominfo) {
+        Example example = new Example(Roominfo.class);
+        example.selectProperties("building");
+        example.setDistinct(true);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("parentId", roominfo.getParentId());
+        List<Roominfo> list = roominfoService.selectByExample(example);
+        List<Map<String, String>> retList = new ArrayList<>();
+        if (list != null) {
+            for (Roominfo info : list) {
+                Map map = new HashMap();
+                map.put("title", info.getBuilding());
+                retList.add(map);
+            }
+        }
+        return retList;
+    }
+
+    @RequestMapping("/queryUnit")
+    @ResponseBody
+    public List<Map<String, String>> queryUnit(Integer parentId, String building) {
+        Example example = new Example(Roominfo.class);
+        example.selectProperties("unit");
+        example.setDistinct(true);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("parentId", parentId).andEqualTo("building", building);
+        List<Roominfo> list = roominfoService.selectByExample(example);
+        List<Map<String, String>> retList = new ArrayList<>();
+        if (list != null) {
+            for (Roominfo info : list) {
+                Map map = new HashMap();
+                map.put("title", info.getUnit());
+                retList.add(map);
+            }
+        }
+        return retList;
+    }
+
+    @RequestMapping("/queryRoom")
+    @ResponseBody
+    public List<Map<String, String>> queryRoom(Integer parentId, String building, String unit) {
+        Example example = new Example(Roominfo.class);
+        example.selectProperties("room");
+        example.setDistinct(true);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("parentId", parentId)
+                .andEqualTo("building", building)
+                .andEqualTo("unit", unit);
+        List<Roominfo> list = roominfoService.selectByExample(example);
+        List<Map<String, String>> retList = new ArrayList<>();
+        if (list != null) {
+            for (Roominfo info : list) {
+                Map map = new HashMap();
+                map.put("title", info.getRoom());
+                retList.add(map);
+            }
+        }
+        return retList;
     }
 }
