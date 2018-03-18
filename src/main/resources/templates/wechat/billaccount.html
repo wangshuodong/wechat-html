@@ -19,19 +19,26 @@
 </header>
 
 <div class="weui-cells__title">复选列表项</div>
-<div class="weui-cells weui-cells_checkbox" th:each="bill,billStat : ${list}">
-    <label class="weui-cell weui-check__label" for="s11">
+<div class="weui-cells weui-cells_checkbox">
+    <label class="weui-cell weui-check__label" th:each="bill,billStat : ${list}">
         <div class="weui-cell__hd">
-            <input type="checkbox" class="weui-check" name="checkbox1" id="s11" checked="checked">
+            <input type="checkbox" class="weui-check" checked="checked" name="amount" th:value="${bill.bill_entry_amount}" onclick="amountSum()">
             <i class="weui-icon-checked"></i>
         </div>
         <div class="weui-cell__bd" th:text="${bill.costTypeName}"></div>
-        <!--<div class="weui-cell__bd" th:text="${bill.acct_period}"></div>-->
+        <div class="weui-cell__bd" th:text="${bill.acct_period}"></div>
         <div class="weui-cell__ft" th:text="${bill.bill_entry_amount}">11</div>
     </label>
 </div>
 
+<form class="weui-form-preview">
+    <div class="weui-form-preview__hd">
+        <label class="weui-form-preview__label">付款金额</label>
+        <em class="weui-form-preview__value" id="payAmount">¥2400.00</em>
+    </div>
 
+    <a href="javascript:;" class="weui-btn weui-btn_primary">付款</a>
+</form>
 
 
 
@@ -46,7 +53,13 @@
 
 
 <script>
-
+    function amountSum() {
+        var amount=0;
+        $.each($('input:checkbox:checked'),function(){
+            amount=$(this).val() - 0 + amount;
+        });
+        $("#payAmount").html("¥" + amount.toFixed(2));
+    }
 </script>
 </body>
 </html>
