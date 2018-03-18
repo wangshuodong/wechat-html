@@ -19,28 +19,16 @@
 </header>
 
 <div class="weui-cells__title">复选列表项</div>
-<div class="weui-cells weui-cells_checkbox">
+<div class="weui-cells weui-cells_checkbox" th:each="bill,billStat : ${list}">
     <label class="weui-cell weui-check__label" for="s11">
         <div class="weui-cell__hd">
             <input type="checkbox" class="weui-check" name="checkbox1" id="s11" checked="checked">
             <i class="weui-icon-checked"></i>
         </div>
-        <div class="weui-cell__bd">
-            <p>standard is dealt for u.</p>
-        </div>
+        <div class="weui-cell__bd" th:text="${bill.costTypeName}"></div>
+        <!--<div class="weui-cell__bd" th:text="${bill.acct_period}"></div>-->
+        <div class="weui-cell__ft" th:text="${bill.bill_entry_amount}">11</div>
     </label>
-    <label class="weui-cell weui-check__label" for="s12">
-        <div class="weui-cell__hd">
-            <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
-            <i class="weui-icon-checked"></i>
-        </div>
-        <div class="weui-cell__bd">
-            <p>standard is dealicient for u.</p>
-        </div>
-    </label>
-    <a href="javascript:void(0);" class="weui-cell weui-cell_link">
-        <div class="weui-cell__bd">添加更多</div>
-    </a>
 </div>
 
 
