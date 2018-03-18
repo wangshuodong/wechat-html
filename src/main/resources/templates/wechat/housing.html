@@ -18,33 +18,38 @@
     <h1 class="demos-title">绑定房屋信息</h1>
 </header>
 <!--<div th:text="${list}"></div>-->
-<div class="weui-cells weui-cells_form">
+<form id="form" class="weui-cells weui-cells_form" action="/wechat/bindingRoom">
+    <input type="hidden" id="openid" name="openid" th:value="${openid}">
+    <input type="hidden" id="roominfoid" name="roominfoid">
     <div class="weui-cell">
-        <div class="weui-cell__hd"><label for="name" class="weui-label">小区</label></div>
+        <div class="weui-cell__hd"><label for="selectHousing" class="weui-label">小区</label></div>
         <div class="weui-cell__bd">
-            <input class="weui-input" id="selectHousing" type="text" value="请选择" style="color:#999999;text-align:right">
+            <input class="weui-input" id="selectHousing" name="housing" type="text" value="请选择" style="color:#999999;text-align:right">
         </div>
     </div>
 
     <div class="weui-cell">
-        <div class="weui-cell__hd"><label for="name" class="weui-label">楼栋</label></div>
+        <div class="weui-cell__hd"><label for="selectBuild" class="weui-label">楼栋</label></div>
         <div class="weui-cell__bd">
             <input class="weui-input" id="selectBuild" type="text" value="请选择" style="color:#999999;text-align:right">
         </div>
     </div>
     <div class="weui-cell">
-        <div class="weui-cell__hd"><label for="name" class="weui-label">单元</label></div>
+        <div class="weui-cell__hd"><label for="selectUnit" class="weui-label">单元</label></div>
         <div class="weui-cell__bd">
             <input class="weui-input" id="selectUnit" type="text" value="请选择" style="color:#999999;text-align:right">
         </div>
     </div>
     <div class="weui-cell">
-        <div class="weui-cell__hd"><label for="name" class="weui-label">房间</label></div>
+        <div class="weui-cell__hd"><label for="selectRoom" class="weui-label">房间</label></div>
         <div class="weui-cell__bd">
             <input class="weui-input" id="selectRoom" type="text" value="请选择" style="color:#999999;text-align:right">
         </div>
     </div>
-</div>
+    <div class="weui-btn-area">
+        <a class="weui-btn weui-btn_primary" href="javascript:" id="button">绑定</a>
+    </div>
+</form>
 
 
 <script src="/weui/lib/jquery-2.1.4.js"></script>
@@ -58,6 +63,12 @@
 
 
 <script th:inline="javascript">
+    $(function(){
+        $('#button').on('click', function(){
+            $("#roominfoid").val($("#selectRoom").attr("data-values"));
+            $("#form").submit();
+        });
+    });
     var housing = [[${list}]];
     $("#selectHousing").select({
         title: "选择小区",
@@ -68,12 +79,12 @@
                 type: 'POST',
                 url: '/wechat/queryBuilding',
                 dataType: 'json',
-                async:false,
-                data:{
-                    parentId : d.data.values
+                async: false,
+                data: {
+                    parentId: d.data.values
                 },
-                success:function(data){
-                    $("#selectBuild").select("update", { items: data })
+                success: function (data) {
+                    $("#selectBuild").select("update", {items: data})
                     $("#selectBuild").select("open");
                 }
             });
@@ -85,18 +96,17 @@
         items: [],
         onClose: function (d) {
             var housingid = $("#selectHousing").attr("data-values");
-            console.log(d.data.titles);
             $.ajax({
                 type: 'POST',
                 url: '/wechat/queryUnit',
                 dataType: 'json',
-                async:false,
-                data:{
+                async: false,
+                data: {
                     parentId: housingid,
                     building: d.data.titles,
                 },
-                success:function(data){
-                    $("#selectUnit").select("update", { items: data })
+                success: function (data) {
+                    $("#selectUnit").select("update", {items: data})
                     $("#selectUnit").select("open");
                 }
             });
@@ -108,19 +118,18 @@
         items: [],
         onClose: function (d) {
             var housingid = $("#selectHousing").attr("data-values");
-            console.log(d.data.titles);
             $.ajax({
                 type: 'POST',
                 url: '/wechat/queryRoom',
                 dataType: 'json',
-                async:false,
-                data:{
+                async: false,
+                data: {
                     parentId: housingid,
                     building: $("#selectBuild").val(),
                     unit: d.data.titles,
                 },
-                success:function(data){
-                    $("#selectRoom").select("update", { items: data })
+                success: function (data) {
+                    $("#selectRoom").select("update", {items: data})
                     $("#selectRoom").select("open");
                 }
             });

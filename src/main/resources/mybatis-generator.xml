@@ -51,32 +51,11 @@
             <property name="enableSubPackages" value="true"/>
        </javaClientGenerator>
 
-        <!--生成对应表及类名
-        去掉Mybatis Generator生成的一堆 example
+        <!--
+        加上useActualColumnNames这个属性，会按字段名生成代码，这种情况就不需要把表的字段用下划线方式
         -->
-        <!--<table tableName="billaccount" domainObjectName="Billaccount" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-        <table tableName="housinginfo" domainObjectName="Housinginfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-        <table tableName="propertyinfo" domainObjectName="Propertyinfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-        <table tableName="roominfo" domainObjectName="Roominfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-        <table tableName="serviceinfo" domainObjectName="Serviceinfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-        <table tableName="ticket" domainObjectName="Ticket" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-        <table tableName="weixinconfig" domainObjectName="Weixinconfig" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-        -->
-        <table tableName="weixinuser" domainObjectName="Weixinuser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="%">
+            <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 

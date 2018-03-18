@@ -2,7 +2,7 @@ package com.wangsd.web.controller;
 
 import com.wangsd.common.utils.WeixinUtil;
 import com.wangsd.web.model.*;
-import com.wangsd.web.pojo.WeixinOauth2Token;
+import com.wangsd.web.pojo.BillaccountCustom;
 import com.wangsd.web.service.*;
 import net.sf.json.JSONArray;
 import org.slf4j.Logger;
@@ -55,17 +55,14 @@ public class WechatController {
         // 获取用户信息
         //WechatUserInfo snsUserInfo = WeixinUtil.getWechatUserInfo(access_token, openid);
 
-        String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI0";
+        String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
 
         Weixinuser query3 = new Weixinuser();
         query3.setOpenid(openid);
         Weixinuser weixinuser = weixinuserService.selectOne(query3);
         if (weixinuser != null) {
             //直接跳转到账单界面
-            Example example = new Example(Billaccount.class);
-            Example.Criteria criteria = example.createCriteria();
-            criteria.andEqualTo("roominfoId", weixinuser.getRoominfoid());
-            List<Billaccount> list = billaccountService.selectByExample(example);
+            List<BillaccountCustom> list = billaccountService.queryBillByRoomId(weixinuser.getRoominfoid());
             model.addAttribute("list", list);
             return "wechat/billaccount";
         } else {
@@ -93,6 +90,7 @@ public class WechatController {
                     retList.add(map);
                 }
             }
+            model.addAttribute("openid", openid);
             model.addAttribute("list", JSONArray.fromObject(retList));
             return "wechat/housing";
         }
@@ -143,7 +141,7 @@ public class WechatController {
     @ResponseBody
     public List<Map<String, String>> queryRoom(Integer parentId, String building, String unit) {
         Example example = new Example(Roominfo.class);
-        example.selectProperties("room");
+        example.selectProperties("id", "room");
         example.setDistinct(true);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("parentId", parentId)
@@ -155,9 +153,18 @@ public class WechatController {
             for (Roominfo info : list) {
                 Map map = new HashMap();
                 map.put("title", info.getRoom());
+                map.put("value", info.getId());
                 retList.add(map);
             }
         }
         return retList;
+    }
+
+    @RequestMapping("/bindingRoom")
+    public String bindingRoom(Weixinuser weixinuser, Model model) {
+        weixinuserService.save(weixinuser);
+        List<BillaccountCustom> list = billaccountService.queryBillByRoomId(weixinuser.getRoominfoid());
+        model.addAttribute("list", list);
+        return "wechat/billaccount";
     }
 }
