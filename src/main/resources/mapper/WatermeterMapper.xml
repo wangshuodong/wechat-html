@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangsd.web.dao.WatermeterMapper">
+  <resultMap id="BaseResultMap" type="com.wangsd.web.model.Watermeter">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="housing_id" jdbcType="INTEGER" property="housing_id" />
+    <result column="roominfo_id" jdbcType="INTEGER" property="roominfo_id" />
+    <result column="water_num" jdbcType="DOUBLE" property="water_num" />
+    <result column="use_num" jdbcType="DOUBLE" property="use_num" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="amount" jdbcType="DOUBLE" property="amount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="old_water_num" jdbcType="DOUBLE" property="old_water_num" />
+    <result column="old_use_num" jdbcType="DOUBLE" property="old_use_num" />
+    <result column="status" jdbcType="BIT" property="status" />
+  </resultMap>
+</mapper>

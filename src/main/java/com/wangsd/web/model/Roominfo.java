@@ -9,20 +9,17 @@ public class Roominfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "parent_id")
-    private Integer parentId;
+    private Integer parent_id;
 
     /**
      * 支付宝房屋编号
      */
-    @Column(name = "room_id")
-    private String roomId;
+    private String room_id;
 
     /**
      * 房屋所在的组团名称。例如“一期”，“东区”，“香桂苑”等
      */
-    @Column(name = "group_name")
-    private String groupName;
+    private String group_name;
 
     /**
      * 房屋所在楼栋名称。例如“1栋”，“1幢”等
@@ -47,37 +44,31 @@ public class Roominfo {
     /**
      * 业主姓名
      */
-    @Column(name = "owner_name")
-    private String ownerName;
+    private String owner_name;
 
     /**
      * 业主身份证
      */
-    @Column(name = "owner_card")
-    private String ownerCard;
+    private String owner_card;
 
     /**
      * 业主电话
      */
-    @Column(name = "owner_phone")
-    private String ownerPhone;
+    private String owner_phone;
 
     /**
      * 入住时间
      */
-    @Column(name = "entryDate")
-    private String entrydate;
+    private String entryDate;
 
-    @Column(name = "deleteStatus")
-    private Boolean deletestatus;
+    private Boolean deleteStatus;
 
     /**
      * false没有同步，true同步
      */
     private Boolean status;
 
-    @Column(name = "create_time")
-    private Date createTime;
+    private Date create_time;
 
     /**
      * @return id
@@ -96,15 +87,15 @@ public class Roominfo {
     /**
      * @return parent_id
      */
-    public Integer getParentId() {
-        return parentId;
+    public Integer getParent_id() {
+        return parent_id;
     }
 
     /**
-     * @param parentId
+     * @param parent_id
      */
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setParent_id(Integer parent_id) {
+        this.parent_id = parent_id;
     }
 
     /**
@@ -112,17 +103,17 @@ public class Roominfo {
      *
      * @return room_id - 支付宝房屋编号
      */
-    public String getRoomId() {
-        return roomId;
+    public String getRoom_id() {
+        return room_id;
     }
 
     /**
      * 设置支付宝房屋编号
      *
-     * @param roomId 支付宝房屋编号
+     * @param room_id 支付宝房屋编号
      */
-    public void setRoomId(String roomId) {
-        this.roomId = roomId == null ? null : roomId.trim();
+    public void setRoom_id(String room_id) {
+        this.room_id = room_id == null ? null : room_id.trim();
     }
 
     /**
@@ -130,17 +121,17 @@ public class Roominfo {
      *
      * @return group_name - 房屋所在的组团名称。例如“一期”，“东区”，“香桂苑”等
      */
-    public String getGroupName() {
-        return groupName;
+    public String getGroup_name() {
+        return group_name;
     }
 
     /**
      * 设置房屋所在的组团名称。例如“一期”，“东区”，“香桂苑”等
      *
-     * @param groupName 房屋所在的组团名称。例如“一期”，“东区”，“香桂苑”等
+     * @param group_name 房屋所在的组团名称。例如“一期”，“东区”，“香桂苑”等
      */
-    public void setGroupName(String groupName) {
-        this.groupName = groupName == null ? null : groupName.trim();
+    public void setGroup_name(String group_name) {
+        this.group_name = group_name == null ? null : group_name.trim();
     }
 
     /**
@@ -220,17 +211,17 @@ public class Roominfo {
      *
      * @return owner_name - 业主姓名
      */
-    public String getOwnerName() {
-        return ownerName;
+    public String getOwner_name() {
+        return owner_name;
     }
 
     /**
      * 设置业主姓名
      *
-     * @param ownerName 业主姓名
+     * @param owner_name 业主姓名
      */
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName == null ? null : ownerName.trim();
+    public void setOwner_name(String owner_name) {
+        this.owner_name = owner_name == null ? null : owner_name.trim();
     }
 
     /**
@@ -238,17 +229,17 @@ public class Roominfo {
      *
      * @return owner_card - 业主身份证
      */
-    public String getOwnerCard() {
-        return ownerCard;
+    public String getOwner_card() {
+        return owner_card;
     }
 
     /**
      * 设置业主身份证
      *
-     * @param ownerCard 业主身份证
+     * @param owner_card 业主身份证
      */
-    public void setOwnerCard(String ownerCard) {
-        this.ownerCard = ownerCard == null ? null : ownerCard.trim();
+    public void setOwner_card(String owner_card) {
+        this.owner_card = owner_card == null ? null : owner_card.trim();
     }
 
     /**
@@ -256,17 +247,17 @@ public class Roominfo {
      *
      * @return owner_phone - 业主电话
      */
-    public String getOwnerPhone() {
-        return ownerPhone;
+    public String getOwner_phone() {
+        return owner_phone;
     }
 
     /**
      * 设置业主电话
      *
-     * @param ownerPhone 业主电话
+     * @param owner_phone 业主电话
      */
-    public void setOwnerPhone(String ownerPhone) {
-        this.ownerPhone = ownerPhone == null ? null : ownerPhone.trim();
+    public void setOwner_phone(String owner_phone) {
+        this.owner_phone = owner_phone == null ? null : owner_phone.trim();
     }
 
     /**
@@ -274,31 +265,31 @@ public class Roominfo {
      *
      * @return entryDate - 入住时间
      */
-    public String getEntrydate() {
-        return entrydate;
+    public String getEntryDate() {
+        return entryDate;
     }
 
     /**
      * 设置入住时间
      *
-     * @param entrydate 入住时间
+     * @param entryDate 入住时间
      */
-    public void setEntrydate(String entrydate) {
-        this.entrydate = entrydate == null ? null : entrydate.trim();
+    public void setEntryDate(String entryDate) {
+        this.entryDate = entryDate == null ? null : entryDate.trim();
     }
 
     /**
      * @return deleteStatus
      */
-    public Boolean getDeletestatus() {
-        return deletestatus;
+    public Boolean getDeleteStatus() {
+        return deleteStatus;
     }
 
     /**
-     * @param deletestatus
+     * @param deleteStatus
      */
-    public void setDeletestatus(Boolean deletestatus) {
-        this.deletestatus = deletestatus;
+    public void setDeleteStatus(Boolean deleteStatus) {
+        this.deleteStatus = deleteStatus;
     }
 
     /**
@@ -322,14 +313,14 @@ public class Roominfo {
     /**
      * @return create_time
      */
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
     /**
-     * @param createTime
+     * @param create_time
      */
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 }

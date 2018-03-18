@@ -9,14 +9,14 @@
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="region" jdbcType="VARCHAR" property="region" />
-    <result column="contact_people" jdbcType="VARCHAR" property="contactPeople" />
-    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
-    <result column="contact_address" jdbcType="VARCHAR" property="contactAddress" />
-    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
-    <result column="app_id" jdbcType="VARCHAR" property="appId" />
-    <result column="merchant_private_key" jdbcType="VARCHAR" property="merchantPrivateKey" />
-    <result column="alipay_public_key" jdbcType="VARCHAR" property="alipayPublicKey" />
-    <result column="return_url" jdbcType="VARCHAR" property="returnUrl" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="contact_people" jdbcType="VARCHAR" property="contact_people" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contact_phone" />
+    <result column="contact_address" jdbcType="VARCHAR" property="contact_address" />
+    <result column="parent_id" jdbcType="INTEGER" property="parent_id" />
+    <result column="app_id" jdbcType="VARCHAR" property="app_id" />
+    <result column="merchant_private_key" jdbcType="VARCHAR" property="merchant_private_key" />
+    <result column="alipay_public_key" jdbcType="VARCHAR" property="alipay_public_key" />
+    <result column="return_url" jdbcType="VARCHAR" property="return_url" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
   </resultMap>
 </mapper>

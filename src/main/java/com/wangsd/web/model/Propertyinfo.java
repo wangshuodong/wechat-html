@@ -13,38 +13,31 @@ public class Propertyinfo {
 
     private String name;
 
-    @Column(name = "contact_people")
-    private String contactPeople;
+    private String contact_people;
 
-    @Column(name = "contact_phone")
-    private String contactPhone;
+    private String contact_phone;
 
-    @Column(name = "contact_address")
-    private String contactAddress;
+    private String contact_address;
 
     /**
      * 税号
      */
-    @Column(name = "salerTaxNum")
-    private String salertaxnum;
+    private String salerTaxNum;
 
     /**
      * 上级物业id
      */
-    @Column(name = "parent_id")
-    private Integer parentId;
+    private Integer parent_id;
 
     /**
      * 商户账号
      */
-    @Column(name = "alipay_login_id")
-    private String alipayLoginId;
+    private String alipay_login_id;
 
     /**
      * 商户PID
      */
-    @Column(name = "app_id")
-    private String appId;
+    private String app_id;
 
     /**
      * 授权TOKEN
@@ -54,52 +47,44 @@ public class Propertyinfo {
     /**
      * 支付宝代扣协议编号
      */
-    @Column(name = "alipay_debit_num")
-    private String alipayDebitNum;
+    private String alipay_debit_num;
 
     /**
      * 微信代扣协议编号
      */
-    @Column(name = "weixin_debit_num")
-    private String weixinDebitNum;
+    private String weixin_debit_num;
 
     /**
      * 微信子商户
      */
-    @Column(name = "weixin_children_num")
-    private String weixinChildrenNum;
+    private String weixin_children_num;
 
     /**
      * API
      */
     private String api;
 
-    @Column(name = "create_time")
-    private Date createTime;
+    private Date create_time;
 
     /**
      * 用户申请的appkey
      */
-    @Column(name = "nuonuo_appkey")
-    private String nuonuoAppkey;
+    private String nuonuo_appkey;
 
     /**
      * 用户Oauth登录后得到的令牌access token
      */
-    @Column(name = "nuonuo_accessToken")
-    private String nuonuoAccesstoken;
+    private String nuonuo_accessToken;
 
     /**
      * APP Secre
      */
-    @Column(name = "nuonuo_secret")
-    private String nuonuoSecret;
+    private String nuonuo_secret;
 
     /**
      * 销方银行账号和开户行地址
      */
-    @Column(name = "salerAccount")
-    private String saleraccount;
+    private String salerAccount;
 
     /**
      * @return id
@@ -146,43 +131,43 @@ public class Propertyinfo {
     /**
      * @return contact_people
      */
-    public String getContactPeople() {
-        return contactPeople;
+    public String getContact_people() {
+        return contact_people;
     }
 
     /**
-     * @param contactPeople
+     * @param contact_people
      */
-    public void setContactPeople(String contactPeople) {
-        this.contactPeople = contactPeople == null ? null : contactPeople.trim();
+    public void setContact_people(String contact_people) {
+        this.contact_people = contact_people == null ? null : contact_people.trim();
     }
 
     /**
      * @return contact_phone
      */
-    public String getContactPhone() {
-        return contactPhone;
+    public String getContact_phone() {
+        return contact_phone;
     }
 
     /**
-     * @param contactPhone
+     * @param contact_phone
      */
-    public void setContactPhone(String contactPhone) {
-        this.contactPhone = contactPhone == null ? null : contactPhone.trim();
+    public void setContact_phone(String contact_phone) {
+        this.contact_phone = contact_phone == null ? null : contact_phone.trim();
     }
 
     /**
      * @return contact_address
      */
-    public String getContactAddress() {
-        return contactAddress;
+    public String getContact_address() {
+        return contact_address;
     }
 
     /**
-     * @param contactAddress
+     * @param contact_address
      */
-    public void setContactAddress(String contactAddress) {
-        this.contactAddress = contactAddress == null ? null : contactAddress.trim();
+    public void setContact_address(String contact_address) {
+        this.contact_address = contact_address == null ? null : contact_address.trim();
     }
 
     /**
@@ -190,17 +175,17 @@ public class Propertyinfo {
      *
      * @return salerTaxNum - 税号
      */
-    public String getSalertaxnum() {
-        return salertaxnum;
+    public String getSalerTaxNum() {
+        return salerTaxNum;
     }
 
     /**
      * 设置税号
      *
-     * @param salertaxnum 税号
+     * @param salerTaxNum 税号
      */
-    public void setSalertaxnum(String salertaxnum) {
-        this.salertaxnum = salertaxnum == null ? null : salertaxnum.trim();
+    public void setSalerTaxNum(String salerTaxNum) {
+        this.salerTaxNum = salerTaxNum == null ? null : salerTaxNum.trim();
     }
 
     /**
@@ -208,17 +193,17 @@ public class Propertyinfo {
      *
      * @return parent_id - 上级物业id
      */
-    public Integer getParentId() {
-        return parentId;
+    public Integer getParent_id() {
+        return parent_id;
     }
 
     /**
      * 设置上级物业id
      *
-     * @param parentId 上级物业id
+     * @param parent_id 上级物业id
      */
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setParent_id(Integer parent_id) {
+        this.parent_id = parent_id;
     }
 
     /**
@@ -226,17 +211,17 @@ public class Propertyinfo {
      *
      * @return alipay_login_id - 商户账号
      */
-    public String getAlipayLoginId() {
-        return alipayLoginId;
+    public String getAlipay_login_id() {
+        return alipay_login_id;
     }
 
     /**
      * 设置商户账号
      *
-     * @param alipayLoginId 商户账号
+     * @param alipay_login_id 商户账号
      */
-    public void setAlipayLoginId(String alipayLoginId) {
-        this.alipayLoginId = alipayLoginId == null ? null : alipayLoginId.trim();
+    public void setAlipay_login_id(String alipay_login_id) {
+        this.alipay_login_id = alipay_login_id == null ? null : alipay_login_id.trim();
     }
 
     /**
@@ -244,17 +229,17 @@ public class Propertyinfo {
      *
      * @return app_id - 商户PID
      */
-    public String getAppId() {
-        return appId;
+    public String getApp_id() {
+        return app_id;
     }
 
     /**
      * 设置商户PID
      *
-     * @param appId 商户PID
+     * @param app_id 商户PID
      */
-    public void setAppId(String appId) {
-        this.appId = appId == null ? null : appId.trim();
+    public void setApp_id(String app_id) {
+        this.app_id = app_id == null ? null : app_id.trim();
     }
 
     /**
@@ -280,17 +265,17 @@ public class Propertyinfo {
      *
      * @return alipay_debit_num - 支付宝代扣协议编号
      */
-    public String getAlipayDebitNum() {
-        return alipayDebitNum;
+    public String getAlipay_debit_num() {
+        return alipay_debit_num;
     }
 
     /**
      * 设置支付宝代扣协议编号
      *
-     * @param alipayDebitNum 支付宝代扣协议编号
+     * @param alipay_debit_num 支付宝代扣协议编号
      */
-    public void setAlipayDebitNum(String alipayDebitNum) {
-        this.alipayDebitNum = alipayDebitNum == null ? null : alipayDebitNum.trim();
+    public void setAlipay_debit_num(String alipay_debit_num) {
+        this.alipay_debit_num = alipay_debit_num == null ? null : alipay_debit_num.trim();
     }
 
     /**
@@ -298,17 +283,17 @@ public class Propertyinfo {
      *
      * @return weixin_debit_num - 微信代扣协议编号
      */
-    public String getWeixinDebitNum() {
-        return weixinDebitNum;
+    public String getWeixin_debit_num() {
+        return weixin_debit_num;
     }
 
     /**
      * 设置微信代扣协议编号
      *
-     * @param weixinDebitNum 微信代扣协议编号
+     * @param weixin_debit_num 微信代扣协议编号
      */
-    public void setWeixinDebitNum(String weixinDebitNum) {
-        this.weixinDebitNum = weixinDebitNum == null ? null : weixinDebitNum.trim();
+    public void setWeixin_debit_num(String weixin_debit_num) {
+        this.weixin_debit_num = weixin_debit_num == null ? null : weixin_debit_num.trim();
     }
 
     /**
@@ -316,17 +301,17 @@ public class Propertyinfo {
      *
      * @return weixin_children_num - 微信子商户
      */
-    public String getWeixinChildrenNum() {
-        return weixinChildrenNum;
+    public String getWeixin_children_num() {
+        return weixin_children_num;
     }
 
     /**
      * 设置微信子商户
      *
-     * @param weixinChildrenNum 微信子商户
+     * @param weixin_children_num 微信子商户
      */
-    public void setWeixinChildrenNum(String weixinChildrenNum) {
-        this.weixinChildrenNum = weixinChildrenNum == null ? null : weixinChildrenNum.trim();
+    public void setWeixin_children_num(String weixin_children_num) {
+        this.weixin_children_num = weixin_children_num == null ? null : weixin_children_num.trim();
     }
 
     /**
@@ -350,15 +335,15 @@ public class Propertyinfo {
     /**
      * @return create_time
      */
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
     /**
-     * @param createTime
+     * @param create_time
      */
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 
     /**
@@ -366,17 +351,17 @@ public class Propertyinfo {
      *
      * @return nuonuo_appkey - 用户申请的appkey
      */
-    public String getNuonuoAppkey() {
-        return nuonuoAppkey;
+    public String getNuonuo_appkey() {
+        return nuonuo_appkey;
     }
 
     /**
      * 设置用户申请的appkey
      *
-     * @param nuonuoAppkey 用户申请的appkey
+     * @param nuonuo_appkey 用户申请的appkey
      */
-    public void setNuonuoAppkey(String nuonuoAppkey) {
-        this.nuonuoAppkey = nuonuoAppkey == null ? null : nuonuoAppkey.trim();
+    public void setNuonuo_appkey(String nuonuo_appkey) {
+        this.nuonuo_appkey = nuonuo_appkey == null ? null : nuonuo_appkey.trim();
     }
 
     /**
@@ -384,17 +369,17 @@ public class Propertyinfo {
      *
      * @return nuonuo_accessToken - 用户Oauth登录后得到的令牌access token
      */
-    public String getNuonuoAccesstoken() {
-        return nuonuoAccesstoken;
+    public String getNuonuo_accessToken() {
+        return nuonuo_accessToken;
     }
 
     /**
      * 设置用户Oauth登录后得到的令牌access token
      *
-     * @param nuonuoAccesstoken 用户Oauth登录后得到的令牌access token
+     * @param nuonuo_accessToken 用户Oauth登录后得到的令牌access token
      */
-    public void setNuonuoAccesstoken(String nuonuoAccesstoken) {
-        this.nuonuoAccesstoken = nuonuoAccesstoken == null ? null : nuonuoAccesstoken.trim();
+    public void setNuonuo_accessToken(String nuonuo_accessToken) {
+        this.nuonuo_accessToken = nuonuo_accessToken == null ? null : nuonuo_accessToken.trim();
     }
 
     /**
@@ -402,17 +387,17 @@ public class Propertyinfo {
      *
      * @return nuonuo_secret - APP Secre
      */
-    public String getNuonuoSecret() {
-        return nuonuoSecret;
+    public String getNuonuo_secret() {
+        return nuonuo_secret;
     }
 
     /**
      * 设置APP Secre
      *
-     * @param nuonuoSecret APP Secre
+     * @param nuonuo_secret APP Secre
      */
-    public void setNuonuoSecret(String nuonuoSecret) {
-        this.nuonuoSecret = nuonuoSecret == null ? null : nuonuoSecret.trim();
+    public void setNuonuo_secret(String nuonuo_secret) {
+        this.nuonuo_secret = nuonuo_secret == null ? null : nuonuo_secret.trim();
     }
 
     /**
@@ -420,16 +405,16 @@ public class Propertyinfo {
      *
      * @return salerAccount - 销方银行账号和开户行地址
      */
-    public String getSaleraccount() {
-        return saleraccount;
+    public String getSalerAccount() {
+        return salerAccount;
     }
 
     /**
      * 设置销方银行账号和开户行地址
      *
-     * @param saleraccount 销方银行账号和开户行地址
+     * @param salerAccount 销方银行账号和开户行地址
      */
-    public void setSaleraccount(String saleraccount) {
-        this.saleraccount = saleraccount == null ? null : saleraccount.trim();
+    public void setSalerAccount(String salerAccount) {
+        this.salerAccount = salerAccount == null ? null : salerAccount.trim();
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangsd.web.dao.DirectfeeMapper">
+  <resultMap id="BaseResultMap" type="com.wangsd.web.model.Directfee">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="fee" jdbcType="DOUBLE" property="fee" />
+    <result column="costtypeid" jdbcType="INTEGER" property="costtypeid" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="projectid" jdbcType="VARCHAR" property="projectid" />
+    <result column="fee_unit" jdbcType="VARCHAR" property="fee_unit" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="pay_type" jdbcType="INTEGER" property="pay_type" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="ticketStatus" jdbcType="INTEGER" property="ticketStatus" />
+    <result column="invoiceSerialNum" jdbcType="VARCHAR" property="invoiceSerialNum" />
+  </resultMap>
+</mapper>

@@ -8,14 +8,12 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "billaccount_id")
-    private Integer billaccountId;
+    private Integer billaccount_id;
 
     /**
      * 发票抬头
      */
-    @Column(name = "title_name")
-    private String titleName;
+    private String title_name;
 
     /**
      * 发票类型0单位，1个人
@@ -25,8 +23,7 @@ public class Ticket {
     /**
      * 税号
      */
-    @Column(name = "register_no")
-    private String registerNo;
+    private String register_no;
 
     private Double amount;
 
@@ -54,15 +51,15 @@ public class Ticket {
     /**
      * @return billaccount_id
      */
-    public Integer getBillaccountId() {
-        return billaccountId;
+    public Integer getBillaccount_id() {
+        return billaccount_id;
     }
 
     /**
-     * @param billaccountId
+     * @param billaccount_id
      */
-    public void setBillaccountId(Integer billaccountId) {
-        this.billaccountId = billaccountId;
+    public void setBillaccount_id(Integer billaccount_id) {
+        this.billaccount_id = billaccount_id;
     }
 
     /**
@@ -70,17 +67,17 @@ public class Ticket {
      *
      * @return title_name - 发票抬头
      */
-    public String getTitleName() {
-        return titleName;
+    public String getTitle_name() {
+        return title_name;
     }
 
     /**
      * 设置发票抬头
      *
-     * @param titleName 发票抬头
+     * @param title_name 发票抬头
      */
-    public void setTitleName(String titleName) {
-        this.titleName = titleName == null ? null : titleName.trim();
+    public void setTitle_name(String title_name) {
+        this.title_name = title_name == null ? null : title_name.trim();
     }
 
     /**
@@ -106,17 +103,17 @@ public class Ticket {
      *
      * @return register_no - 税号
      */
-    public String getRegisterNo() {
-        return registerNo;
+    public String getRegister_no() {
+        return register_no;
     }
 
     /**
      * 设置税号
      *
-     * @param registerNo 税号
+     * @param register_no 税号
      */
-    public void setRegisterNo(String registerNo) {
-        this.registerNo = registerNo == null ? null : registerNo.trim();
+    public void setRegister_no(String register_no) {
+        this.register_no = register_no == null ? null : register_no.trim();
     }
 
     /**

@@ -12,38 +12,32 @@ public class Billaccount {
     /**
      * 对应小区id
      */
-    @Column(name = "housing_id")
-    private Integer housingId;
+    private Integer housing_id;
 
     /**
      * 对应房间id
      */
-    @Column(name = "roominfo_id")
-    private Integer roominfoId;
+    private Integer roominfo_id;
 
     /**
      * 费用类型名称
      */
-    @Column(name = "cost_type")
-    private Integer costType;
+    private Integer cost_type;
 
     /**
      * 应收金额
      */
-    @Column(name = "bill_entry_amount")
-    private Double billEntryAmount;
+    private Double bill_entry_amount;
 
     /**
      * 账期，用于归类和向用户展示
      */
-    @Column(name = "acct_period")
-    private String acctPeriod;
+    private String acct_period;
 
     /**
      * 出账日期20160831
      */
-    @Column(name = "release_day")
-    private String releaseDay;
+    private String release_day;
 
     /**
      * 缴费截止日期20160831
@@ -53,8 +47,7 @@ public class Billaccount {
     /**
      * 缴费明细条目关联ID。若物业系统业务约束上传的多条明细条目必须被一次同时支付，则对应的明细条目需传入同样的relate_id。
      */
-    @Column(name = "relate_id")
-    private String relateId;
+    private String relate_id;
 
     /**
      * 0:未同步 1：已同步
@@ -64,76 +57,63 @@ public class Billaccount {
     /**
      * 付款时间
      */
-    @Column(name = "payDate")
-    private Date paydate;
+    private Date payDate;
 
     /**
      * 微信 支付宝 现金 刷卡 银行转账
      */
-    @Column(name = "payType")
-    private Integer paytype;
+    private Integer payType;
 
     /**
      * 付款状态 0：未付款  1：已付款
      */
-    @Column(name = "payStatus")
-    private Boolean paystatus;
+    private Boolean payStatus;
 
-    @Column(name = "deleteStatus")
-    private Boolean deletestatus;
+    private Boolean deleteStatus;
 
     /**
      * 支付宝付款成功回传编号
      */
-    @Column(name = "alipay_trade_no")
-    private String alipayTradeNo;
+    private String alipay_trade_no;
 
     /**
      * 微信付款成功回传编号
      */
-    @Column(name = "weixin_trade_no")
-    private String weixinTradeNo;
+    private String weixin_trade_no;
 
     /**
      * 打印状态
      */
-    @Column(name = "printStatus")
-    private Boolean printstatus;
+    private Boolean printStatus;
 
     /**
      * 开票状态0未开票，1已开票，2退票
      */
-    @Column(name = "ticketStatus")
-    private Integer ticketstatus;
+    private Integer ticketStatus;
 
     /**
      * 发票流水号
      */
-    @Column(name = "invoiceSerialNum")
-    private String invoiceserialnum;
+    private String invoiceSerialNum;
 
     /**
      * 发票代码
      */
-    @Column(name = "invoiceCode")
-    private String invoicecode;
+    private String invoiceCode;
 
     /**
      * 发票号码
      */
-    @Column(name = "invoiceNum")
-    private String invoicenum;
+    private String invoiceNum;
 
     /**
      * 付款人支付宝id
      */
-    @Column(name = "buyer_user_id")
-    private String buyerUserId;
+    private String buyer_user_id;
 
     private String remark;
 
-    @Column(name = "create_time")
-    private Date createTime;
+    private Date create_time;
 
     /**
      * @return id
@@ -154,17 +134,17 @@ public class Billaccount {
      *
      * @return housing_id - 对应小区id
      */
-    public Integer getHousingId() {
-        return housingId;
+    public Integer getHousing_id() {
+        return housing_id;
     }
 
     /**
      * 设置对应小区id
      *
-     * @param housingId 对应小区id
+     * @param housing_id 对应小区id
      */
-    public void setHousingId(Integer housingId) {
-        this.housingId = housingId;
+    public void setHousing_id(Integer housing_id) {
+        this.housing_id = housing_id;
     }
 
     /**
@@ -172,17 +152,17 @@ public class Billaccount {
      *
      * @return roominfo_id - 对应房间id
      */
-    public Integer getRoominfoId() {
-        return roominfoId;
+    public Integer getRoominfo_id() {
+        return roominfo_id;
     }
 
     /**
      * 设置对应房间id
      *
-     * @param roominfoId 对应房间id
+     * @param roominfo_id 对应房间id
      */
-    public void setRoominfoId(Integer roominfoId) {
-        this.roominfoId = roominfoId;
+    public void setRoominfo_id(Integer roominfo_id) {
+        this.roominfo_id = roominfo_id;
     }
 
     /**
@@ -190,17 +170,17 @@ public class Billaccount {
      *
      * @return cost_type - 费用类型名称
      */
-    public Integer getCostType() {
-        return costType;
+    public Integer getCost_type() {
+        return cost_type;
     }
 
     /**
      * 设置费用类型名称
      *
-     * @param costType 费用类型名称
+     * @param cost_type 费用类型名称
      */
-    public void setCostType(Integer costType) {
-        this.costType = costType;
+    public void setCost_type(Integer cost_type) {
+        this.cost_type = cost_type;
     }
 
     /**
@@ -208,17 +188,17 @@ public class Billaccount {
      *
      * @return bill_entry_amount - 应收金额
      */
-    public Double getBillEntryAmount() {
-        return billEntryAmount;
+    public Double getBill_entry_amount() {
+        return bill_entry_amount;
     }
 
     /**
      * 设置应收金额
      *
-     * @param billEntryAmount 应收金额
+     * @param bill_entry_amount 应收金额
      */
-    public void setBillEntryAmount(Double billEntryAmount) {
-        this.billEntryAmount = billEntryAmount;
+    public void setBill_entry_amount(Double bill_entry_amount) {
+        this.bill_entry_amount = bill_entry_amount;
     }
 
     /**
@@ -226,17 +206,17 @@ public class Billaccount {
      *
      * @return acct_period - 账期，用于归类和向用户展示
      */
-    public String getAcctPeriod() {
-        return acctPeriod;
+    public String getAcct_period() {
+        return acct_period;
     }
 
     /**
      * 设置账期，用于归类和向用户展示
      *
-     * @param acctPeriod 账期，用于归类和向用户展示
+     * @param acct_period 账期，用于归类和向用户展示
      */
-    public void setAcctPeriod(String acctPeriod) {
-        this.acctPeriod = acctPeriod == null ? null : acctPeriod.trim();
+    public void setAcct_period(String acct_period) {
+        this.acct_period = acct_period == null ? null : acct_period.trim();
     }
 
     /**
@@ -244,17 +224,17 @@ public class Billaccount {
      *
      * @return release_day - 出账日期20160831
      */
-    public String getReleaseDay() {
-        return releaseDay;
+    public String getRelease_day() {
+        return release_day;
     }
 
     /**
      * 设置出账日期20160831
      *
-     * @param releaseDay 出账日期20160831
+     * @param release_day 出账日期20160831
      */
-    public void setReleaseDay(String releaseDay) {
-        this.releaseDay = releaseDay == null ? null : releaseDay.trim();
+    public void setRelease_day(String release_day) {
+        this.release_day = release_day == null ? null : release_day.trim();
     }
 
     /**
@@ -280,17 +260,17 @@ public class Billaccount {
      *
      * @return relate_id - 缴费明细条目关联ID。若物业系统业务约束上传的多条明细条目必须被一次同时支付，则对应的明细条目需传入同样的relate_id。
      */
-    public String getRelateId() {
-        return relateId;
+    public String getRelate_id() {
+        return relate_id;
     }
 
     /**
      * 设置缴费明细条目关联ID。若物业系统业务约束上传的多条明细条目必须被一次同时支付，则对应的明细条目需传入同样的relate_id。
      *
-     * @param relateId 缴费明细条目关联ID。若物业系统业务约束上传的多条明细条目必须被一次同时支付，则对应的明细条目需传入同样的relate_id。
+     * @param relate_id 缴费明细条目关联ID。若物业系统业务约束上传的多条明细条目必须被一次同时支付，则对应的明细条目需传入同样的relate_id。
      */
-    public void setRelateId(String relateId) {
-        this.relateId = relateId == null ? null : relateId.trim();
+    public void setRelate_id(String relate_id) {
+        this.relate_id = relate_id == null ? null : relate_id.trim();
     }
 
     /**
@@ -316,17 +296,17 @@ public class Billaccount {
      *
      * @return payDate - 付款时间
      */
-    public Date getPaydate() {
-        return paydate;
+    public Date getPayDate() {
+        return payDate;
     }
 
     /**
      * 设置付款时间
      *
-     * @param paydate 付款时间
+     * @param payDate 付款时间
      */
-    public void setPaydate(Date paydate) {
-        this.paydate = paydate;
+    public void setPayDate(Date payDate) {
+        this.payDate = payDate;
     }
 
     /**
@@ -334,17 +314,17 @@ public class Billaccount {
      *
      * @return payType - 微信 支付宝 现金 刷卡 银行转账
      */
-    public Integer getPaytype() {
-        return paytype;
+    public Integer getPayType() {
+        return payType;
     }
 
     /**
      * 设置微信 支付宝 现金 刷卡 银行转账
      *
-     * @param paytype 微信 支付宝 现金 刷卡 银行转账
+     * @param payType 微信 支付宝 现金 刷卡 银行转账
      */
-    public void setPaytype(Integer paytype) {
-        this.paytype = paytype;
+    public void setPayType(Integer payType) {
+        this.payType = payType;
     }
 
     /**
@@ -352,31 +332,31 @@ public class Billaccount {
      *
      * @return payStatus - 付款状态 0：未付款  1：已付款
      */
-    public Boolean getPaystatus() {
-        return paystatus;
+    public Boolean getPayStatus() {
+        return payStatus;
     }
 
     /**
      * 设置付款状态 0：未付款  1：已付款
      *
-     * @param paystatus 付款状态 0：未付款  1：已付款
+     * @param payStatus 付款状态 0：未付款  1：已付款
      */
-    public void setPaystatus(Boolean paystatus) {
-        this.paystatus = paystatus;
+    public void setPayStatus(Boolean payStatus) {
+        this.payStatus = payStatus;
     }
 
     /**
      * @return deleteStatus
      */
-    public Boolean getDeletestatus() {
-        return deletestatus;
+    public Boolean getDeleteStatus() {
+        return deleteStatus;
     }
 
     /**
-     * @param deletestatus
+     * @param deleteStatus
      */
-    public void setDeletestatus(Boolean deletestatus) {
-        this.deletestatus = deletestatus;
+    public void setDeleteStatus(Boolean deleteStatus) {
+        this.deleteStatus = deleteStatus;
     }
 
     /**
@@ -384,17 +364,17 @@ public class Billaccount {
      *
      * @return alipay_trade_no - 支付宝付款成功回传编号
      */
-    public String getAlipayTradeNo() {
-        return alipayTradeNo;
+    public String getAlipay_trade_no() {
+        return alipay_trade_no;
     }
 
     /**
      * 设置支付宝付款成功回传编号
      *
-     * @param alipayTradeNo 支付宝付款成功回传编号
+     * @param alipay_trade_no 支付宝付款成功回传编号
      */
-    public void setAlipayTradeNo(String alipayTradeNo) {
-        this.alipayTradeNo = alipayTradeNo == null ? null : alipayTradeNo.trim();
+    public void setAlipay_trade_no(String alipay_trade_no) {
+        this.alipay_trade_no = alipay_trade_no == null ? null : alipay_trade_no.trim();
     }
 
     /**
@@ -402,17 +382,17 @@ public class Billaccount {
      *
      * @return weixin_trade_no - 微信付款成功回传编号
      */
-    public String getWeixinTradeNo() {
-        return weixinTradeNo;
+    public String getWeixin_trade_no() {
+        return weixin_trade_no;
     }
 
     /**
      * 设置微信付款成功回传编号
      *
-     * @param weixinTradeNo 微信付款成功回传编号
+     * @param weixin_trade_no 微信付款成功回传编号
      */
-    public void setWeixinTradeNo(String weixinTradeNo) {
-        this.weixinTradeNo = weixinTradeNo == null ? null : weixinTradeNo.trim();
+    public void setWeixin_trade_no(String weixin_trade_no) {
+        this.weixin_trade_no = weixin_trade_no == null ? null : weixin_trade_no.trim();
     }
 
     /**
@@ -420,17 +400,17 @@ public class Billaccount {
      *
      * @return printStatus - 打印状态
      */
-    public Boolean getPrintstatus() {
-        return printstatus;
+    public Boolean getPrintStatus() {
+        return printStatus;
     }
 
     /**
      * 设置打印状态
      *
-     * @param printstatus 打印状态
+     * @param printStatus 打印状态
      */
-    public void setPrintstatus(Boolean printstatus) {
-        this.printstatus = printstatus;
+    public void setPrintStatus(Boolean printStatus) {
+        this.printStatus = printStatus;
     }
 
     /**
@@ -438,17 +418,17 @@ public class Billaccount {
      *
      * @return ticketStatus - 开票状态0未开票，1已开票，2退票
      */
-    public Integer getTicketstatus() {
-        return ticketstatus;
+    public Integer getTicketStatus() {
+        return ticketStatus;
     }
 
     /**
      * 设置开票状态0未开票，1已开票，2退票
      *
-     * @param ticketstatus 开票状态0未开票，1已开票，2退票
+     * @param ticketStatus 开票状态0未开票，1已开票，2退票
      */
-    public void setTicketstatus(Integer ticketstatus) {
-        this.ticketstatus = ticketstatus;
+    public void setTicketStatus(Integer ticketStatus) {
+        this.ticketStatus = ticketStatus;
     }
 
     /**
@@ -456,17 +436,17 @@ public class Billaccount {
      *
      * @return invoiceSerialNum - 发票流水号
      */
-    public String getInvoiceserialnum() {
-        return invoiceserialnum;
+    public String getInvoiceSerialNum() {
+        return invoiceSerialNum;
     }
 
     /**
      * 设置发票流水号
      *
-     * @param invoiceserialnum 发票流水号
+     * @param invoiceSerialNum 发票流水号
      */
-    public void setInvoiceserialnum(String invoiceserialnum) {
-        this.invoiceserialnum = invoiceserialnum == null ? null : invoiceserialnum.trim();
+    public void setInvoiceSerialNum(String invoiceSerialNum) {
+        this.invoiceSerialNum = invoiceSerialNum == null ? null : invoiceSerialNum.trim();
     }
 
     /**
@@ -474,17 +454,17 @@ public class Billaccount {
      *
      * @return invoiceCode - 发票代码
      */
-    public String getInvoicecode() {
-        return invoicecode;
+    public String getInvoiceCode() {
+        return invoiceCode;
     }
 
     /**
      * 设置发票代码
      *
-     * @param invoicecode 发票代码
+     * @param invoiceCode 发票代码
      */
-    public void setInvoicecode(String invoicecode) {
-        this.invoicecode = invoicecode == null ? null : invoicecode.trim();
+    public void setInvoiceCode(String invoiceCode) {
+        this.invoiceCode = invoiceCode == null ? null : invoiceCode.trim();
     }
 
     /**
@@ -492,17 +472,17 @@ public class Billaccount {
      *
      * @return invoiceNum - 发票号码
      */
-    public String getInvoicenum() {
-        return invoicenum;
+    public String getInvoiceNum() {
+        return invoiceNum;
     }
 
     /**
      * 设置发票号码
      *
-     * @param invoicenum 发票号码
+     * @param invoiceNum 发票号码
      */
-    public void setInvoicenum(String invoicenum) {
-        this.invoicenum = invoicenum == null ? null : invoicenum.trim();
+    public void setInvoiceNum(String invoiceNum) {
+        this.invoiceNum = invoiceNum == null ? null : invoiceNum.trim();
     }
 
     /**
@@ -510,17 +490,17 @@ public class Billaccount {
      *
      * @return buyer_user_id - 付款人支付宝id
      */
-    public String getBuyerUserId() {
-        return buyerUserId;
+    public String getBuyer_user_id() {
+        return buyer_user_id;
     }
 
     /**
      * 设置付款人支付宝id
      *
-     * @param buyerUserId 付款人支付宝id
+     * @param buyer_user_id 付款人支付宝id
      */
-    public void setBuyerUserId(String buyerUserId) {
-        this.buyerUserId = buyerUserId == null ? null : buyerUserId.trim();
+    public void setBuyer_user_id(String buyer_user_id) {
+        this.buyer_user_id = buyer_user_id == null ? null : buyer_user_id.trim();
     }
 
     /**
@@ -540,14 +520,14 @@ public class Billaccount {
     /**
      * @return create_time
      */
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
     /**
-     * @param createTime
+     * @param create_time
      */
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 }

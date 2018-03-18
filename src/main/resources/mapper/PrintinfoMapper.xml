@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangsd.web.dao.PrintinfoMapper">
+  <resultMap id="BaseResultMap" type="com.wangsd.web.model.Printinfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="department_id" jdbcType="INTEGER" property="department_id" />
+    <result column="machine_code" jdbcType="VARCHAR" property="machine_code" />
+    <result column="msign" jdbcType="VARCHAR" property="msign" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobile_phone" />
+    <result column="print_name" jdbcType="VARCHAR" property="print_name" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="deleteStatus" jdbcType="BIT" property="deleteStatus" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+</mapper>

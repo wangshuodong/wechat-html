@@ -8,22 +8,22 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="contact_people" jdbcType="VARCHAR" property="contactPeople" />
-    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
-    <result column="contact_address" jdbcType="VARCHAR" property="contactAddress" />
-    <result column="salerTaxNum" jdbcType="VARCHAR" property="salertaxnum" />
-    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
-    <result column="alipay_login_id" jdbcType="VARCHAR" property="alipayLoginId" />
-    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="contact_people" jdbcType="VARCHAR" property="contact_people" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contact_phone" />
+    <result column="contact_address" jdbcType="VARCHAR" property="contact_address" />
+    <result column="salerTaxNum" jdbcType="VARCHAR" property="salerTaxNum" />
+    <result column="parent_id" jdbcType="INTEGER" property="parent_id" />
+    <result column="alipay_login_id" jdbcType="VARCHAR" property="alipay_login_id" />
+    <result column="app_id" jdbcType="VARCHAR" property="app_id" />
     <result column="token" jdbcType="VARCHAR" property="token" />
-    <result column="alipay_debit_num" jdbcType="VARCHAR" property="alipayDebitNum" />
-    <result column="weixin_debit_num" jdbcType="VARCHAR" property="weixinDebitNum" />
-    <result column="weixin_children_num" jdbcType="VARCHAR" property="weixinChildrenNum" />
+    <result column="alipay_debit_num" jdbcType="VARCHAR" property="alipay_debit_num" />
+    <result column="weixin_debit_num" jdbcType="VARCHAR" property="weixin_debit_num" />
+    <result column="weixin_children_num" jdbcType="VARCHAR" property="weixin_children_num" />
     <result column="api" jdbcType="VARCHAR" property="api" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="nuonuo_appkey" jdbcType="VARCHAR" property="nuonuoAppkey" />
-    <result column="nuonuo_accessToken" jdbcType="VARCHAR" property="nuonuoAccesstoken" />
-    <result column="nuonuo_secret" jdbcType="VARCHAR" property="nuonuoSecret" />
-    <result column="salerAccount" jdbcType="VARCHAR" property="saleraccount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="nuonuo_appkey" jdbcType="VARCHAR" property="nuonuo_appkey" />
+    <result column="nuonuo_accessToken" jdbcType="VARCHAR" property="nuonuo_accessToken" />
+    <result column="nuonuo_secret" jdbcType="VARCHAR" property="nuonuo_secret" />
+    <result column="salerAccount" jdbcType="VARCHAR" property="salerAccount" />
   </resultMap>
 </mapper>

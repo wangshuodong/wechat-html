@@ -6,10 +6,10 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="billaccount_id" jdbcType="INTEGER" property="billaccountId" />
-    <result column="title_name" jdbcType="VARCHAR" property="titleName" />
+    <result column="billaccount_id" jdbcType="INTEGER" property="billaccount_id" />
+    <result column="title_name" jdbcType="VARCHAR" property="title_name" />
     <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="register_no" jdbcType="VARCHAR" property="registerNo" />
+    <result column="register_no" jdbcType="VARCHAR" property="register_no" />
     <result column="amount" jdbcType="DOUBLE" property="amount" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="email" jdbcType="VARCHAR" property="email" />

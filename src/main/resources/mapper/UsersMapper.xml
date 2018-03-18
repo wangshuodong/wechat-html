@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangsd.web.dao.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.wangsd.web.model.Users">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="parent_id" jdbcType="INTEGER" property="parent_id" />
+    <result column="parent_code" jdbcType="VARCHAR" property="parent_code" />
+    <result column="role_id" jdbcType="INTEGER" property="role_id" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="enable" jdbcType="BIT" property="enable" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+  </resultMap>
+</mapper>

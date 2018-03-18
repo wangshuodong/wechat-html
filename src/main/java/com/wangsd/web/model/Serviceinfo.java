@@ -21,50 +21,41 @@ public class Serviceinfo {
     /**
      * 联系人
      */
-    @Column(name = "contact_people")
-    private String contactPeople;
+    private String contact_people;
 
     /**
      * 联系电话
      */
-    @Column(name = "contact_phone")
-    private String contactPhone;
+    private String contact_phone;
 
     /**
      * 联系地址
      */
-    @Column(name = "contact_address")
-    private String contactAddress;
+    private String contact_address;
 
     /**
      * 上级服务商id
      */
-    @Column(name = "parent_id")
-    private Integer parentId;
+    private Integer parent_id;
 
     /**
      * 应用ID,您的APPID
      */
-    @Column(name = "app_id")
-    private String appId;
+    private String app_id;
 
     /**
      * 商户私钥
      */
-    @Column(name = "merchant_private_key")
-    private String merchantPrivateKey;
+    private String merchant_private_key;
 
     /**
      * 支付宝公钥
      */
-    @Column(name = "alipay_public_key")
-    private String alipayPublicKey;
+    private String alipay_public_key;
 
-    @Column(name = "return_url")
-    private String returnUrl;
+    private String return_url;
 
-    @Column(name = "create_time")
-    private Date createTime;
+    private Date create_time;
 
     /**
      * @return id
@@ -131,17 +122,17 @@ public class Serviceinfo {
      *
      * @return contact_people - 联系人
      */
-    public String getContactPeople() {
-        return contactPeople;
+    public String getContact_people() {
+        return contact_people;
     }
 
     /**
      * 设置联系人
      *
-     * @param contactPeople 联系人
+     * @param contact_people 联系人
      */
-    public void setContactPeople(String contactPeople) {
-        this.contactPeople = contactPeople == null ? null : contactPeople.trim();
+    public void setContact_people(String contact_people) {
+        this.contact_people = contact_people == null ? null : contact_people.trim();
     }
 
     /**
@@ -149,17 +140,17 @@ public class Serviceinfo {
      *
      * @return contact_phone - 联系电话
      */
-    public String getContactPhone() {
-        return contactPhone;
+    public String getContact_phone() {
+        return contact_phone;
     }
 
     /**
      * 设置联系电话
      *
-     * @param contactPhone 联系电话
+     * @param contact_phone 联系电话
      */
-    public void setContactPhone(String contactPhone) {
-        this.contactPhone = contactPhone == null ? null : contactPhone.trim();
+    public void setContact_phone(String contact_phone) {
+        this.contact_phone = contact_phone == null ? null : contact_phone.trim();
     }
 
     /**
@@ -167,17 +158,17 @@ public class Serviceinfo {
      *
      * @return contact_address - 联系地址
      */
-    public String getContactAddress() {
-        return contactAddress;
+    public String getContact_address() {
+        return contact_address;
     }
 
     /**
      * 设置联系地址
      *
-     * @param contactAddress 联系地址
+     * @param contact_address 联系地址
      */
-    public void setContactAddress(String contactAddress) {
-        this.contactAddress = contactAddress == null ? null : contactAddress.trim();
+    public void setContact_address(String contact_address) {
+        this.contact_address = contact_address == null ? null : contact_address.trim();
     }
 
     /**
@@ -185,17 +176,17 @@ public class Serviceinfo {
      *
      * @return parent_id - 上级服务商id
      */
-    public Integer getParentId() {
-        return parentId;
+    public Integer getParent_id() {
+        return parent_id;
     }
 
     /**
      * 设置上级服务商id
      *
-     * @param parentId 上级服务商id
+     * @param parent_id 上级服务商id
      */
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setParent_id(Integer parent_id) {
+        this.parent_id = parent_id;
     }
 
     /**
@@ -203,17 +194,17 @@ public class Serviceinfo {
      *
      * @return app_id - 应用ID,您的APPID
      */
-    public String getAppId() {
-        return appId;
+    public String getApp_id() {
+        return app_id;
     }
 
     /**
      * 设置应用ID,您的APPID
      *
-     * @param appId 应用ID,您的APPID
+     * @param app_id 应用ID,您的APPID
      */
-    public void setAppId(String appId) {
-        this.appId = appId == null ? null : appId.trim();
+    public void setApp_id(String app_id) {
+        this.app_id = app_id == null ? null : app_id.trim();
     }
 
     /**
@@ -221,17 +212,17 @@ public class Serviceinfo {
      *
      * @return merchant_private_key - 商户私钥
      */
-    public String getMerchantPrivateKey() {
-        return merchantPrivateKey;
+    public String getMerchant_private_key() {
+        return merchant_private_key;
     }
 
     /**
      * 设置商户私钥
      *
-     * @param merchantPrivateKey 商户私钥
+     * @param merchant_private_key 商户私钥
      */
-    public void setMerchantPrivateKey(String merchantPrivateKey) {
-        this.merchantPrivateKey = merchantPrivateKey == null ? null : merchantPrivateKey.trim();
+    public void setMerchant_private_key(String merchant_private_key) {
+        this.merchant_private_key = merchant_private_key == null ? null : merchant_private_key.trim();
     }
 
     /**
@@ -239,44 +230,44 @@ public class Serviceinfo {
      *
      * @return alipay_public_key - 支付宝公钥
      */
-    public String getAlipayPublicKey() {
-        return alipayPublicKey;
+    public String getAlipay_public_key() {
+        return alipay_public_key;
     }
 
     /**
      * 设置支付宝公钥
      *
-     * @param alipayPublicKey 支付宝公钥
+     * @param alipay_public_key 支付宝公钥
      */
-    public void setAlipayPublicKey(String alipayPublicKey) {
-        this.alipayPublicKey = alipayPublicKey == null ? null : alipayPublicKey.trim();
+    public void setAlipay_public_key(String alipay_public_key) {
+        this.alipay_public_key = alipay_public_key == null ? null : alipay_public_key.trim();
     }
 
     /**
      * @return return_url
      */
-    public String getReturnUrl() {
-        return returnUrl;
+    public String getReturn_url() {
+        return return_url;
     }
 
     /**
-     * @param returnUrl
+     * @param return_url
      */
-    public void setReturnUrl(String returnUrl) {
-        this.returnUrl = returnUrl == null ? null : returnUrl.trim();
+    public void setReturn_url(String return_url) {
+        this.return_url = return_url == null ? null : return_url.trim();
     }
 
     /**
      * @return create_time
      */
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
     /**
-     * @param createTime
+     * @param create_time
      */
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 }

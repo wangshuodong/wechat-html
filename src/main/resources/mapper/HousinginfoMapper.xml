@@ -6,22 +6,22 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="community_id" jdbcType="VARCHAR" property="communityId" />
+    <result column="community_id" jdbcType="VARCHAR" property="community_id" />
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
-    <result column="district_code" jdbcType="VARCHAR" property="districtCode" />
-    <result column="city_code" jdbcType="VARCHAR" property="cityCode" />
-    <result column="province_code" jdbcType="VARCHAR" property="provinceCode" />
-    <result column="community_locations" jdbcType="VARCHAR" property="communityLocations" />
-    <result column="associated_pois" jdbcType="VARCHAR" property="associatedPois" />
+    <result column="parent_id" jdbcType="INTEGER" property="parent_id" />
+    <result column="district_code" jdbcType="VARCHAR" property="district_code" />
+    <result column="city_code" jdbcType="VARCHAR" property="city_code" />
+    <result column="province_code" jdbcType="VARCHAR" property="province_code" />
+    <result column="community_locations" jdbcType="VARCHAR" property="community_locations" />
+    <result column="associated_pois" jdbcType="VARCHAR" property="associated_pois" />
     <result column="hotline" jdbcType="VARCHAR" property="hotline" />
-    <result column="message_num" jdbcType="INTEGER" property="messageNum" />
+    <result column="message_num" jdbcType="INTEGER" property="message_num" />
     <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="deleteStatus" jdbcType="BIT" property="deletestatus" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="water_unit" jdbcType="DOUBLE" property="waterUnit" />
+    <result column="deleteStatus" jdbcType="BIT" property="deleteStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="water_unit" jdbcType="DOUBLE" property="water_unit" />
   </resultMap>
 
     <select id="queryHousinginfoList" resultType="com.wangsd.web.model.Housinginfo">

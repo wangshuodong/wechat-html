@@ -6,19 +6,19 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
-    <result column="room_id" jdbcType="VARCHAR" property="roomId" />
-    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+    <result column="parent_id" jdbcType="INTEGER" property="parent_id" />
+    <result column="room_id" jdbcType="VARCHAR" property="room_id" />
+    <result column="group_name" jdbcType="VARCHAR" property="group_name" />
     <result column="building" jdbcType="VARCHAR" property="building" />
     <result column="unit" jdbcType="VARCHAR" property="unit" />
     <result column="room" jdbcType="VARCHAR" property="room" />
     <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
-    <result column="owner_card" jdbcType="VARCHAR" property="ownerCard" />
-    <result column="owner_phone" jdbcType="VARCHAR" property="ownerPhone" />
-    <result column="entryDate" jdbcType="VARCHAR" property="entrydate" />
-    <result column="deleteStatus" jdbcType="BIT" property="deletestatus" />
+    <result column="owner_name" jdbcType="VARCHAR" property="owner_name" />
+    <result column="owner_card" jdbcType="VARCHAR" property="owner_card" />
+    <result column="owner_phone" jdbcType="VARCHAR" property="owner_phone" />
+    <result column="entryDate" jdbcType="VARCHAR" property="entryDate" />
+    <result column="deleteStatus" jdbcType="BIT" property="deleteStatus" />
     <result column="status" jdbcType="BIT" property="status" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
   </resultMap>
 </mapper>

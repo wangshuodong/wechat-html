@@ -11,14 +11,12 @@ public class Weixinconfig {
     /**
      * 公众号appId
      */
-    @Column(name = "appId")
-    private String appid;
+    private String appId;
 
     /**
      * 微信appSecret
      */
-    @Column(name = "appSecret")
-    private String appsecret;
+    private String appSecret;
 
     /**
      * @return id
@@ -39,17 +37,17 @@ public class Weixinconfig {
      *
      * @return appId - 公众号appId
      */
-    public String getAppid() {
-        return appid;
+    public String getAppId() {
+        return appId;
     }
 
     /**
      * 设置公众号appId
      *
-     * @param appid 公众号appId
+     * @param appId 公众号appId
      */
-    public void setAppid(String appid) {
-        this.appid = appid == null ? null : appid.trim();
+    public void setAppId(String appId) {
+        this.appId = appId == null ? null : appId.trim();
     }
 
     /**
@@ -57,16 +55,16 @@ public class Weixinconfig {
      *
      * @return appSecret - 微信appSecret
      */
-    public String getAppsecret() {
-        return appsecret;
+    public String getAppSecret() {
+        return appSecret;
     }
 
     /**
      * 设置微信appSecret
      *
-     * @param appsecret 微信appSecret
+     * @param appSecret 微信appSecret
      */
-    public void setAppsecret(String appsecret) {
-        this.appsecret = appsecret == null ? null : appsecret.trim();
+    public void setAppSecret(String appSecret) {
+        this.appSecret = appSecret == null ? null : appSecret.trim();
     }
 }

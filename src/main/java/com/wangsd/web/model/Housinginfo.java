@@ -12,8 +12,7 @@ public class Housinginfo {
     /**
      * 支付宝小区统一编号
      */
-    @Column(name = "community_id")
-    private String communityId;
+    private String community_id;
 
     private String code;
 
@@ -24,38 +23,32 @@ public class Housinginfo {
     /**
      * 上级物业id
      */
-    @Column(name = "parent_id")
-    private Integer parentId;
+    private Integer parent_id;
 
     /**
      * 区县编码
      */
-    @Column(name = "district_code")
-    private String districtCode;
+    private String district_code;
 
     /**
      * 地级市编码
      */
-    @Column(name = "city_code")
-    private String cityCode;
+    private String city_code;
 
     /**
      * 省份编码
      */
-    @Column(name = "province_code")
-    private String provinceCode;
+    private String province_code;
 
     /**
      * 小区所在的经纬度列表
      */
-    @Column(name = "community_locations")
-    private String communityLocations;
+    private String community_locations;
 
     /**
      * 小区对应的高德POI兴趣点列表
      */
-    @Column(name = "associated_pois")
-    private String associatedPois;
+    private String associated_pois;
 
     /**
      * 服务热线电话
@@ -65,8 +58,7 @@ public class Housinginfo {
     /**
      * 短信条数
      */
-    @Column(name = "message_num")
-    private Integer messageNum;
+    private Integer message_num;
 
     /**
      * 1未同步2已同步3已初始化
@@ -74,17 +66,14 @@ public class Housinginfo {
      */
     private Integer status;
 
-    @Column(name = "deleteStatus")
-    private Boolean deletestatus;
+    private Boolean deleteStatus;
 
-    @Column(name = "create_time")
-    private Date createTime;
+    private Date create_time;
 
     /**
      * 水费单价
      */
-    @Column(name = "water_unit")
-    private Double waterUnit;
+    private Double water_unit;
 
     /**
      * @return id
@@ -105,17 +94,17 @@ public class Housinginfo {
      *
      * @return community_id - 支付宝小区统一编号
      */
-    public String getCommunityId() {
-        return communityId;
+    public String getCommunity_id() {
+        return community_id;
     }
 
     /**
      * 设置支付宝小区统一编号
      *
-     * @param communityId 支付宝小区统一编号
+     * @param community_id 支付宝小区统一编号
      */
-    public void setCommunityId(String communityId) {
-        this.communityId = communityId == null ? null : communityId.trim();
+    public void setCommunity_id(String community_id) {
+        this.community_id = community_id == null ? null : community_id.trim();
     }
 
     /**
@@ -165,17 +154,17 @@ public class Housinginfo {
      *
      * @return parent_id - 上级物业id
      */
-    public Integer getParentId() {
-        return parentId;
+    public Integer getParent_id() {
+        return parent_id;
     }
 
     /**
      * 设置上级物业id
      *
-     * @param parentId 上级物业id
+     * @param parent_id 上级物业id
      */
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setParent_id(Integer parent_id) {
+        this.parent_id = parent_id;
     }
 
     /**
@@ -183,17 +172,17 @@ public class Housinginfo {
      *
      * @return district_code - 区县编码
      */
-    public String getDistrictCode() {
-        return districtCode;
+    public String getDistrict_code() {
+        return district_code;
     }
 
     /**
      * 设置区县编码
      *
-     * @param districtCode 区县编码
+     * @param district_code 区县编码
      */
-    public void setDistrictCode(String districtCode) {
-        this.districtCode = districtCode == null ? null : districtCode.trim();
+    public void setDistrict_code(String district_code) {
+        this.district_code = district_code == null ? null : district_code.trim();
     }
 
     /**
@@ -201,17 +190,17 @@ public class Housinginfo {
      *
      * @return city_code - 地级市编码
      */
-    public String getCityCode() {
-        return cityCode;
+    public String getCity_code() {
+        return city_code;
     }
 
     /**
      * 设置地级市编码
      *
-     * @param cityCode 地级市编码
+     * @param city_code 地级市编码
      */
-    public void setCityCode(String cityCode) {
-        this.cityCode = cityCode == null ? null : cityCode.trim();
+    public void setCity_code(String city_code) {
+        this.city_code = city_code == null ? null : city_code.trim();
     }
 
     /**
@@ -219,17 +208,17 @@ public class Housinginfo {
      *
      * @return province_code - 省份编码
      */
-    public String getProvinceCode() {
-        return provinceCode;
+    public String getProvince_code() {
+        return province_code;
     }
 
     /**
      * 设置省份编码
      *
-     * @param provinceCode 省份编码
+     * @param province_code 省份编码
      */
-    public void setProvinceCode(String provinceCode) {
-        this.provinceCode = provinceCode == null ? null : provinceCode.trim();
+    public void setProvince_code(String province_code) {
+        this.province_code = province_code == null ? null : province_code.trim();
     }
 
     /**
@@ -237,17 +226,17 @@ public class Housinginfo {
      *
      * @return community_locations - 小区所在的经纬度列表
      */
-    public String getCommunityLocations() {
-        return communityLocations;
+    public String getCommunity_locations() {
+        return community_locations;
     }
 
     /**
      * 设置小区所在的经纬度列表
      *
-     * @param communityLocations 小区所在的经纬度列表
+     * @param community_locations 小区所在的经纬度列表
      */
-    public void setCommunityLocations(String communityLocations) {
-        this.communityLocations = communityLocations == null ? null : communityLocations.trim();
+    public void setCommunity_locations(String community_locations) {
+        this.community_locations = community_locations == null ? null : community_locations.trim();
     }
 
     /**
@@ -255,17 +244,17 @@ public class Housinginfo {
      *
      * @return associated_pois - 小区对应的高德POI兴趣点列表
      */
-    public String getAssociatedPois() {
-        return associatedPois;
+    public String getAssociated_pois() {
+        return associated_pois;
     }
 
     /**
      * 设置小区对应的高德POI兴趣点列表
      *
-     * @param associatedPois 小区对应的高德POI兴趣点列表
+     * @param associated_pois 小区对应的高德POI兴趣点列表
      */
-    public void setAssociatedPois(String associatedPois) {
-        this.associatedPois = associatedPois == null ? null : associatedPois.trim();
+    public void setAssociated_pois(String associated_pois) {
+        this.associated_pois = associated_pois == null ? null : associated_pois.trim();
     }
 
     /**
@@ -291,17 +280,17 @@ public class Housinginfo {
      *
      * @return message_num - 短信条数
      */
-    public Integer getMessageNum() {
-        return messageNum;
+    public Integer getMessage_num() {
+        return message_num;
     }
 
     /**
      * 设置短信条数
      *
-     * @param messageNum 短信条数
+     * @param message_num 短信条数
      */
-    public void setMessageNum(Integer messageNum) {
-        this.messageNum = messageNum;
+    public void setMessage_num(Integer message_num) {
+        this.message_num = message_num;
     }
 
     /**
@@ -329,29 +318,29 @@ public class Housinginfo {
     /**
      * @return deleteStatus
      */
-    public Boolean getDeletestatus() {
-        return deletestatus;
+    public Boolean getDeleteStatus() {
+        return deleteStatus;
     }
 
     /**
-     * @param deletestatus
+     * @param deleteStatus
      */
-    public void setDeletestatus(Boolean deletestatus) {
-        this.deletestatus = deletestatus;
+    public void setDeleteStatus(Boolean deleteStatus) {
+        this.deleteStatus = deleteStatus;
     }
 
     /**
      * @return create_time
      */
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
     /**
-     * @param createTime
+     * @param create_time
      */
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 
     /**
@@ -359,16 +348,16 @@ public class Housinginfo {
      *
      * @return water_unit - 水费单价
      */
-    public Double getWaterUnit() {
-        return waterUnit;
+    public Double getWater_unit() {
+        return water_unit;
     }
 
     /**
      * 设置水费单价
      *
-     * @param waterUnit 水费单价
+     * @param water_unit 水费单价
      */
-    public void setWaterUnit(Double waterUnit) {
-        this.waterUnit = waterUnit;
+    public void setWater_unit(Double water_unit) {
+        this.water_unit = water_unit;
     }
 }

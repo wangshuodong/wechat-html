@@ -74,7 +74,7 @@ public class WechatController {
             }else {
                 //查询对应物业下的所有小区
                 Propertyinfo query2 = new Propertyinfo();
-                query2.setWeixinDebitNum(appId);
+                query2.setWeixin_debit_num(appId);
                 Propertyinfo propertyinfo = propertyinfoService.selectOne(query2);
                 Example example = new Example(Housinginfo.class);
                 Example.Criteria criteria = example.createCriteria();
@@ -104,7 +104,7 @@ public class WechatController {
         example.selectProperties("building");
         example.setDistinct(true);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("parentId", roominfo.getParentId());
+        criteria.andEqualTo("parentId", roominfo.getParent_id());
         List<Roominfo> list = roominfoService.selectByExample(example);
         List<Map<String, String>> retList = new ArrayList<>();
         if (list != null) {
