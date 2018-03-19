@@ -3,6 +3,7 @@ package com.wangsd.web.controller;
 import com.wangsd.common.utils.WeixinUtil;
 import com.wangsd.web.model.*;
 import com.wangsd.web.pojo.BillaccountCustom;
+import com.wangsd.web.pojo.WeixinOauth2Token;
 import com.wangsd.web.service.*;
 import net.sf.json.JSONArray;
 import org.slf4j.Logger;
@@ -42,20 +43,20 @@ public class WechatController {
     @RequestMapping("/index")
     public String index(String code, String state, Model model) throws IOException {
         String appId = state;
-//        Weixinconfig query = new Weixinconfig();
-//        query.setAppid(appId);
-//        Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
-//        //获取网页授权access_token
-//        WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppid(), weixinconfig.getAppsecret(), code);
-//        // 网页授权接口访问凭证
-//        String access_token = weixinOauth2Token.getAccess_token();
-//        // 用户标识
-//        String openid = weixinOauth2Token.getOpenid();
-//        log.info("openid=" + openid);
+        Weixinconfig query = new Weixinconfig();
+        query.setAppId(appId);
+        Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
+        //获取网页授权access_token
+        WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppId(), weixinconfig.getAppSecret(), code);
+        // 网页授权接口访问凭证
+        String access_token = weixinOauth2Token.getAccess_token();
+        // 用户标识
+        String openid = weixinOauth2Token.getOpenid();
+        log.info("openid=" + openid);
         // 获取用户信息
         //WechatUserInfo snsUserInfo = WeixinUtil.getWechatUserInfo(access_token, openid);
 
-        String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
+//        String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
 
         Weixinuser query3 = new Weixinuser();
         query3.setOpenid(openid);
