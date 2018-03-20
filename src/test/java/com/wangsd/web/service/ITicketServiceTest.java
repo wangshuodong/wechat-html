@@ -13,13 +13,16 @@ public class ITicketServiceTest {
 
     @Autowired
     ITicketService ticketService;
+    @Autowired
+    IWeixinconfigService weixinconfigService;
 
     @Test
     public void test() throws Exception {
 
         //ticketService.saveAll();
-        Ticket ticket = ticketService.selectByKey(1);
-        Ticket ticket2 = ticketService.selectOne(ticket);
+//        Ticket ticket = ticketService.selectByKey(1);
+//        Ticket ticket2 = ticketService.selectOne(ticket);
+        weixinconfigService.selectAll();
     }
 
 }
