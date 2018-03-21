@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>jQuery WeUI</title>
+    <title>智慧物业社区</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -81,7 +81,7 @@
                 dataType: 'json',
                 async: false,
                 data: {
-                    parentId: d.data.values
+                    parent_id: d.data.values
                 },
                 success: function (data) {
                     $("#selectBuild").select("update", {items: data})
@@ -102,7 +102,7 @@
                 dataType: 'json',
                 async: false,
                 data: {
-                    parentId: housingid,
+                    parent_id: housingid,
                     building: d.data.titles,
                 },
                 success: function (data) {
@@ -124,7 +124,7 @@
                 dataType: 'json',
                 async: false,
                 data: {
-                    parentId: housingid,
+                    parent_id: housingid,
                     building: $("#selectBuild").val(),
                     unit: d.data.titles,
                 },

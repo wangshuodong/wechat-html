@@ -43,20 +43,20 @@ public class WechatController {
     @RequestMapping("/index")
     public String index(String code, String state, Model model) throws IOException {
         String appId = state;
-        Weixinconfig query = new Weixinconfig();
-        query.setAppId(appId);
-        Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
-        //获取网页授权access_token
-        WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppId(), weixinconfig.getAppSecret(), code);
-        // 网页授权接口访问凭证
-        String access_token = weixinOauth2Token.getAccess_token();
-        // 用户标识
-        String openid = weixinOauth2Token.getOpenid();
-        log.info("openid=" + openid);
+//        Weixinconfig query = new Weixinconfig();
+//        query.setAppId(appId);
+//        Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
+//        //获取网页授权access_token
+//        WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppId(), weixinconfig.getAppSecret(), code);
+//        // 网页授权接口访问凭证
+//        String access_token = weixinOauth2Token.getAccess_token();
+//        // 用户标识
+//        String openid = weixinOauth2Token.getOpenid();
+//        log.info("openid=" + openid);
         // 获取用户信息
         //WechatUserInfo snsUserInfo = WeixinUtil.getWechatUserInfo(access_token, openid);
 
-//        String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
+        String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
 
         Weixinuser query3 = new Weixinuser();
         query3.setOpenid(openid);
@@ -105,7 +105,7 @@ public class WechatController {
         example.selectProperties("building");
         example.setDistinct(true);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("parentId", roominfo.getParent_id());
+        criteria.andEqualTo("parent_id", roominfo.getParent_id());
         List<Roominfo> list = roominfoService.selectByExample(example);
         List<Map<String, String>> retList = new ArrayList<>();
         if (list != null) {
@@ -125,7 +125,7 @@ public class WechatController {
         example.selectProperties("unit");
         example.setDistinct(true);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("parentId", parentId).andEqualTo("building", building);
+        criteria.andEqualTo("parent_id", parentId).andEqualTo("building", building);
         List<Roominfo> list = roominfoService.selectByExample(example);
         List<Map<String, String>> retList = new ArrayList<>();
         if (list != null) {
@@ -145,7 +145,7 @@ public class WechatController {
         example.selectProperties("id", "room");
         example.setDistinct(true);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("parentId", parentId)
+        criteria.andEqualTo("parent_id", parentId)
                 .andEqualTo("building", building)
                 .andEqualTo("unit", unit);
         List<Roominfo> list = roominfoService.selectByExample(example);
