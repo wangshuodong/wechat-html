@@ -16,6 +16,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan(basePackages = "com.wangsd.web.dao", markerInterface = MyMapper.class)
 public class WechatHtmlApplication extends SpringBootServletInitializer {
 
+	/**
+	 * 需要类似于web.xml的配置方式来启动spring上下文了
+	 * 修改启动类，继承 SpringBootServletInitializer 并重写 configure 方法
+	 * @param application
+	 * @return
+	 */
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(WechatHtmlApplication.class);
