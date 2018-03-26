@@ -1,6 +1,6 @@
 package com.wangsd.common.utils;
 
-import com.wangsd.web.pojo.WeixinOauth2Token;
+import com.wangsd.web.pojo.wechat.WeixinOauth2Token;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;

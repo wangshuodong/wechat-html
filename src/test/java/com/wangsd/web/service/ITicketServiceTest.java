@@ -1,8 +1,9 @@
 package com.wangsd.web.service;
 
-import com.wangsd.web.model.Ticket;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -11,6 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ITicketServiceTest {
 
+    private static Logger log = LoggerFactory.getLogger(ITicketServiceTest.class);
+
     @Autowired
     ITicketService ticketService;
     @Autowired
@@ -18,6 +21,7 @@ public class ITicketServiceTest {
 
     @Test
     public void test() throws Exception {
+        log.debug("aaaaaaaaaa");
 
         //ticketService.saveAll();
 //        Ticket ticket = ticketService.selectByKey(1);

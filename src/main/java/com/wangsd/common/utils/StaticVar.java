@@ -1,6 +1,10 @@
 package com.wangsd.common.utils;
 
 public class StaticVar {
+    /**
+     * 支付宝请求地址
+     */
+    public static final String alipay_serverUrl = "https://openapi.alipay.com/gateway.do";
 
     /**
      * 获取公众号access_token

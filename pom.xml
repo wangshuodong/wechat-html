@@ -101,6 +101,14 @@
             <classifier>jdk15</classifier>
 		</dependency>
 
+		<!-- 支付宝的jar包 -->
+		<!-- mvn install:install-file -Dfile=E:/IdeaProjects2007/wechat-html/ourjar/alipay-sdk-java-2.3.0.jar -DgroupId=com.alipay -DartifactId=alipay-sdk-java -Dversion=2.3.0 -Dpackaging=jar -DgeneratePom=true -->
+		<dependency>
+			<groupId>com.alipay</groupId>
+			<artifactId>alipay-sdk-java</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -1,9 +1,8 @@
 package com.wangsd.web.controller;
 
-import com.wangsd.common.utils.WeixinUtil;
+import com.wangsd.web.utils.WeixinUtil;
 import com.wangsd.web.model.*;
 import com.wangsd.web.pojo.BillaccountCustom;
-import com.wangsd.web.pojo.WeixinOauth2Token;
 import com.wangsd.web.service.*;
 import net.sf.json.JSONArray;
 import org.slf4j.Logger;

@@ -1,7 +1,9 @@
-package com.wangsd.common.utils;
+package com.wangsd.web.utils;
 
-import com.wangsd.web.pojo.WechatUserInfo;
-import com.wangsd.web.pojo.WeixinOauth2Token;
+import com.wangsd.common.utils.HttpClientUtil;
+import com.wangsd.common.utils.StaticVar;
+import com.wangsd.web.pojo.wechat.WechatUserInfo;
+import com.wangsd.web.pojo.wechat.WeixinOauth2Token;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,4 +1,4 @@
-package com.wangsd.web.pojo;
+package com.wangsd.web.pojo.wechat;
 
 import java.util.List;
 

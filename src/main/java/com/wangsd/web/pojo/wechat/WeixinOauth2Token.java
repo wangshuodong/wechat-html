@@ -1,4 +1,4 @@
-package com.wangsd.web.pojo;
+package com.wangsd.web.pojo.wechat;
 
 /**
  * 网页授权信息

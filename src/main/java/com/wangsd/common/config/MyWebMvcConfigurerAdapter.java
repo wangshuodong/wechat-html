@@ -41,6 +41,7 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/toLogin").setViewName("login");
+        registry.addViewController("/openQueryBill").setViewName("alipay/billList");
         super.addViewControllers(registry);
     }
 
