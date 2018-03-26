@@ -188,7 +188,7 @@
         </li>
     </ul>
 </aside>
-<main class="app-content" id="app">
+<main class="app-content">
     <div class="app-title">
         <div>
             <h1><i class="fa fa-dashboard"></i> Blank Page</h1>
@@ -199,33 +199,45 @@
             <li class="breadcrumb-item"><a href="#">Blank Page</a></li>
         </ul>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <div id="app1">
+                    <div>
+                        <el-steps :active="active" process-status="finish" finish-status="success" align-center>
+                            <el-step title="步骤 1"></el-step>
+                            <el-step title="步骤 2"></el-step>
+                            <el-step title="步骤 3"></el-step>
+                        </el-steps>
 
-    <div class="tile mb-4">
-        <div class="page-header mb-5">
-            <div class="row">
-                <div class="col-lg-12">
-                    <el-steps :active="active" process-status="finish" finish-status="success">
-                        <el-step title="步骤 1"></el-step>
-                        <el-step title="步骤 2"></el-step>
-                        <el-step title="步骤 3"></el-step>
-                    </el-steps>
+                        <el-button style="margin-top: 12px;" @click="next">下一步</el-button>
+                    </div>
+                    <el-table
+                            :data="tableData"
+                            stripe
+                            style="width: 100%">
+                        <el-table-column
+                                prop="date"
+                                label="日期"
+                                width="180">
+                        </el-table-column>
+                        <el-table-column
+                                prop="name"
+                                label="姓名"
+                                width="180">
+                        </el-table-column>
+                        <el-table-column
+                                prop="address"
+                                label="地址">
+                        </el-table-column>
+                    </el-table>
                 </div>
             </div>
         </div>
-
-        <div class="row mb-4">
-            <div class="col-lg-4">
-                小区支付宝编号：
-            </div>
-            <div class="col-lg-8">
-                <el-input v-model="input" placeholder="请输入内容" style="width: 80%"></el-input>
-            </div>
-        </div>
-
-        <div class="row mb-4" align="center">
-            <el-button type="primary" @click="next">下一步</el-button>
-        </div>
     </div>
+    <transition>
+        <div id="city-picker" v-if="cityPickerShow"></div>
+    </transition>
 </main>
 <!-- Essential javascripts for application to work-->
 <script src="/app/js/jquery-3.2.1.min.js"></script>
@@ -281,7 +293,7 @@
             }
         },
         methods: {
-            next: function () {
+            next: function() {
                 if (this.active++ > 2) this.active = 0;
             }
         }
