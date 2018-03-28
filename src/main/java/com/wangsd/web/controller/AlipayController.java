@@ -1,12 +1,12 @@
 package com.wangsd.web.controller;
 
-import com.wangsd.web.pojo.alipay.BillResponse;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/alipay")
 public class AlipayController {
 
-    public BillResponse queryAlipayBill(String appid) {
+    public JSONObject queryAlipayBill(String appid) {
         return null;
     }
 }

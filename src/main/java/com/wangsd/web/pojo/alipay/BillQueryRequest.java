@@ -3,7 +3,7 @@ package com.wangsd.web.pojo.alipay;
 /**
  * 封装账单请求参数
  */
-public class BillRequest {
+public class BillQueryRequest {
     /**
      * 支付宝社区小区统一编号，必须在授权物业账号名下存在。
      */

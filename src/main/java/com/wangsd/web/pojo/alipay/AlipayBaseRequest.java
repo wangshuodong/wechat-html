@@ -5,9 +5,9 @@ import com.wangsd.common.utils.StaticVar;
 /**
  * 封装支付宝公共请求参数
  */
-public class AlipayRequest {
+public class AlipayBaseRequest {
 
-    public AlipayRequest(){
+    public AlipayBaseRequest(){
         this.serverUrl = StaticVar.alipay_serverUrl;
     }
 
