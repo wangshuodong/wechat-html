@@ -13,6 +13,7 @@
     <select id="queryRoomBunding" resultType="com.wangsd.web.pojo.RoomCustom">
         SELECT
             h.`name` as housingName,
+            w.id as weixinuserId,
             r.*
         FROM
             roominfo r

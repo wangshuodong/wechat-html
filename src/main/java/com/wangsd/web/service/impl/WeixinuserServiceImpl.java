@@ -19,4 +19,11 @@ public class WeixinuserServiceImpl extends ServiceImpl<Weixinuser> implements IW
     public List<RoomCustom> queryRoomBunding(String openid) {
         return weixinuserMapper.queryRoomBunding(openid);
     }
+
+    public void bingRoom(Weixinuser weixinuser) {
+        List<Weixinuser> list = weixinuserMapper.select(weixinuser);
+        if (list.size() == 0) {
+            weixinuserMapper.insert(weixinuser);
+        }
+    }
 }

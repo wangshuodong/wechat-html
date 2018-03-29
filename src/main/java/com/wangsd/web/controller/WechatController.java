@@ -1,5 +1,6 @@
 package com.wangsd.web.controller;
 
+import com.wangsd.common.base.MyController;
 import com.wangsd.web.pojo.RoomCustom;
 import com.wangsd.web.pojo.wechat.WeixinOauth2Token;
 import com.wangsd.web.utils.WeixinUtil;
@@ -24,7 +25,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/wechat")
-public class WechatController {
+public class WechatController extends MyController {
 
     private static Logger log = LoggerFactory.getLogger(WeixinUtil.class);
 
@@ -51,40 +52,40 @@ public class WechatController {
      */
     @RequestMapping("/index")
     public String index(String code, String state, Model model) throws IOException {
-        /*String appId = state;
-        Weixinconfig query = new Weixinconfig();
-        query.setAppId(appId);
-        Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
-        //获取网页授权access_token
-        WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppId(), weixinconfig.getAppSecret(), code);
-        // 网页授权接口访问凭证
-        String access_token = weixinOauth2Token.getAccess_token();
-        // 用户标识
-        String openid = weixinOauth2Token.getOpenid();
-        log.info("openid=" + openid);*/
+        System.out.println("wangshuodong:" + request.getSession().getAttribute("openid"));
+        String appId = state;
+//        Weixinconfig query = new Weixinconfig();
+//        query.setAppId(appId);
+//        Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
+//        //获取网页授权access_token
+//        WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppId(), weixinconfig.getAppSecret(), code);
+//        // 网页授权接口访问凭证
+//        String access_token = weixinOauth2Token.getAccess_token();
+//        // 用户标识
+//        String openid = weixinOauth2Token.getOpenid();
+//        log.info("openid=" + openid);
         // 获取用户信息
         //WechatUserInfo snsUserInfo = WeixinUtil.getWechatUserInfo(access_token, openid);
 
         String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
-
+        request.getSession().setAttribute("appId", state);
+        request.getSession().setAttribute("openid", openid);
 
         List<RoomCustom> roomlist = weixinuserService.queryRoomBunding(openid);
 
-        model.addAttribute("appId", state);
-        model.addAttribute("openid", openid);
         model.addAttribute("list", JSONArray.fromObject(roomlist));
         return "wechat/myHousing";
     }
 
     /**
      * 打开新增房间页面
-     * @param appId
-     * @param openid
      * @param model
      * @return
      */
     @RequestMapping("/openHousing")
-    public String openHousing(String appId, String openid, Model model) {
+    public String openHousing(Model model) {
+        String appId = (String)request.getSession().getAttribute("appId");
+        String openid = (String)request.getSession().getAttribute("openid");
         List<Housinginfo> list;
         if ("wxcfab4f09fe94c406".equals(appId)) {
             //查询所有小区
@@ -203,10 +204,12 @@ public class WechatController {
      */
     @RequestMapping("/bindingRoom")
     public String bindingRoom(Weixinuser weixinuser, Model model) {
-        weixinuserService.save(weixinuser);
-        List<BillaccountCustom> list = billaccountService.queryBillByRoomId(weixinuser.getRoominfoid());
-        model.addAttribute("list", list);
-        return "wechat/billaccount";
+        weixinuserService.bingRoom(weixinuser);
+        String openid = (String)request.getSession().getAttribute("openid");
+        List<RoomCustom> roomlist = weixinuserService.queryRoomBunding(openid);
+
+        model.addAttribute("list", JSONArray.fromObject(roomlist));
+        return "wechat/myHousing";
     }
 
     /**
@@ -218,8 +221,24 @@ public class WechatController {
     @RequestMapping("/openBill")
     public String openBill(Integer roomid, Model model) {
         List<BillaccountCustom> list = billaccountService.queryBillByRoomId(roomid);
+        double sumAmount = 0;
+        for (BillaccountCustom bill : list) {
+            sumAmount += bill.getBill_entry_amount();
+        }
+        model.addAttribute("sumAmount", sumAmount);
         model.addAttribute("list", list);
         return "wechat/billaccount";
+    }
+
+    /**
+     * 删除绑定的房间
+     * @param id
+     */
+    @RequestMapping("/deleteBingRoom")
+    @ResponseBody
+    public String deleteBingRoom(Integer id){
+        weixinuserService.delete(id);
+        return "success";
     }
 
     /**
@@ -234,7 +253,7 @@ public class WechatController {
      * 支付完成页
      */
     @RequestMapping("/whchatPaySuccess")
-    public void whchatPaySuccess() {
-
+    public String whchatPaySuccess() {
+        return "wechat/success";
     }
 }

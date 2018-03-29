@@ -9,4 +9,10 @@ import java.util.List;
 public interface IWeixinuserService extends IService<Weixinuser> {
 
     public List<RoomCustom> queryRoomBunding(String openid);
+
+    /**
+     * 绑定房间
+     * @param weixinuser
+     */
+    public void bingRoom(Weixinuser weixinuser);
 }

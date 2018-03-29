@@ -18,7 +18,7 @@
     <h1 class="demos-title">账单信息</h1>
 </header>
 
-<div class="weui-cells__title">复选列表项</div>
+<div class="weui-cells__title">账单列表</div>
 <div class="weui-cells weui-cells_checkbox">
     <label class="weui-cell weui-check__label" th:each="bill,billStat : ${list}">
         <div class="weui-cell__hd">
@@ -35,11 +35,27 @@
 <form class="weui-form-preview">
     <div class="weui-form-preview__hd">
         <label class="weui-form-preview__label">付款金额</label>
-        <em class="weui-form-preview__value" id="payAmount">¥2400.00</em>
+        <em class="weui-form-preview__value" id="payAmount">¥[[${sumAmount}]]</em>
+    </div>
+    <!--<div class="weui-form-preview__bd">
+        <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label">商品</label>
+            <span class="weui-form-preview__value">电动打蛋机</span>
+        </div>
+        <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label">标题标题</label>
+            <span class="weui-form-preview__value">名字名字名字</span>
+        </div>
+        <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label">标题标题</label>
+            <span class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</span>
+        </div>
+    </div>-->
+    <div class="weui-form-preview__ft">
+        <a href="javascript:void(0);" th:href="@{https://pay.qcloud.com/cpay/qrcode_disposable_payment?out_shop_id=sz01wAsKl1OQGfoL4ZT3&total_fee=1&trade_num=sz0100m7f010001}"
+           class="weui-btn weui-btn_primary">付款</a>
     </div>
 
-    <a href="https://pay.qcloud.com/cpay/qrcode_disposable_payment?out_shop_id=sz01wAsKl1OQGfoL4ZT3&total_fee=1&trade_num=sz0100m7f010001"
-       class="weui-btn weui-btn_primary">付款</a>
 </form>
 
 
