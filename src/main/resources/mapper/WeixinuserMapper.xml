@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangsd.web.dao.WeixinuserMapper">
-  <resultMap id="BaseResultMap" type="com.wangsd.web.model.Weixinuser">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="openid" jdbcType="VARCHAR" property="openid" />
-    <result column="roominfoid" jdbcType="INTEGER" property="roominfoid" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.wangsd.web.model.Weixinuser">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="openid" jdbcType="VARCHAR" property="openid"/>
+        <result column="roominfoid" jdbcType="INTEGER" property="roominfoid"/>
+    </resultMap>
+
+    <select id="queryRoomBunding" resultType="com.wangsd.web.pojo.RoomCustom">
+        SELECT
+            h.`name` as housingName,
+            r.*
+        FROM
+            roominfo r
+        JOIN housinginfo h ON r.parent_id = h.id
+        JOIN weixinuser w ON r.id = w.roominfoid
+        and w.openid = #{openid}
+    </select>
 </mapper>

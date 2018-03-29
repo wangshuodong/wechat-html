@@ -22,7 +22,8 @@
 <div class="weui-cells weui-cells_checkbox">
     <label class="weui-cell weui-check__label" th:each="bill,billStat : ${list}">
         <div class="weui-cell__hd">
-            <input type="checkbox" class="weui-check" checked="checked" name="amount" th:value="${bill.bill_entry_amount}" onclick="amountSum()">
+            <input type="checkbox" class="weui-check" checked="checked" name="amount"
+                   th:value="${bill.bill_entry_amount}" onclick="amountSum()">
             <i class="weui-icon-checked"></i>
         </div>
         <div class="weui-cell__bd" th:text="${bill.costTypeName}"></div>
@@ -37,9 +38,9 @@
         <em class="weui-form-preview__value" id="payAmount">¥2400.00</em>
     </div>
 
-    <a href="https://pay.qcloud.com/cpay/qrcode_disposable_payment?out_shop_id=sz01wAsKl1OQGfoL4ZT3&total_fee=1&trade_num=sz0100m7f010001" class="weui-btn weui-btn_primary">付款</a>
+    <a href="https://pay.qcloud.com/cpay/qrcode_disposable_payment?out_shop_id=sz01wAsKl1OQGfoL4ZT3&total_fee=1&trade_num=sz0100m7f010001"
+       class="weui-btn weui-btn_primary">付款</a>
 </form>
-
 
 
 <script src="/weui/lib/jquery-2.1.4.js"></script>
@@ -54,9 +55,9 @@
 
 <script>
     function amountSum() {
-        var amount=0;
-        $.each($('input:checkbox:checked'),function(){
-            amount=$(this).val() - 0 + amount;
+        var amount = 0;
+        $.each($('input:checkbox:checked'), function () {
+            amount = $(this).val() - 0 + amount;
         });
         $("#payAmount").html("¥" + amount.toFixed(2));
     }

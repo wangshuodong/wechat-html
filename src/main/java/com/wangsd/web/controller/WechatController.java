@@ -1,5 +1,6 @@
 package com.wangsd.web.controller;
 
+import com.wangsd.web.pojo.RoomCustom;
 import com.wangsd.web.pojo.wechat.WeixinOauth2Token;
 import com.wangsd.web.utils.WeixinUtil;
 import com.wangsd.web.model.*;
@@ -50,7 +51,7 @@ public class WechatController {
      */
     @RequestMapping("/index")
     public String index(String code, String state, Model model) throws IOException {
-        String appId = state;
+        /*String appId = state;
         Weixinconfig query = new Weixinconfig();
         query.setAppId(appId);
         Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
@@ -60,52 +61,64 @@ public class WechatController {
         String access_token = weixinOauth2Token.getAccess_token();
         // 用户标识
         String openid = weixinOauth2Token.getOpenid();
-        log.info("openid=" + openid);
+        log.info("openid=" + openid);*/
         // 获取用户信息
         //WechatUserInfo snsUserInfo = WeixinUtil.getWechatUserInfo(access_token, openid);
 
-//        String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
+        String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
 
-        Weixinuser query3 = new Weixinuser();
-        query3.setOpenid(openid);
-        Weixinuser weixinuser = weixinuserService.selectOne(query3);
-        if (weixinuser != null) {
-            //直接跳转到账单界面
-            List<BillaccountCustom> list = billaccountService.queryBillByRoomId(weixinuser.getRoominfoid());
-            model.addAttribute("list", list);
-            return "wechat/billaccount";
-        } else {
-            List<Housinginfo> list;
-            if ("wxcfab4f09fe94c406".equals(appId)) {
-                //查询所有小区
-                list = housinginfoService.selectAll();
-                model.addAttribute("list", list);
-            }else {
-                //查询对应物业下的所有小区
-                Propertyinfo query2 = new Propertyinfo();
-                query2.setWeixin_debit_num(appId);
-                Propertyinfo propertyinfo = propertyinfoService.selectOne(query2);
-                Example example = new Example(Housinginfo.class);
-                Example.Criteria criteria = example.createCriteria();
-                criteria.andEqualTo("parentId", propertyinfo.getId());
-                list = housinginfoService.selectByExample(example);
-            }
-            List<Map<String, String>> retList = new ArrayList<>();
-            if (list != null) {
-                for (Housinginfo info : list) {
-                    Map map = new HashMap();
-                    map.put("title", info.getName());
-                    map.put("value", info.getId());
-                    retList.add(map);
-                }
-            }
-            model.addAttribute("openid", openid);
-            model.addAttribute("list", JSONArray.fromObject(retList));
-            return "wechat/housing";
-        }
 
+        List<RoomCustom> roomlist = weixinuserService.queryRoomBunding(openid);
+
+        model.addAttribute("appId", state);
+        model.addAttribute("openid", openid);
+        model.addAttribute("list", JSONArray.fromObject(roomlist));
+        return "wechat/myHousing";
     }
 
+    /**
+     * 打开新增房间页面
+     * @param appId
+     * @param openid
+     * @param model
+     * @return
+     */
+    @RequestMapping("/openHousing")
+    public String openHousing(String appId, String openid, Model model) {
+        List<Housinginfo> list;
+        if ("wxcfab4f09fe94c406".equals(appId)) {
+            //查询所有小区
+            list = housinginfoService.selectAll();
+            model.addAttribute("list", list);
+        }else {
+            //查询对应物业下的所有小区
+            Propertyinfo query2 = new Propertyinfo();
+            query2.setWeixin_debit_num(appId);
+            Propertyinfo propertyinfo = propertyinfoService.selectOne(query2);
+            Example example = new Example(Housinginfo.class);
+            Example.Criteria criteria = example.createCriteria();
+            criteria.andEqualTo("parentId", propertyinfo.getId());
+            list = housinginfoService.selectByExample(example);
+        }
+        List<Map<String, String>> retList = new ArrayList<>();
+        if (list != null) {
+            for (Housinginfo info : list) {
+                Map map = new HashMap();
+                map.put("title", info.getName());
+                map.put("value", info.getId());
+                retList.add(map);
+            }
+        }
+        model.addAttribute("openid", openid);
+        model.addAttribute("list", JSONArray.fromObject(retList));
+        return "wechat/housing";
+    }
+
+    /**
+     * 查询楼栋
+     * @param roominfo
+     * @return
+     */
     @RequestMapping("/queryBuilding")
     @ResponseBody
     public List<Map<String, String>> queryBuilding(Roominfo roominfo) {
@@ -126,6 +139,12 @@ public class WechatController {
         return retList;
     }
 
+    /**
+     * 查询单元
+     * @param parentId
+     * @param building
+     * @return
+     */
     @RequestMapping("/queryUnit")
     @ResponseBody
     public List<Map<String, String>> queryUnit(Integer parentId, String building) {
@@ -146,6 +165,13 @@ public class WechatController {
         return retList;
     }
 
+    /**
+     * 查询房间
+     * @param parentId
+     * @param building
+     * @param unit
+     * @return
+     */
     @RequestMapping("/queryRoom")
     @ResponseBody
     public List<Map<String, String>> queryRoom(Integer parentId, String building, String unit) {
@@ -169,10 +195,29 @@ public class WechatController {
         return retList;
     }
 
+    /**
+     * 绑定房间
+     * @param weixinuser
+     * @param model
+     * @return
+     */
     @RequestMapping("/bindingRoom")
     public String bindingRoom(Weixinuser weixinuser, Model model) {
         weixinuserService.save(weixinuser);
         List<BillaccountCustom> list = billaccountService.queryBillByRoomId(weixinuser.getRoominfoid());
+        model.addAttribute("list", list);
+        return "wechat/billaccount";
+    }
+
+    /**
+     * 打开账单页面
+     * @param roomid
+     * @param model
+     * @return
+     */
+    @RequestMapping("/openBill")
+    public String openBill(Integer roomid, Model model) {
+        List<BillaccountCustom> list = billaccountService.queryBillByRoomId(roomid);
         model.addAttribute("list", list);
         return "wechat/billaccount";
     }

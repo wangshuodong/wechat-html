@@ -23,11 +23,11 @@ public class AlipayUtilTest {
         AlipayBaseRequest alipayRequest = new AlipayBaseRequest();
         alipayRequest.setAppId(appid);
         alipayRequest.setPrivateKey(privateKey);
-        alipayRequest.setApp_auth_token("201710BB47735a4ec11f45fd80838366df347X05");
+        alipayRequest.setApp_auth_token("201709BBdb06c71a5bd0432193e9a992ac3f7X20");
 
         BillQueryRequest billRequest = new BillQueryRequest();
-        billRequest.setCommunity_id("AJUWVXGGX3301");
-        billRequest.setOut_room_id("85806");
+        billRequest.setCommunity_id("AW09TS6823301");
+        billRequest.setOut_room_id("34441");
         alipayRequest.setBiz_content(JSONObject.toJSONString(billRequest));
 
         AlipayUtil alipayUtil = new AlipayUtil(alipayRequest);

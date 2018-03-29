@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>智慧物业社区</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="/weui/lib/weui.min.css">
+    <link rel="stylesheet" href="/weui/css/jquery-weui.css">
+    <link rel="stylesheet" href="/weui/css/demos.css">
+
+</head>
+
+<body ontouchstart>
+<header class='demos-header'>
+    <h1 class="demos-title">物业缴费</h1>
+</header>
+
+<div class="weui-panel weui-panel_access">
+    <div class="weui-panel__hd">我家</div>
+    <div class="weui-panel__bd" th:each="room : ${list}">
+        <a href="javascript:void(0);" th:href="@{/wechat/openBill(roomid=${room.id})}" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+            <img class="weui-media-box__thumb" src="/weui/images/icon_nav_city.png">
+        </div>
+        <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title" th:text="${room.housingName}"></h4>
+            <p class="weui-media-box__desc" th:text="${room.address}"></p>
+        </div>
+        </a>
+    </div>
+    <div class="weui-panel__ft">
+        <a href="javascript:void(0);" th:href="@{/wechat/openHousing(appId=${appId}, openid=${openid})}"
+           class="weui-btn weui-btn_primary">添加房间</a>
+    </div>
+</div>
+
+
+<script src="/weui/lib/jquery-2.1.4.js"></script>
+<script src="/weui/lib/fastclick.js"></script>
+<script>
+    $(function () {
+        FastClick.attach(document.body);
+    });
+</script>
+<script src="/weui/js/jquery-weui.js"></script>
+
+
+<script>
+    function openBill(roomid) {
+        alert(roomid);
+    }
+</script>
+</body>
+</html>
