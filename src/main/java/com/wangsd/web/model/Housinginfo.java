@@ -76,6 +76,11 @@ public class Housinginfo {
     private Double water_unit;
 
     /**
+     * 微信云支付门店全局id
+     */
+    private String out_shop_id;
+
+    /**
      * @return id
      */
     public Integer getId() {
@@ -359,5 +364,23 @@ public class Housinginfo {
      */
     public void setWater_unit(Double water_unit) {
         this.water_unit = water_unit;
+    }
+
+    /**
+     * 获取微信云支付门店全局id
+     *
+     * @return out_shop_id - 微信云支付门店全局id
+     */
+    public String getOut_shop_id() {
+        return out_shop_id;
+    }
+
+    /**
+     * 设置微信云支付门店全局id
+     *
+     * @param out_shop_id 微信云支付门店全局id
+     */
+    public void setOut_shop_id(String out_shop_id) {
+        this.out_shop_id = out_shop_id == null ? null : out_shop_id.trim();
     }
 }

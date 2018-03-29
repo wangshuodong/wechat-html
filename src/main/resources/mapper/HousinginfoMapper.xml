@@ -22,6 +22,7 @@
     <result column="deleteStatus" jdbcType="BIT" property="deleteStatus" />
     <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
     <result column="water_unit" jdbcType="DOUBLE" property="water_unit" />
+    <result column="out_shop_id" jdbcType="VARCHAR" property="out_shop_id" />
   </resultMap>
 
     <select id="queryHousinginfoList" resultType="com.wangsd.web.model.Housinginfo">

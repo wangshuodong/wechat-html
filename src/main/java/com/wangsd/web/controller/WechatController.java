@@ -230,7 +230,7 @@ public class WechatController extends MyController {
             sumAmount += bill.getBill_entry_amount();
         }
 
-        model.addAttribute("sumAmount", housinginfo);
+        model.addAttribute("shopId", housinginfo.getOut_shop_id());
         model.addAttribute("sumAmount", sumAmount);
         model.addAttribute("list", list);
         return "wechat/billaccount";
