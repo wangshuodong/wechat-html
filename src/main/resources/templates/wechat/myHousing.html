@@ -18,42 +18,35 @@
     <h1 class="demos-title">物业缴费</h1>
 </header>
 
-<div class="bd">
-    <div class="page__bd">
-        <div class="weui-cells__title">我家</div>
-        <div class="weui-cells">
-            <div class="weui-cell weui-cell_swiped" th:each="room : ${list}">
-                <div class="weui-cell__bd ">
-                    <a class="weui-cell_access" href="javascript:void(0);" th:href="@{/wechat/openBill(roomid=${room.id})}">
-                    <div class="weui-cell">
-                        <div class="weui-cell__hd"><img src="/weui/images/icon_nav_city.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
-                        <div class="weui-cell__bd">
-                            <p th:text="${room.housingName}"></p>
-                        </div>
-                        <div class="weui-cell__ft" th:text="${room.address}"></div>
+
+<div class="page__bd">
+    <div class="weui-cells__title">我的房间信息（提示左滑动删除）</div>
+    <div class="weui-cells">
+        <div class="weui-cell weui-cell_swiped" th:each="room : ${list}">
+            <div class="weui-cell__bd ">
+                <a class="weui-cell weui-cell_access" th:href="@{/wechat/openBill(roomid=${room.id})}">
+                    <!--<div class="weui-cell__hd"><img src="/weui/images/icon_nav_city.png" alt="" style="width:20px;margin-right:5px;display:block"></div>-->
+                    <div class="weui-cell__bd">
+                        <p style="color:#000000;" th:text="${room.housingName}"></p>
                     </div>
-                    </a>
-                </div>
-                <div class="weui-cell__ft">
-                    <a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout" href="javascript:void(0);" th:value="${room.weixinuserId}">删除</a>
-                </div>
+                    <div class="weui-cell__ft" th:text="${room.address}"></div>
+                </a>
+            </div>
+            <div class="weui-cell__ft">
+                <a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout" href="javascript:void(0);"
+                   th:value="${room.weixinuserId}">删除</a>
             </div>
         </div>
-        <div class="button_sp_area" style="text-align: center;">
-            <a href="javascript:void(0);" th:href="@{/wechat/openHousing(appId=${session.appId}, openid=${session.openid})}"
-               class="weui-btn weui-btn_primary">添加房间</a>
-        </div>
+    </div>
+    <div style="margin: 30px 15px 10px 15px">
+        <a href="javascript:void(0);" th:href="@{/wechat/openHousing(appId=${session.appId}, openid=${session.openid})}"
+           class="weui-btn weui-btn_primary">添加房间</a>
     </div>
 </div>
 
 
 <script src="/weui/lib/jquery-2.1.4.js"></script>
-<script src="/weui/lib/fastclick.js"></script>
-<script>
-    $(function () {
-        FastClick.attach(document.body);
-    });
-</script>
+
 <script src="/weui/js/jquery-weui.js"></script>
 
 
@@ -73,7 +66,7 @@
             }
         });
     })
-    
+
 
 </script>
 </body>

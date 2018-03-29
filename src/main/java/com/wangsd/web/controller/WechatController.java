@@ -52,24 +52,26 @@ public class WechatController extends MyController {
      */
     @RequestMapping("/index")
     public String index(String code, String state, Model model) throws IOException {
-        System.out.println("wangshuodong:" + request.getSession().getAttribute("openid"));
-        String appId = state;
-//        Weixinconfig query = new Weixinconfig();
-//        query.setAppId(appId);
-//        Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
-//        //获取网页授权access_token
-//        WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppId(), weixinconfig.getAppSecret(), code);
-//        // 网页授权接口访问凭证
-//        String access_token = weixinOauth2Token.getAccess_token();
-//        // 用户标识
-//        String openid = weixinOauth2Token.getOpenid();
-//        log.info("openid=" + openid);
-        // 获取用户信息
-        //WechatUserInfo snsUserInfo = WeixinUtil.getWechatUserInfo(access_token, openid);
+        String openid = (String)request.getSession().getAttribute("openid");
+        log.debug("用户openid:" + openid);
+        if (openid == null) {
+            String appId = state;
+            Weixinconfig query = new Weixinconfig();
+            query.setAppId(appId);
+            Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
+            //获取网页授权access_token
+            WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppId(), weixinconfig.getAppSecret(), code);
+            // 网页授权接口访问凭证
+            String access_token = weixinOauth2Token.getAccess_token();
+            // 用户标识
+            openid = weixinOauth2Token.getOpenid();
+            // 获取用户信息
+            //WechatUserInfo snsUserInfo = WeixinUtil.getWechatUserInfo(access_token, openid);
+            request.getSession().setAttribute("appId", state);
+            request.getSession().setAttribute("openid", openid);
+        }
 
-        String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
-        request.getSession().setAttribute("appId", state);
-        request.getSession().setAttribute("openid", openid);
+//        String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
 
         List<RoomCustom> roomlist = weixinuserService.queryRoomBunding(openid);
 
