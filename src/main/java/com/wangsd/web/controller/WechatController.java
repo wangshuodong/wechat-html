@@ -176,4 +176,20 @@ public class WechatController {
         model.addAttribute("list", list);
         return "wechat/billaccount";
     }
+
+    /**
+     * 微信云支付交易完成回调
+     */
+    @RequestMapping("/whchatPayReturn")
+    public void whchatPayReturn() {
+
+    }
+
+    /**
+     * 支付完成页
+     */
+    @RequestMapping("/whchatPaySuccess")
+    public void whchatPaySuccess() {
+
+    }
 }
