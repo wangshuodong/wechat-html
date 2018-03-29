@@ -220,11 +220,17 @@ public class WechatController extends MyController {
      */
     @RequestMapping("/openBill")
     public String openBill(Integer roomid, Model model) {
+
+        Roominfo roominfo = roominfoService.selectByKey(roomid);
+        Housinginfo housinginfo = housinginfoService.selectByKey(roominfo.getParent_id());
+
         List<BillaccountCustom> list = billaccountService.queryBillByRoomId(roomid);
         double sumAmount = 0;
         for (BillaccountCustom bill : list) {
             sumAmount += bill.getBill_entry_amount();
         }
+
+        model.addAttribute("sumAmount", housinginfo);
         model.addAttribute("sumAmount", sumAmount);
         model.addAttribute("list", list);
         return "wechat/billaccount";
