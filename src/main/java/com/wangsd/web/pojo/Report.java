@@ -1,5 +1,8 @@
 package com.wangsd.web.pojo;
 
+/**
+ * 报事报修
+ */
 public class Report {
 
     private Integer housingId;
