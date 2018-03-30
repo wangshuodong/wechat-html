@@ -26,6 +26,7 @@
 
     <logger name="com.wangsd" level="DEBUG" additivity="false">
         <appender-ref ref="console" />
+        <appender-ref ref="file" />
     </logger>
 
     <root level="info">

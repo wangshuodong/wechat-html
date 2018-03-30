@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>智慧物业社区</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="/weui/lib/weui.min.css">
+    <link rel="stylesheet" href="/weui/css/jquery-weui.css">
+    <link rel="stylesheet" href="/weui/css/demos.css">
+
+</head>
+
+<body ontouchstart>
+<header class='demos-header'>
+    <h1 class="demos-title">报事报修</h1>
+</header>
+
+
+<form id="form" class="page__bd">
+
+    <div class="weui-cells__title">选择小区</div>
+    <div class="weui-cells">
+        <div class="weui-cell weui-cell_select">
+            <div class="weui-cell__bd">
+                <select class="weui-select" name="housingId">
+                    <option th:each="hous : ${list}" th:value="${hous.id}" th:text="${hous.name}"></option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="weui-cells__title">联系人</div>
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <input class="weui-input" name="username" type="text" placeholder="请输入联系人">
+            </div>
+        </div>
+    </div>
+    <div class="weui-cells__title">联系电话</div>
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <input class="weui-input" name="phone" type="text" placeholder="请输入联系电话">
+            </div>
+        </div>
+    </div>
+    <div class="weui-cells__title">报修地址</div>
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <textarea class="weui-textarea" name="address" placeholder="例如：3单元5栋8-1" rows="2"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="weui-cells__title">报修内容</div>
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <textarea class="weui-textarea" name="content" placeholder="请输入报修内容" rows="3"></textarea>
+                <div class="weui-textarea-counter"><span>0</span>/200</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="weui-btn-area">
+        <a class="weui-btn weui-btn_primary" href="javascript:void(0);" id="showTooltips">确定</a>
+    </div>
+
+</form>
+
+
+<script src="/weui/lib/jquery-2.1.4.js"></script>
+<script src="/weui/js/jquery-weui.js"></script>
+
+<script>
+    $("#showTooltips").click(function () {
+        var form = $("#form");
+        $.ajax({
+            type: 'POST',
+            url: '/wechat/sendReport',
+            dataType: 'json',
+            //async 设置为 false，则所有的请求均为同步请求
+            async: false,
+            data: form.serialize(),
+            success: function (data) {
+                $.alert(data);
+            }
+        });
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,6 +1,8 @@
 package com.wangsd.web.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.wangsd.common.base.MyController;
+import com.wangsd.web.pojo.Report;
 import com.wangsd.web.pojo.RoomCustom;
 import com.wangsd.web.pojo.wechat.WeixinOauth2Token;
 import com.wangsd.web.utils.WeixinUtil;
@@ -13,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import tk.mybatis.mapper.entity.Example;
@@ -52,26 +55,14 @@ public class WechatController extends MyController {
      */
     @RequestMapping("/index")
     public String index(String code, String state, Model model) throws IOException {
+        String appId = state;
         String openid = (String)request.getSession().getAttribute("openid");
         log.debug("用户openid:" + openid);
         if (openid == null) {
-            String appId = state;
-            Weixinconfig query = new Weixinconfig();
-            query.setAppId(appId);
-            Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
-            //获取网页授权access_token
-            WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppId(), weixinconfig.getAppSecret(), code);
-            // 网页授权接口访问凭证
-            String access_token = weixinOauth2Token.getAccess_token();
-            // 用户标识
-            openid = weixinOauth2Token.getOpenid();
-            // 获取用户信息
-            //WechatUserInfo snsUserInfo = WeixinUtil.getWechatUserInfo(access_token, openid);
-            request.getSession().setAttribute("appId", state);
-            request.getSession().setAttribute("openid", openid);
+            openid = getOpenId(appId, code);
         }
 
-//        String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
+//      String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
 
         List<RoomCustom> roomlist = weixinuserService.queryRoomBunding(openid);
 
@@ -87,22 +78,7 @@ public class WechatController extends MyController {
     @RequestMapping("/openHousing")
     public String openHousing(Model model) {
         String appId = (String)request.getSession().getAttribute("appId");
-        String openid = (String)request.getSession().getAttribute("openid");
-        List<Housinginfo> list;
-        if ("wxcfab4f09fe94c406".equals(appId)) {
-            //查询所有小区
-            list = housinginfoService.selectAll();
-            model.addAttribute("list", list);
-        }else {
-            //查询对应物业下的所有小区
-            Propertyinfo query2 = new Propertyinfo();
-            query2.setWeixin_debit_num(appId);
-            Propertyinfo propertyinfo = propertyinfoService.selectOne(query2);
-            Example example = new Example(Housinginfo.class);
-            Example.Criteria criteria = example.createCriteria();
-            criteria.andEqualTo("parentId", propertyinfo.getId());
-            list = housinginfoService.selectByExample(example);
-        }
+        List<Housinginfo> list = housinginfoService.queryHousingByAppId(appId);
         List<Map<String, String>> retList = new ArrayList<>();
         if (list != null) {
             for (Housinginfo info : list) {
@@ -112,7 +88,6 @@ public class WechatController extends MyController {
                 retList.add(map);
             }
         }
-        model.addAttribute("openid", openid);
         model.addAttribute("list", JSONArray.fromObject(retList));
         return "wechat/housing";
     }
@@ -206,8 +181,9 @@ public class WechatController extends MyController {
      */
     @RequestMapping("/bindingRoom")
     public String bindingRoom(Weixinuser weixinuser, Model model) {
-        weixinuserService.bingRoom(weixinuser);
         String openid = (String)request.getSession().getAttribute("openid");
+        weixinuser.setOpenid(openid);
+        weixinuserService.bingRoom(weixinuser);
         List<RoomCustom> roomlist = weixinuserService.queryRoomBunding(openid);
 
         model.addAttribute("list", JSONArray.fromObject(roomlist));
@@ -253,8 +229,9 @@ public class WechatController extends MyController {
      * 微信云支付交易完成回调
      */
     @RequestMapping("/whchatPayReturn")
-    public void whchatPayReturn() {
-
+    public void whchatPayReturn(@RequestBody Object request_content, Object authen_info) {
+        log.debug("request_content==" + JSONObject.toJSONString(request_content));
+        log.debug("authen_info==" + JSONObject.toJSONString(authen_info));
     }
 
     /**
@@ -263,5 +240,51 @@ public class WechatController extends MyController {
     @RequestMapping("/whchatPaySuccess")
     public String whchatPaySuccess() {
         return "wechat/success";
+    }
+
+    /**
+     * 打开报事报修页面
+     * @return
+     */
+    @RequestMapping("/openReport")
+    public String openReport(String code, String state, Model model) {
+        String appId = "wxcfab4f09fe94c406";
+        List<Housinginfo> list = housinginfoService.queryHousingByAppId(appId);
+        model.addAttribute("list", list);
+        return "wechat/report";
+    }
+
+    /**
+     * 推送报事报修信息到打印机
+     * @return
+     */
+    @RequestMapping("/sendReport")
+    @ResponseBody
+    public String sendReport(Report report) {
+        log.debug(report.toString());
+
+        return "提交成功";
+    }
+
+    public String getOpenId(String appId, String code) {
+        Weixinconfig query = new Weixinconfig();
+        query.setAppId(appId);
+        Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
+        //获取网页授权access_token
+        WeixinOauth2Token weixinOauth2Token = null;
+        try {
+            weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppId(), weixinconfig.getAppSecret(), code);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // 网页授权接口访问凭证
+        String access_token = weixinOauth2Token.getAccess_token();
+        // 用户标识
+        String openid = weixinOauth2Token.getOpenid();
+        // 获取用户信息
+        //WechatUserInfo snsUserInfo = WeixinUtil.getWechatUserInfo(access_token, openid);
+        request.getSession().setAttribute("appId", appId);
+        request.getSession().setAttribute("openid", openid);
+        return openid;
     }
 }

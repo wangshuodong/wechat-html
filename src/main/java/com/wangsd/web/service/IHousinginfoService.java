@@ -9,4 +9,6 @@ import java.util.List;
 public interface IHousinginfoService extends IService<Housinginfo> {
 
     public List<Housinginfo> queryHousinginfoList(Page<Housinginfo> page);
+
+    public List<Housinginfo> queryHousingByAppId(String appId);
 }
