@@ -3,6 +3,7 @@ package com.wangsd.common.utils.yilianyun;
 
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.wangsd.common.utils.StaticVar;
 
 /**
  * 易联云接口工具类
@@ -22,7 +23,7 @@ public class Methods {
     /**
      * token
      */
-    public static String token;
+    public static String token = StaticVar.token;
 
     /**
      * 刷新token需要的 refreshtoken
@@ -330,18 +331,20 @@ public class Methods {
     }
 
     public static void main(String[] args) {
-        //开放式例子
-        Methods.getInstance().init("client_id","client_secret","code");
-        Methods.getInstance().getToken();
-        Methods.getInstance().refreshToken();
-        Methods.getInstance().print("8888888","lilith","2");
+        String str = "<FH2><FB><center>报事报修单据</center></FB></FH2>\n" +
+                "业主姓名：张某某\n" +
+                "业主电话：17784495560\n" +
+                "业主地址：某某小区1栋8单元6-02\n" +
+                "事由：\n" +
+                "      更换手龙头更换手龙头更换手龙头更换手龙头更换手龙头更换手龙头\n";
 
         //自有式例子
-        Methods.getInstance().init("client_id","client_secret");
-        Methods.getInstance().getFreedomToken();
-        Methods.getInstance().refreshToken();
-        Methods.getInstance().addPrinter("machine_code","msign");
-        Methods.getInstance().print("8888888","lilith","2");
+        Methods.getInstance().init("1098732779","689f949d6396a7445024a096e85de317");
+//        Methods.getInstance().getFreedomToken();
+        System.out.println(Methods.getInstance().print("4004551220",str,"2"));
+//        Methods.getInstance().refreshToken();
+//        Methods.getInstance().addPrinter("machine_code","msign");
+//        Methods.getInstance().print("8888888","lilith","2");
     }
 
 }

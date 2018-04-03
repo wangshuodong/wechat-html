@@ -2,6 +2,7 @@ package com.wangsd.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wangsd.common.base.MyController;
+import com.wangsd.common.utils.DecimalFormatUtils;
 import com.wangsd.web.pojo.Report;
 import com.wangsd.web.pojo.RoomCustom;
 import com.wangsd.web.pojo.wechat.WeixinOauth2Token;
@@ -209,7 +210,7 @@ public class WechatController extends MyController {
         }
 
         model.addAttribute("shopId", housinginfo.getOut_shop_id());
-        model.addAttribute("sumAmount", sumAmount);
+        model.addAttribute("sumAmount", DecimalFormatUtils.format(sumAmount));
         model.addAttribute("list", list);
         return "wechat/billaccount";
     }
@@ -248,7 +249,7 @@ public class WechatController extends MyController {
      */
     @RequestMapping("/openReport")
     public String openReport(String code, String state, Model model) {
-        String appId = "wxcfab4f09fe94c406";
+        String appId = state;
         List<Housinginfo> list = housinginfoService.queryHousingByAppId(appId);
         model.addAttribute("list", list);
         return "wechat/report";
