@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -139,12 +140,16 @@ public class HttpClientUtil {
     }
 
     public static void main(String[] args) throws IOException {
-        String requestUrl = StaticVar.wechat_access_token_url;
-        requestUrl = requestUrl.replace("APPID", "wxcfab4f09fe94c406");
-        requestUrl = requestUrl.replace("APPSECRET", "adeb7e6a2142933188dc905e098af149");
-        String str = doGet(requestUrl);
-        JSONObject obj = JSONObject.fromObject(str);
-        WeixinOauth2Token aa = (WeixinOauth2Token)JSONObject.toBean(obj, WeixinOauth2Token.class);
-        System.out.println(obj);
+//        String requestUrl = StaticVar.wechat_access_token_url;
+//        requestUrl = requestUrl.replace("APPID", "wxcfab4f09fe94c406");
+//        requestUrl = requestUrl.replace("APPSECRET", "adeb7e6a2142933188dc905e098af149");
+//        String str = doGet(requestUrl);
+//        JSONObject obj = JSONObject.fromObject(str);
+//        WeixinOauth2Token aa = (WeixinOauth2Token)JSONObject.toBean(obj, WeixinOauth2Token.class);
+//        System.out.println(obj);
+        Map<String, String> map = new HashMap();
+        map.put("request_content", "12");
+        map.put("authen_info", "56");
+        doPost("http://www.zaozaojiaoyu.com/wechat/whchatPayReturn", JSONObject.fromObject(map));
     }
 }

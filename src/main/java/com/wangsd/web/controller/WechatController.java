@@ -2,7 +2,9 @@ package com.wangsd.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wangsd.common.base.MyController;
+import com.wangsd.common.utils.DateUtils;
 import com.wangsd.common.utils.DecimalFormatUtils;
+import com.wangsd.common.utils.yilianyun.Methods;
 import com.wangsd.web.pojo.Report;
 import com.wangsd.web.pojo.RoomCustom;
 import com.wangsd.web.pojo.wechat.WeixinOauth2Token;
@@ -45,9 +47,12 @@ public class WechatController extends MyController {
     IWeixinuserService weixinuserService;
     @Autowired
     IBillaccountService billaccountService;
+    @Autowired
+    IPrintinfoService printinfoService;
 
     /**
      * 公众号物业缴费入口
+     *
      * @param code
      * @param state
      * @param model
@@ -57,11 +62,8 @@ public class WechatController extends MyController {
     @RequestMapping("/index")
     public String index(String code, String state, Model model) throws IOException {
         String appId = state;
-        String openid = (String)request.getSession().getAttribute("openid");
+        String openid = getOpenId(appId, code);
         log.debug("用户openid:" + openid);
-        if (openid == null) {
-            openid = getOpenId(appId, code);
-        }
 
 //      String openid = "oEa9Lwa4kghRxeDHTSGlxYlz1XcI";
 
@@ -73,12 +75,13 @@ public class WechatController extends MyController {
 
     /**
      * 打开新增房间页面
+     *
      * @param model
      * @return
      */
     @RequestMapping("/openHousing")
     public String openHousing(Model model) {
-        String appId = (String)request.getSession().getAttribute("appId");
+        String appId = (String) request.getSession().getAttribute("appId");
         List<Housinginfo> list = housinginfoService.queryHousingByAppId(appId);
         List<Map<String, String>> retList = new ArrayList<>();
         if (list != null) {
@@ -95,6 +98,7 @@ public class WechatController extends MyController {
 
     /**
      * 查询楼栋
+     *
      * @param roominfo
      * @return
      */
@@ -120,6 +124,7 @@ public class WechatController extends MyController {
 
     /**
      * 查询单元
+     *
      * @param parentId
      * @param building
      * @return
@@ -146,6 +151,7 @@ public class WechatController extends MyController {
 
     /**
      * 查询房间
+     *
      * @param parentId
      * @param building
      * @param unit
@@ -176,13 +182,14 @@ public class WechatController extends MyController {
 
     /**
      * 绑定房间
+     *
      * @param weixinuser
      * @param model
      * @return
      */
     @RequestMapping("/bindingRoom")
     public String bindingRoom(Weixinuser weixinuser, Model model) {
-        String openid = (String)request.getSession().getAttribute("openid");
+        String openid = (String) request.getSession().getAttribute("openid");
         weixinuser.setOpenid(openid);
         weixinuserService.bingRoom(weixinuser);
         List<RoomCustom> roomlist = weixinuserService.queryRoomBunding(openid);
@@ -193,6 +200,7 @@ public class WechatController extends MyController {
 
     /**
      * 打开账单页面
+     *
      * @param roomid
      * @param model
      * @return
@@ -217,11 +225,12 @@ public class WechatController extends MyController {
 
     /**
      * 删除绑定的房间
+     *
      * @param id
      */
     @RequestMapping("/deleteBingRoom")
     @ResponseBody
-    public String deleteBingRoom(Integer id){
+    public String deleteBingRoom(Integer id) {
         weixinuserService.delete(id);
         return "success";
     }
@@ -230,6 +239,7 @@ public class WechatController extends MyController {
      * 微信云支付交易完成回调
      */
     @RequestMapping("/whchatPayReturn")
+    @ResponseBody
     public void whchatPayReturn(@RequestBody Object request_content, Object authen_info) {
         log.debug("request_content==" + JSONObject.toJSONString(request_content));
         log.debug("authen_info==" + JSONObject.toJSONString(authen_info));
@@ -245,11 +255,13 @@ public class WechatController extends MyController {
 
     /**
      * 打开报事报修页面
+     *
      * @return
      */
     @RequestMapping("/openReport")
     public String openReport(String code, String state, Model model) {
         String appId = state;
+        getOpenId(appId, code);
         List<Housinginfo> list = housinginfoService.queryHousingByAppId(appId);
         model.addAttribute("list", list);
         return "wechat/report";
@@ -257,12 +269,32 @@ public class WechatController extends MyController {
 
     /**
      * 推送报事报修信息到打印机
+     *
      * @return
      */
     @RequestMapping("/sendReport")
     @ResponseBody
     public String sendReport(Report report) {
-        log.debug(report.toString());
+        Printinfo printinfo = new Printinfo();
+        printinfo.setDepartment_id(report.getHousingId());
+        printinfo = printinfoService.selectOne(printinfo);
+        StringBuffer message = new StringBuffer();
+        message.append("<FH2><FB><center>报事报修单据</center></FB></FH2>\n")
+                .append("小区：" + report.getHousingName() + "\n")
+                .append("业主姓名：" + report.getUsername() + "\n")
+                .append("业主电话：" + report.getPhone() + "\n")
+                .append("业主地址：" + report.getAddress() + "\n")
+                .append("时间：" + DateUtils.getCurDatetime() + "\n")
+                .append("事由：\n")
+                .append("      " + report.getContent() + "\n");
+        /*String str = "<FH2><FB><center>报事报修单据</center></FB></FH2>\n" +
+                "业主姓名：张某某\n" +
+                "业主电话：17784495560\n" +
+                "业主地址：某某小区1栋8单元6-02\n" +
+                "事由：\n" +
+                "      更换手龙头更换手龙头更换手龙头更换手龙头更换手龙头更换手龙头\n";*/
+        String originId = String.valueOf(System.currentTimeMillis());
+        Methods.getInstance().print(printinfo.getMachine_code(), message.toString(), originId);
 
         return "提交成功";
     }

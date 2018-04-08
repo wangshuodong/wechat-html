@@ -20,13 +20,13 @@
 
 
 <form id="form" class="page__bd">
-
     <div class="weui-cells__title">选择小区</div>
     <div class="weui-cells">
         <div class="weui-cell weui-cell_select">
             <div class="weui-cell__bd">
-                <select class="weui-select" name="housingId">
-                    <option th:each="hous : ${list}" th:value="${hous.id}" th:text="${hous.name}"></option>
+                <select class="weui-select" name="idAndName">
+                    <option th:each="hous : ${list}" th:value="${hous.id}+'|'+${hous.name}"
+                            th:text="${hous.name}"></option>
                 </select>
             </div>
         </div>

@@ -13,17 +13,17 @@ public class Methods {
     /**
      * 易联云颁发给开发者的应用ID 非空值
      */
-    public static String CLIENT_ID;
+    public static String CLIENT_ID = StaticVar.yly_CLIENT_ID;
 
     /**
      * 易联云颁发给开发者的应用secret 非空值
      */
-    public static String CLIENT_SECRET;
+    public static String CLIENT_SECRET = StaticVar.yly_CLIENT_SECRET;
 
     /**
      * token
      */
-    public static String token = StaticVar.token;
+    public static String token = StaticVar.yly_token;
 
     /**
      * 刷新token需要的 refreshtoken
@@ -339,9 +339,9 @@ public class Methods {
                 "      更换手龙头更换手龙头更换手龙头更换手龙头更换手龙头更换手龙头\n";
 
         //自有式例子
-        Methods.getInstance().init("1098732779","689f949d6396a7445024a096e85de317");
+//        Methods.getInstance().init("1098732779","689f949d6396a7445024a096e85de317");
 //        Methods.getInstance().getFreedomToken();
-        System.out.println(Methods.getInstance().print("4004551220",str,"2"));
+        System.out.println(System.currentTimeMillis());
 //        Methods.getInstance().refreshToken();
 //        Methods.getInstance().addPrinter("machine_code","msign");
 //        Methods.getInstance().print("8888888","lilith","2");

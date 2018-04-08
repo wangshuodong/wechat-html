@@ -4,17 +4,17 @@ public class StaticVar {
     /**
      * 易联云颁发给开发者的应用ID 非空值
      */
-    public static final String CLIENT_ID = "1098732779";
+    public static final String yly_CLIENT_ID = "1098732779";
 
     /**
      * 易联云颁发给开发者的应用secret 非空值
      */
-    public static final String CLIENT_SECRET = "689f949d6396a7445024a096e85de317";
+    public static final String yly_CLIENT_SECRET = "689f949d6396a7445024a096e85de317";
 
     /**
      * token
      */
-    public static final String token = "0ddaa50957df430bbc193dcf7f84bd5f";
+    public static final String yly_token = "0ddaa50957df430bbc193dcf7f84bd5f";
     /**
      * 支付宝请求地址
      */

@@ -89,4 +89,9 @@ public abstract class ServiceImpl<T> implements IService<T> {
     public List<T> selectAll() {
         return mapper.selectAll();
     }
+
+    @Override
+    public List<T> select(T t) {
+        return mapper.select(t);
+    }
 }

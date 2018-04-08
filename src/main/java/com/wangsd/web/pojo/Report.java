@@ -5,11 +5,32 @@ package com.wangsd.web.pojo;
  */
 public class Report {
 
+    private String idAndName;
     private Integer housingId;
+    private String housingName;
     private String username;
     private String phone;
     private String address;
     private String content;
+
+    public String getIdAndName() {
+        return idAndName;
+    }
+
+    public void setIdAndName(String idAndName) {
+        this.idAndName = idAndName;
+        String[] temp = idAndName.split("|");
+        this.housingId = Integer.parseInt(temp[0]);
+        this.housingName = temp[1];
+    }
+
+    public String getHousingName() {
+        return housingName;
+    }
+
+    public void setHousingName(String housingName) {
+        this.housingName = housingName;
+    }
 
     public Integer getHousingId() {
         return housingId;
@@ -55,6 +76,7 @@ public class Report {
     public String toString() {
         return "Report{" +
                 "housingId=" + housingId +
+                ", housingName='" + housingName + '\'' +
                 ", username='" + username + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +

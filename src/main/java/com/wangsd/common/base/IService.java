@@ -50,5 +50,8 @@ public interface IService<T> {
 
     List<T> selectAll();
 
+    List<T> select(T t);
+
+
     //TODO 其他...
 }
