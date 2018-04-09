@@ -18,7 +18,7 @@ public class HainaUtil {
 
     private static Logger log = LoggerFactory.getLogger(HainaUtil.class);
 
-    @Cacheable(value = "halfHour")
+    @Cacheable(value = "twoHour")
     public WeixinOauth2Token getAccessToken() throws IOException {
         WeixinOauth2Token wat = null;
         // 获取网页授权凭证
