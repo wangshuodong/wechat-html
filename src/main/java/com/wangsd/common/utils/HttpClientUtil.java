@@ -147,9 +147,16 @@ public class HttpClientUtil {
 //        JSONObject obj = JSONObject.fromObject(str);
 //        WeixinOauth2Token aa = (WeixinOauth2Token)JSONObject.toBean(obj, WeixinOauth2Token.class);
 //        System.out.println(obj);
+
+//        Map<String, String> map = new HashMap();
+//        map.put("request_content", "12");
+//        map.put("authen_info", "56");
+//        doPost("http://www.zaozaojiaoyu.com/wechat/whchatPayReturn", JSONObject.fromObject(map));
+
         Map<String, String> map = new HashMap();
-        map.put("request_content", "12");
-        map.put("authen_info", "56");
-        doPost("http://www.zaozaojiaoyu.com/wechat/whchatPayReturn", JSONObject.fromObject(map));
+        map.put("app_id", "hn0rlYQhJ6qYKMgwkZ");
+        map.put("app_secret", "D19RvzxWbrlA5I8klOmN2nXpa7AkMYE8");
+        String str = doPost("https://api.haina.com/access/getToken", JSONObject.fromObject(map));
+        System.out.println(str);
     }
 }

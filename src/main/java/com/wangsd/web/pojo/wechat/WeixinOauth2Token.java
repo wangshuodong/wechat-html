@@ -1,5 +1,7 @@
 package com.wangsd.web.pojo.wechat;
 
+import java.util.Date;
+
 /**
  * 网页授权信息
  * 
@@ -23,6 +25,8 @@ public class WeixinOauth2Token {
 
     // 用户授权作用域
     private String scope;
+
+    private Date create_time;
 
     public String getAccess_token() {
         return access_token;
@@ -62,5 +66,13 @@ public class WeixinOauth2Token {
 
     public void setScope(String scope) {
         this.scope = scope;
+    }
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 }

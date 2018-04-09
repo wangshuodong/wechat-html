@@ -44,4 +44,21 @@ public class StaticVar {
      * 公众号物业缴费菜单链接
      */
     public final static String wechat_wyjiaofei = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxcfab4f09fe94c406&redirect_uri=http%3A%2F%2Fwww.yhwpay.com%2Fwechat%2Findex&response_type=code&scope=snsapi_userinfo&state=wxcfab4f09fe94c406#wechat_redirect";
+
+    /**
+     * 海纳套件的appid
+     */
+    public final static String haina_app_id = "hn0rlYQhJ6qYKMgwkZ";
+
+    /**
+     * 海纳套件的app_secret
+     */
+    public final static String haina_app_secret = "D19RvzxWbrlA5I8klOmN2nXpa7AkMYE8";
+
+    /**
+     * 海纳套件的app_secret
+     */
+    public final static String haina_get_access_token = "https://api.haina.com/access/getToken";
+
+
 }
