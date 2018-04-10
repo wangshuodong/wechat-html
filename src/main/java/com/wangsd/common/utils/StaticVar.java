@@ -60,5 +60,13 @@ public class StaticVar {
      */
     public final static String haina_get_access_token = "https://api.haina.com/access/getToken";
 
+    /**
+     * 根据resident_code换取注册业主信息
+     */
+    public final static String haina_getResident = "https://api.haina.com/access/getResident?access_token={access_token}&agent_id={agent_id}";
 
+    /**
+     * 根据open_code换取未注册业主信息
+     */
+    public final static String haina_getOpenCode = "https://api.haina.com/access/getOpenCode?access_token={access_token}&agent_id={agent_id}";
 }

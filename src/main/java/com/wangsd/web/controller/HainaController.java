@@ -1,22 +1,16 @@
 package com.wangsd.web.controller;
 
-import com.wangsd.common.utils.DateUtils;
-import com.wangsd.web.pojo.wechat.WeixinOauth2Token;
+import com.wangsd.common.base.MyController;
 import com.wangsd.web.utils.HainaUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.IOException;
 
 @Controller
 @RequestMapping("/haina")
-public class HainaController {
-
-    private static Logger log = LoggerFactory.getLogger(HainaUtil.class);
+public class HainaController extends MyController {
 
     @Autowired
     HainaUtil hainaUtil;
@@ -24,12 +18,27 @@ public class HainaController {
     @RequestMapping("/test")
     @ResponseBody
     public void test1() {
-        try {
-            WeixinOauth2Token token = hainaUtil.getAccessToken();
-            log.debug(token.getAccess_token());
-            log.debug(DateUtils.formatDatetime(token.getCreate_time()));
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        logger.debug(hainaUtil.getAccessToken());
+
+    }
+
+    @RequestMapping("/index")
+    public String index() {
+        String resident_code = request.getParameter("resident_code");
+        String open_id = request.getParameter("open_id");
+        String open_code = request.getParameter("open_code");
+        String register_url = request.getParameter("register_url");
+        logger.debug("resident_code=" + resident_code);
+        logger.debug("open_id=" + open_id);
+        logger.debug("open_code=" + open_code);
+        logger.debug("register_url=" + register_url);
+        //已在腾讯海纳注册的用户
+        if (resident_code != null) {
+
+        } else { //如果没有注册 open_code 肯定有值
+
         }
+        return "haina/index";
     }
 }
