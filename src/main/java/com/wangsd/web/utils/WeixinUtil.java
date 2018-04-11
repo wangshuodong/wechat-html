@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  * 网页授权凭证工具类
@@ -30,7 +31,7 @@ public class WeixinUtil {
      * @param code
      * @return WeixinAouth2Token
      */
-    public static WeixinOauth2Token getOauth2AccessToken(String appId, String appSecret, String code) throws IOException {
+    public static WeixinOauth2Token getOauth2AccessToken(String appId, String appSecret, String code) {
         WeixinOauth2Token wat = null;
         // 拼接请求地址
         String requestUrl = StaticVar.wechat_web_access_token;
@@ -38,7 +39,14 @@ public class WeixinUtil {
         requestUrl = requestUrl.replace("SECRET", appSecret);
         requestUrl = requestUrl.replace("CODE", code);
         // 获取网页授权凭证
-        String str = HttpClientUtil.doGet(requestUrl);
+        String str = null;
+        try {
+            str = HttpClientUtil.doGet(requestUrl);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         net.sf.json.JSONObject obj = net.sf.json.JSONObject.fromObject(str);
         wat = (WeixinOauth2Token) net.sf.json.JSONObject.toBean(obj, WeixinOauth2Token.class);
         return wat;
@@ -54,13 +62,20 @@ public class WeixinUtil {
      * @return SNSUserInfo
      */
     @SuppressWarnings({ "deprecation", "unchecked" })
-    public static WechatUserInfo getWechatUserInfo(String accessToken, String openId) throws IOException {
+    public static WechatUserInfo getWechatUserInfo(String accessToken, String openId) {
         WechatUserInfo wechatUserInfo = null;
         // 拼接请求地址
         String requestUrl = StaticVar.wechat_web_userinfo;
         requestUrl = requestUrl.replace("ACCESS_TOKEN", accessToken).replace("OPENID", openId);
         // 通过网页授权获取用户信息
-        String str = HttpClientUtil.doGet(requestUrl);
+        String str = null;
+        try {
+            str = HttpClientUtil.doGet(requestUrl);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         net.sf.json.JSONObject obj = net.sf.json.JSONObject.fromObject(str);
         wechatUserInfo = (WechatUserInfo) net.sf.json.JSONObject.toBean(obj, WechatUserInfo.class);
 

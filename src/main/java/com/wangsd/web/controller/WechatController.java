@@ -304,12 +304,8 @@ public class WechatController extends MyController {
         query.setAppId(appId);
         Weixinconfig weixinconfig = weixinconfigService.selectOne(query);
         //获取网页授权access_token
-        WeixinOauth2Token weixinOauth2Token = null;
-        try {
-            weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppId(), weixinconfig.getAppSecret(), code);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        WeixinOauth2Token weixinOauth2Token = WeixinUtil.getOauth2AccessToken(weixinconfig.getAppId(), weixinconfig.getAppSecret(), code);
+
         // 网页授权接口访问凭证
         String access_token = weixinOauth2Token.getAccess_token();
         // 用户标识

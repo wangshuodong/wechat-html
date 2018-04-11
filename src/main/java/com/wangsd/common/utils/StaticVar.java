@@ -56,7 +56,12 @@ public class StaticVar {
     public final static String haina_app_secret = "D19RvzxWbrlA5I8klOmN2nXpa7AkMYE8";
 
     /**
-     * 海纳套件的app_secret
+     * 海纳套件内应用ID
+     */
+    public final static String haina_agent_id = "agejMYqFx8N2ODx8jX";
+
+    /**
+     * 获取access_token
      */
     public final static String haina_get_access_token = "https://api.haina.com/access/getToken";
 
@@ -69,4 +74,14 @@ public class StaticVar {
      * 根据open_code换取未注册业主信息
      */
     public final static String haina_getOpenCode = "https://api.haina.com/access/getOpenCode?access_token={access_token}&agent_id={agent_id}";
+
+    /**
+     * 将业主及业主楼栋信息基于业主手机号唯一的前提下写入/覆盖海纳的业主信息数据，暂不提供删除权限。
+     */
+    public final static String haina_import_info = "http://api.haina.com/import/resident_info?access_token={access_token}&agent_id={agent_id}";
+
+    /**
+     * 将业主及业主楼栋信息基于业主手机号唯一的前提下写入/覆盖海纳的业主信息数据，暂不提供删除权限。
+     */
+    public final static String haina_smsSend = "https://api.haina.com/ability/smsSend?access_token={access_token}&agent_id={agent_id}";
 }
