@@ -79,45 +79,46 @@ public class HainaUtil {
 
     public static void main(String[] args) {
         HainaUtil hainaUtil = new HainaUtil();
-        String requestUrl = StaticVar.haina_import_info;
-        requestUrl = requestUrl.replace("{access_token}", "MVkxVk02ZVdhMHBuMDVvdTBoQlRGYlk0VE5RN2xZVHRpYUJNNXZDK3o5TndJMlg1UzBBQ0QwWlU4V1RXNllEUwc25ccdd7abf8a13733ed315b6c6e630d67aa0e14b9fed92a9292944790e3dea5");
-        requestUrl = requestUrl.replace("{agent_id}", StaticVar.haina_agent_id);
-
-        Map<String, Object> map = new HashMap();
-        map.put("property_id", "ff7ca3e8f7f0f8c3be664aa01e4cd99f");
-        map.put("name", "王杏仁");
-        map.put("sex", "1");
-        map.put("mobile", "13900000000");
-        map.put("open_id", "oEa9Lwa4kghRxeDHTSGlxYlz1XcI");
-
-
-        Map<String, String> houses = new HashMap();
-        houses.put("community_id", "303f196bdb10f4d759c34474cc8cb50e");
-        houses.put("address", "1栋/1单元/1101");
-        houses.put("user_type", "0");
-        houses.put("is_default", "1");
-
-        map.put("houses", houses);
-        String str = "{" +
-                "     \"property_id\":\"ff7ca3e8f7f0f8c3be664aa01e4cd99f\" ," +
-                "     \"name\":\"王杏仁\"," +
-                "     \"sex\":\"1\"," +
-                "     \"mobile\":\"13900000000\"," +
-                "     \"open_id\":\"oEa9Lwa4kghRxeDHTSGlxYlz1XcI\"," +
-                "     \"houses\":" +
-                "      {" +
-                "        \"community_id\":\"303f196bdb10f4d759c34474cc8cb50e\"," +
-                "        \"address\":\"1栋/1单元/1101\"," +
-                "        \"user_type\":\"0\"," +
-                "        \"is_default\":1" +
-                "      }" +
-                "  }";
-        JSONObject obj = JSONObject.parseObject(str);
-        System.out.println(JSONObject.toJSONString(map));
-        try {
-            System.out.println(HttpClientUtil.doPostJson(requestUrl, JSONObject.toJSONString(map)));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println(hainaUtil.getUserInfoByOpen_code("6X5kq1Own"));
+//        String requestUrl = StaticVar.haina_import_info;
+//        requestUrl = requestUrl.replace("{access_token}", "MVkxVk02ZVdhMHBuMDVvdTBoQlRGYlk0VE5RN2xZVHRpYUJNNXZDK3o5TndJMlg1UzBBQ0QwWlU4V1RXNllEUwc25ccdd7abf8a13733ed315b6c6e630d67aa0e14b9fed92a9292944790e3dea5");
+//        requestUrl = requestUrl.replace("{agent_id}", StaticVar.haina_agent_id);
+//
+//        Map<String, Object> map = new HashMap();
+//        map.put("property_id", "ff7ca3e8f7f0f8c3be664aa01e4cd99f");
+//        map.put("name", "王杏仁");
+//        map.put("sex", "1");
+//        map.put("mobile", "13900000000");
+//        map.put("open_id", "oEa9Lwa4kghRxeDHTSGlxYlz1XcI");
+//
+//
+//        Map<String, String> houses = new HashMap();
+//        houses.put("community_id", "303f196bdb10f4d759c34474cc8cb50e");
+//        houses.put("address", "1栋/1单元/1101");
+//        houses.put("user_type", "0");
+//        houses.put("is_default", "1");
+//
+//        map.put("houses", houses);
+//        String str = "{" +
+//                "     \"property_id\":\"ff7ca3e8f7f0f8c3be664aa01e4cd99f\" ," +
+//                "     \"name\":\"王杏仁\"," +
+//                "     \"sex\":\"1\"," +
+//                "     \"mobile\":\"13900000000\"," +
+//                "     \"open_id\":\"oEa9Lwa4kghRxeDHTSGlxYlz1XcI\"," +
+//                "     \"houses\":" +
+//                "      {" +
+//                "        \"community_id\":\"303f196bdb10f4d759c34474cc8cb50e\"," +
+//                "        \"address\":\"1栋/1单元/1101\"," +
+//                "        \"user_type\":\"0\"," +
+//                "        \"is_default\":1" +
+//                "      }" +
+//                "  }";
+//        JSONObject obj = JSONObject.parseObject(str);
+//        System.out.println(JSONObject.toJSONString(map));
+//        try {
+//            System.out.println(HttpClientUtil.doPostJson(requestUrl, JSONObject.toJSONString(map)));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 }

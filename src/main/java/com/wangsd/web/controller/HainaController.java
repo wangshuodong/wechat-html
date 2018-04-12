@@ -23,9 +23,7 @@ public class HainaController extends MyController {
     @RequestMapping("/test")
     @ResponseBody
     public void test1() {
-
-        logger.debug(hainaUtil.getAccessToken());
-
+        String open_code = request.getParameter("open_code");
     }
 
     @RequestMapping("/index")
