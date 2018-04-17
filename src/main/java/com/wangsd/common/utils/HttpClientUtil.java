@@ -1,7 +1,11 @@
 package com.wangsd.common.utils;
 
+import org.apache.http.Header;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -11,12 +15,15 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -206,5 +213,58 @@ public class HttpClientUtil {
             }
         }
 
+    }
+
+    public static boolean httpPostWithJson(String url, String jsonObj){
+        boolean isSuccess = false;
+
+        HttpPost post = null;
+        try {
+            HttpClient httpClient = new DefaultHttpClient();
+
+            // 设置超时时间
+            httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 2000);
+            httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 2000);
+
+            post = new HttpPost(url);
+            // 构造消息头
+            post.setHeader("Content-type", "application/x-www-form-urlencoded");
+            post.setHeader("Connection", "Close");
+//            String sessionId = getSessionId();
+//            post.setHeader("SessionId", sessionId);
+//            post.setHeader("appid", appid);
+
+            // 构建消息实体
+            StringEntity entity = new StringEntity(jsonObj, Charset.forName("UTF-8"));
+            entity.setContentEncoding("UTF-8");
+            // 发送Json格式的数据请求
+//            entity.setContentType("application/json");
+            post.setEntity(entity);
+
+            HttpResponse response = httpClient.execute(post);
+
+            // 检验返回码
+            int statusCode = response.getStatusLine().getStatusCode();
+            String newuri="";
+            if (statusCode == 302) {
+                Header header = response.getFirstHeader("location"); // 跳转的目标地址是在 HTTP-HEAD 中的
+                newuri = header.getValue(); // 这就是跳转后的地址，再向这个地址发出新申请，以便得到跳转后的信息是啥。
+                System.out.println(newuri);
+                System.out.println(statusCode);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            isSuccess = false;
+        }finally{
+            if(post != null){
+                try {
+                    post.releaseConnection();
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return isSuccess;
     }
 }

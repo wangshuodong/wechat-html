@@ -48,17 +48,17 @@ public class StaticVar {
     /**
      * 海纳套件的appid
      */
-    public final static String haina_app_id = "hn0rlYQhJ6qYKMgwkZ";
+    public final static String haina_app_id = "hnqk1XmsEv6eb4axr4";
 
     /**
      * 海纳套件的app_secret
      */
-    public final static String haina_app_secret = "D19RvzxWbrlA5I8klOmN2nXpa7AkMYE8";
+    public final static String haina_app_secret = "J6E4d7p2brPGLua3m7BLG5VRYleZ35jP";
 
     /**
      * 海纳套件内应用ID
      */
-    public final static String haina_agent_id = "agejMYqFx8N2ODx8jX";
+    public final static String haina_agent_id = "agyBn9XCWMGv5KPEZY";
 
     /**
      * 获取access_token
@@ -76,12 +76,20 @@ public class StaticVar {
     public final static String haina_getOpenCode = "https://api.haina.com/access/getOpenCode?access_token={access_token}&agent_id={agent_id}";
 
     /**
+     * 获取楼栋结构列表,一个小区下可能有多种楼栋结构，每一种楼栋结构对应一个确定的层级关系。
+     */
+    public final static String haina_getCommunit = "https://api.haina.com/resources/getCommunityList?access_token={access_token}&agent_id={agent_id}";
+
+
+    /**
      * 将业主及业主楼栋信息基于业主手机号唯一的前提下写入/覆盖海纳的业主信息数据，暂不提供删除权限。
      */
-    public final static String haina_import_info = "http://api.haina.com/import/resident_info?access_token={access_token}&agent_id={agent_id}";
+    public final static String haina_import_info = "https://api.haina.com/import/resident_info?access_token={access_token}&agent_id={agent_id}";
 
     /**
      * 将业主及业主楼栋信息基于业主手机号唯一的前提下写入/覆盖海纳的业主信息数据，暂不提供删除权限。
      */
     public final static String haina_smsSend = "https://api.haina.com/ability/smsSend?access_token={access_token}&agent_id={agent_id}";
+
+
 }
