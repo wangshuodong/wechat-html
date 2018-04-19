@@ -18,12 +18,16 @@
     <h1 class="demos-title">账单信息</h1>
 </header>
 
-<div class="page__bd">
+<form id="form" class="page__bd" action="/wechat/yunzhifuPay" method="post">
+    <input type="hidden" name="yunzhifu_order" id="yunzhifu_order">
+    <input type="hidden" name="yunzhifu_amount" id="yunzhifu_amount">
+    <input type="hidden" name="shopId" th:value="${housinginfo.out_shop_id}">
+    <input type="hidden" name="order_prefix" th:value="${housinginfo.order_prefix}">
     <div class="weui-cells__title">账单列表</div>
     <div class="weui-cells weui-cells_checkbox">
         <label class="weui-cell weui-check__label" th:each="bill,billStat : ${list}">
             <div class="weui-cell__hd">
-                <input type="checkbox" class="weui-check" checked="checked" name="amount"
+                <input type="checkbox" class="weui-check" checked="checked" name="amount" th:id="${bill.id}"
                        th:value="${bill.bill_entry_amount}" onclick="amountSum()">
                 <i class="weui-icon-checked"></i>
             </div>
@@ -43,7 +47,7 @@
     <div style="margin: 30px 15px 10px 15px">
         <a href="javascript:void(0);" id="submitPay" class="weui-btn weui-btn_primary">付款</a>
     </div>
-</div>
+</form>
 
 <script src="/weui/lib/jquery-2.1.4.js"></script>
 <script src="/weui/lib/fastclick.js"></script>
@@ -62,12 +66,23 @@
         amount = 0;
         $.each($('input:checkbox:checked'), function () {
             amount = $(this).val() - 0 + amount;
+            alert($(this).attr("id"));
         });
         $("#payAmount").html("¥" + amount.toFixed(2));
     }
 
     $("#submitPay").click(function () {
-        window.location.href = "https://pay.qcloud.com/cpay/qrcode_disposable_payment?out_shop_id=" + [[${shopId}]] + "&total_fee=1&trade_num=sz0100m7f0123456789";
+        //window.location.href = "https://pay.qcloud.com/cpay/qrcode_disposable_payment?out_shop_id=" + [[${shopId}]] + "&total_fee=1&trade_num=sz0100m7f0123456789";
+        var order = "";
+        $.each($('input:checkbox:checked'), function () {
+            order += $(this).attr("id") + ",";
+            //alert($(this).attr("id"));
+            //alert($("#payAmount").html());
+        });
+        $("#yunzhifu_order").val(order);
+        $("#yunzhifu_amount").val($("#payAmount").html());
+        // $("#shopId").val([[${shopId}]]);
+        $("#form").submit();
     })
 </script>
 </body>

@@ -1,6 +1,7 @@
 package com.wangsd.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sun.corba.se.impl.ior.NewObjectKeyTemplateBase;
 import com.wangsd.common.base.MyController;
 import com.wangsd.common.utils.DateUtils;
 import com.wangsd.common.utils.DecimalFormatUtils;
@@ -8,6 +9,7 @@ import com.wangsd.common.utils.yilianyun.Methods;
 import com.wangsd.web.pojo.Report;
 import com.wangsd.web.pojo.RoomCustom;
 import com.wangsd.web.pojo.wechat.WeixinOauth2Token;
+import com.wangsd.web.pojo.yunzhifu.OrderContent;
 import com.wangsd.web.utils.WeixinUtil;
 import com.wangsd.web.model.*;
 import com.wangsd.web.pojo.BillaccountCustom;
@@ -24,10 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import tk.mybatis.mapper.entity.Example;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/wechat")
@@ -49,6 +48,8 @@ public class WechatController extends MyController {
     IBillaccountService billaccountService;
     @Autowired
     IPrintinfoService printinfoService;
+    @Autowired
+    INeworderService neworderService;
 
     /**
      * 公众号物业缴费入口
@@ -217,7 +218,7 @@ public class WechatController extends MyController {
             sumAmount += bill.getBill_entry_amount();
         }
 
-        model.addAttribute("shopId", housinginfo.getOut_shop_id());
+        model.addAttribute("housinginfo", housinginfo);
         model.addAttribute("sumAmount", DecimalFormatUtils.format(sumAmount));
         model.addAttribute("list", list);
         return "wechat/billaccount";
@@ -236,13 +237,56 @@ public class WechatController extends MyController {
     }
 
     /**
+     * 微信云支付付款
+     */
+    @RequestMapping("/yunzhifuPay")
+    public void yunzhifuPay(String yunzhifu_order, String yunzhifu_amount, String shopId, String order_prefix) {
+        System.out.println(shopId);
+        yunzhifu_order = yunzhifu_order.substring(0, yunzhifu_order.length() - 1);
+        yunzhifu_amount = yunzhifu_amount.substring(1, yunzhifu_amount.length());
+        Double amount = Double.parseDouble(yunzhifu_amount) * 100;
+        String orderId = order_prefix + System.currentTimeMillis();
+        String[] billids = yunzhifu_order.split(",");
+        for (String id : billids) {
+            Neworder neworder = new Neworder();
+            neworder.setBillId(Integer.parseInt(id));
+            neworder.setOrderId(orderId);
+            neworder.setStatus(0);
+            neworder.setCreateTime(new Date());
+            neworderService.save(neworder);
+        }
+        String str = "https://pay.qcloud.com/cpay/qrcode_disposable_payment?out_shop_id=" + shopId + "&total_fee=" + amount + "&trade_num=" + orderId;
+        try {
+            response.sendRedirect(str);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 微信云支付交易完成回调
      */
     @RequestMapping("/whchatPayReturn")
     @ResponseBody
-    public void whchatPayReturn(@RequestBody Object request_content, Object authen_info) {
-        log.debug("request_content==" + JSONObject.toJSONString(request_content));
-        log.debug("authen_info==" + JSONObject.toJSONString(authen_info));
+    public void whchatPayReturn(@RequestBody String outstr) {
+        JSONObject obj = JSONObject.parseObject(outstr);
+        JSONObject orderContent = obj.getJSONObject("request_content").getJSONObject("order_content");
+        String out_trade_no = orderContent.getString("out_trade_no");
+        String time_end = orderContent.getString("time_end");
+
+        boolean bl = neworderService.updateNeworderAndBillAccount(out_trade_no, time_end);
+        if (bl) {
+            Map<String, Object> responseContent = new HashMap<>();
+            responseContent.put("status", 0);
+            Map<String, Object> result = new HashMap<>();
+            result.put("response_content", responseContent);
+            try {
+                response.getOutputStream().print(JSONObject.toJSONString(result));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     /**

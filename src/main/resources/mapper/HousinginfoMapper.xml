@@ -23,6 +23,7 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
     <result column="water_unit" jdbcType="DOUBLE" property="water_unit" />
     <result column="out_shop_id" jdbcType="VARCHAR" property="out_shop_id" />
+    <result column="order_prefix" jdbcType="VARCHAR" property="order_prefix" />
   </resultMap>
 
     <select id="queryHousinginfoList" resultType="com.wangsd.web.model.Housinginfo">

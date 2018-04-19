@@ -81,6 +81,11 @@ public class Housinginfo {
     private String out_shop_id;
 
     /**
+     * 云支付订单前缀
+     */
+    private String order_prefix;
+
+    /**
      * @return id
      */
     public Integer getId() {
@@ -382,5 +387,23 @@ public class Housinginfo {
      */
     public void setOut_shop_id(String out_shop_id) {
         this.out_shop_id = out_shop_id == null ? null : out_shop_id.trim();
+    }
+
+    /**
+     * 获取云支付订单前缀
+     *
+     * @return order_prefix - 云支付订单前缀
+     */
+    public String getOrder_prefix() {
+        return order_prefix;
+    }
+
+    /**
+     * 设置云支付订单前缀
+     *
+     * @param order_prefix 云支付订单前缀
+     */
+    public void setOrder_prefix(String order_prefix) {
+        this.order_prefix = order_prefix == null ? null : order_prefix.trim();
     }
 }

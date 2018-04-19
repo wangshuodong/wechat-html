@@ -48,16 +48,16 @@ public class DateUtils {
 
     /**
      * 取得当前日期的字符串表示,格式为 yyyy-MM-dd
-     * 
+     *
      * @return 返回日期的字符串表示
      */
     public static String getCurDate() {
         return formatDate(new Date(), "yyyy-MM-dd");
     }
-    
+
     /**
      * 获取当前日期时间字符串,格式为 yyyy-MM-dd hh:mm:ss
-     * 
+     *
      * @return 返回当前字符串
      */
     public static String getCurDatetime() {
@@ -66,7 +66,7 @@ public class DateUtils {
 
     /**
      * 获取当前时间日历对象
-     * 
+     *
      * @return 返回java.util.Calendar日期对象
      */
     public static Calendar getCurCalendar() {
@@ -75,21 +75,19 @@ public class DateUtils {
 
     /**
      * 取得当前时间,格式为HH:MM:SS
-     * 
+     *
      * @return 返回当前时间
      */
     public static String getCurTime() {
         return formatDate(new Date(), "HH:mm:ss");
     }
-    
+
     /**
      * 将指定时间串转换成日期时间对象
-     * 
-     * @param dateStr
-     * 时间串,可以是yyyy-MM-dd格式 或者 yyyy-MM-dd HH:mm:ss 格式
+     *
+     * @param dateStr 时间串,可以是yyyy-MM-dd格式 或者 yyyy-MM-dd HH:mm:ss 格式
      * @return 返回指定时间的Calendar对象
-     * @throws NullPointerException
-     * 当日期时间格式不正确时
+     * @throws NullPointerException 当日期时间格式不正确时
      */
     public static Calendar parseCalendar(String dateStr) {
         Date dt = null;
@@ -104,13 +102,11 @@ public class DateUtils {
 
     /**
      * 将指定Date类型转换成指定格式的字符串,格式串参见类注释
-     * 
-     * @param date
-     * 日期方式
-     * @param format
-     * 指定的格式,当format为NULL或空串时,<BR>
-     * 默认为 yyyy-MM-dd 格式
-     * @return 当date为NULL时,返回空串
+     *
+     * @param date   日期方式
+     * @param format 指定的格式,当format为NULL或空串时,<BR>
+     *               默认为 yyyy-MM-dd 格式
+     * @return 当date为NULL时, 返回空串
      */
     public static String formatDate(Date date, String format) {
 
@@ -128,36 +124,35 @@ public class DateUtils {
         return (dtstr == null ? "" : dtstr);
 
     }
-    
+
     /**
      * 将指定Date类型转换成指定格式的字符串 yyyy-MM-dd
+     *
      * @param date
      * @return
      */
     public static String formatDate(Date date) {
-    	return formatDate(date, "yyyy-MM-dd");
+        return formatDate(date, "yyyy-MM-dd");
     }
-    
+
     /**
      * 将指定Date类型转换成指定格式的字符串yyyy-MM-dd HH:mm:ss
+     *
      * @param date
      * @return
      */
     public static String formatDatetime(Date date) {
-    	return formatDate(date, "yyyy-MM-dd HH:mm:ss");
+        return formatDate(date, "yyyy-MM-dd HH:mm:ss");
     }
-    
+
     /**
      * 将指定字串转换按指定格式转换成java.util.Date类型
-     * 
-     * @param dateStr
-     * 日期字串
-     * @param format
-     * 指定的格式,当format为NULL或空串时,<BR>
-     * 默认为 yyyy-MM-dd 格式
+     *
+     * @param dateStr 日期字串
+     * @param format  指定的格式,当format为NULL或空串时,<BR>
+     *                默认为 yyyy-MM-dd 格式
      * @return 当dateStr 为null或者转换出错时,返回NULL值
-     * @throws RuntimeException
-     * 日期格式与格式串不一致时，抛出RuntimeException
+     * @throws RuntimeException 日期格式与格式串不一致时，抛出RuntimeException
      */
     public static Date parseDate(String dateStr, String format) {
         Date date = null;
@@ -180,12 +175,10 @@ public class DateUtils {
 
     /**
      * 将指定字串转换按指定格式转换成java.util.Date类型
-     * 
-     * @param dateStr
-     * 日期字串 yyyy-MM-dd 格式
+     *
+     * @param dateStr 日期字串 yyyy-MM-dd 格式
      * @return 当dateStr 为null或者转换出错时,返回NULL值
-     * @throws RuntimeException
-     * 日期格式与格式串不一致时，抛出RuntimeException
+     * @throws RuntimeException 日期格式与格式串不一致时，抛出RuntimeException
      */
     public static Date parseDate(String dateStr) {
         return parseDate(dateStr, "yyyy-MM-dd");
@@ -193,12 +186,10 @@ public class DateUtils {
 
     /**
      * 将指定字串转换按指定格式转换成java.util.Date类型
-     * 
-     * @param dateStr
-     * 日期字串 yyyy-MM-dd HH:mm:ss 格式
+     *
+     * @param dateStr 日期字串 yyyy-MM-dd HH:mm:ss 格式
      * @return 当dateStr 为null或者转换出错时,返回NULL值
-     * @throws RuntimeException
-     * 日期格式与格式串不一致时，抛出RuntimeException
+     * @throws RuntimeException 日期格式与格式串不一致时，抛出RuntimeException
      */
     public static Date paseDatetime(String dateStr) {
         return parseDate(dateStr, "yyyy-MM-dd HH:mm:ss");
@@ -206,10 +197,9 @@ public class DateUtils {
 
     /**
      * 将java.util.Date转换成 java.sql.Date类型
-     * 
-     * @param date
-     * java.util.Date对象
-     * @return java.sql.Date对象,如果date为NULL,则返回NULL值
+     *
+     * @param date java.util.Date对象
+     * @return java.sql.Date对象, 如果date为NULL, 则返回NULL值
      */
     public static java.sql.Date parseSQLDate(Date date) {
         if (date == null) {
@@ -220,10 +210,9 @@ public class DateUtils {
 
     /**
      * 将java.util.Date转换成 java.sql.Timestamp类型
-     * 
-     * @param date
-     * java.util.Date对象
-     * @return ava.sql.Timestamp对象,如果date为NULL,则返回NULL值
+     *
+     * @param date java.util.Date对象
+     * @return ava.sql.Timestamp对象, 如果date为NULL, 则返回NULL值
      */
     public static Timestamp parseTimestamp(Date date) {
 
@@ -236,6 +225,7 @@ public class DateUtils {
 
     /**
      * 取得7天前的日期
+     *
      * @return
      */
     public static String get7DayBeforDate() {
@@ -248,6 +238,7 @@ public class DateUtils {
 
     /**
      * 获取N天之前的日期
+     *
      * @param number
      * @return
      */
@@ -269,9 +260,8 @@ public class DateUtils {
 
     /**
      * 取得标准格式的日期: HH:mm:ss
-     * 
-     * @param c
-     * 日期对象
+     *
+     * @param c 日期对象
      * @return 返回指定时间的小时:分钟:秒数
      */
     public static String getTime(Calendar c) {
@@ -280,7 +270,7 @@ public class DateUtils {
 
     /**
      * 取得当前年份
-     * 
+     *
      * @return 四位年份 yyyy
      */
     public static String getYear() {
@@ -290,6 +280,7 @@ public class DateUtils {
 
     /**
      * 取得当前年份+月份
+     *
      * @return
      */
     public static String getYearMonth() {
@@ -303,7 +294,7 @@ public class DateUtils {
 
     /**
      * 取得当前月份
-     * 
+     *
      * @return
      */
     public static String getMonth() {
@@ -313,7 +304,7 @@ public class DateUtils {
 
     /**
      * 取得当前日
-     * 
+     *
      * @return
      */
     public static String getDay() {
@@ -323,7 +314,7 @@ public class DateUtils {
 
     /**
      * 取得当前星期数 1,2,3,4,5,6,7 代表 星期一.....
-     * 
+     *
      * @return
      */
     public static String getWeek() {
@@ -338,10 +329,8 @@ public class DateUtils {
     }
 
     /**
-     * @see #dateDiff(Calendar, Calendar, byte)
-     * 
      * @return 相差时差
-     * 
+     * @see #dateDiff(Calendar, Calendar, byte)
      */
     public static long dateDiff(String dateFrom, String dateTo, byte unit) {
         Calendar from = parseCalendar(dateFrom);
@@ -350,15 +339,11 @@ public class DateUtils {
     }
 
     /**
-     * @see #dateDiff(Calendar, Calendar, byte)
-     * 
-     * @param dateFrom
-     * 开始时间
-     * @param dateTo
-     * 结束时间
-     * @param unit
-     * 单位
+     * @param dateFrom 开始时间
+     * @param dateTo   结束时间
+     * @param unit     单位
      * @return
+     * @see #dateDiff(Calendar, Calendar, byte)
      */
     public static long dateDiff(Date dateFrom, Date dateTo, byte unit) {
         Calendar from = Calendar.getInstance();
@@ -370,21 +355,17 @@ public class DateUtils {
 
     /**
      * 返回2个日期之间的差距 unit是时间计算的单位,为本类常量DIFF_&lgt;XXXX&rgt;中的任一类型
-     * 
-     * @param dateFrom
-     * 开始时间的时间串,可以是yyyy-MM-dd格式 或者 yyyy-MM-dd HH:mm:ss 格式
-     * @param dateTo
-     * 结束时间的时间串,可以是yyyy-MM-dd格式 或者 yyyy-MM-dd HH:mm:ss 格式
-     * @param unit
-     * 是时间计算的单位,为以下值中的任一值:<br>
-     * DIFF_YEAR 以年为单位<br>
-     * DIFF_MONTH 以月为单位<br>
-     * DIFF_DAY 以日为单位<br>
-     * DIFF_HOUR 以小时为单位<br>
-     * DIFF_MINUTE 以分钟为单位<br>
-     * DIFF_SECONDE 以秒为单位<br>
-     * DIFF_MILLISECOND 以毫秒为单位
-     * 
+     *
+     * @param dateFrom 开始时间的时间串,可以是yyyy-MM-dd格式 或者 yyyy-MM-dd HH:mm:ss 格式
+     * @param dateTo   结束时间的时间串,可以是yyyy-MM-dd格式 或者 yyyy-MM-dd HH:mm:ss 格式
+     * @param unit     是时间计算的单位,为以下值中的任一值:<br>
+     *                 DIFF_YEAR 以年为单位<br>
+     *                 DIFF_MONTH 以月为单位<br>
+     *                 DIFF_DAY 以日为单位<br>
+     *                 DIFF_HOUR 以小时为单位<br>
+     *                 DIFF_MINUTE 以分钟为单位<br>
+     *                 DIFF_SECONDE 以秒为单位<br>
+     *                 DIFF_MILLISECOND 以毫秒为单位
      * @return 相差时差
      */
     @SuppressWarnings("static-access")
@@ -453,88 +434,86 @@ public class DateUtils {
      * \yyyyy 结果为 y2008 <br>
      * \yyyyyy 结果为 y2008y <br>
      * 其它字符如此类同
-     * 
-     * @param date
-     * 日期对象
-     * @param strFormat
-     * 格式串,含义如下,注意大小写区分:<br>
-     * 
-     * <table border=0 cellspacing=3 cellpadding=2 style='font-size:10pt;border:1px solid #000' summary="Chart shows pattern letters, date/time component, presentation, and examples.">
-     * <tr bgcolor="#ccccff">
-     * <th align=left>字符表达式
-     * <th align=left>日期或时间表达含义
-     * <th align=left>例子
-     * <tr>
-     * <td><code>yyyy</code>
-     * <td>四位年
-     * <td><code>2000, 2009</code>
-     * <tr bgcolor="#eeeeff">
-     * <td><code>yy</code>
-     * <td>两位年
-     * <td><code>00, 09</code>
-     * <tr>
-     * <td><code>MM</code>
-     * <td>两位月
-     * <td><code>07 , 23</code>
-     * <tr bgcolor="#eeeeff">
-     * <td><code>M</code>
-     * <td>普通月
-     * <td><code>7 , 23</code>
-     * <tr>
-     * <td><code>dd</code>
-     * <td>两位天
-     * <td><code>03, 12</code>
-     * <tr bgcolor="#eeeeff">
-     * <td><code>d</code>
-     * <td>普通天
-     * <td><code>3, 12</code>
-     * <tr>
-     * <td><code>hh</code>
-     * <td>两位小时
-     * <td><code>03, 12</code>
-     * <tr bgcolor="#eeeeff">
-     * <td><code>h</code>
-     * <td>普通小时
-     * <td><code> 3, 12</code>
-     * <tr>
-     * <td><code>mm</code>
-     * <td>分
-     * <td><code>03 , 12</code>
-     * <tr bgcolor="#eeeeff">
-     * <td><code>m</code>
-     * <td>分
-     * <td><code>3 , 12</code>
-     * <tr>
-     * <td><code>ss</code>
-     * <td>秒
-     * <td><code>03 , 12</code>
-     * <tr bgcolor="#eeeeff">
-     * <td><code>s</code>
-     * <td>秒
-     * <td><code>3 , 12</code>
-     * <tr>
-     * <td><code>SSS</code>
-     * <td>三位微秒
-     * <td><code>003, 012 , 199</code>
-     * <tr bgcolor="#eeeeff">
-     * <td><code>S</code>
-     * <td>微秒
-     * <td><code>3, 12 , 199</code>
-     * <tr>
-     * <td><code>F</code>
-     * <td>周几 ,数值
-     * <td><code>3</code>
-     * <tr bgcolor="#eeeeff">
-     * <td><code>E</code>
-     * <td>周几 ,文本
-     * <td><code>星期三, Tuesday</code>
-     * <tr>
-     * <td><code>a</code>
-     * <td>Am/pm 标识
-     * <td><code> PM, 下午</code>
-     * </table>
-     * @since 1.0.1
+     *
+     * @param date      日期对象
+     * @param strFormat 格式串,含义如下,注意大小写区分:<br>
+     *                  <p>
+     *                  <table border=0 cellspacing=3 cellpadding=2 style='font-size:10pt;border:1px solid #000' summary="Chart shows pattern letters, date/time component, presentation, and examples.">
+     *                  <tr bgcolor="#ccccff">
+     *                  <th align=left>字符表达式
+     *                  <th align=left>日期或时间表达含义
+     *                  <th align=left>例子
+     *                  <tr>
+     *                  <td><code>yyyy</code>
+     *                  <td>四位年
+     *                  <td><code>2000, 2009</code>
+     *                  <tr bgcolor="#eeeeff">
+     *                  <td><code>yy</code>
+     *                  <td>两位年
+     *                  <td><code>00, 09</code>
+     *                  <tr>
+     *                  <td><code>MM</code>
+     *                  <td>两位月
+     *                  <td><code>07 , 23</code>
+     *                  <tr bgcolor="#eeeeff">
+     *                  <td><code>M</code>
+     *                  <td>普通月
+     *                  <td><code>7 , 23</code>
+     *                  <tr>
+     *                  <td><code>dd</code>
+     *                  <td>两位天
+     *                  <td><code>03, 12</code>
+     *                  <tr bgcolor="#eeeeff">
+     *                  <td><code>d</code>
+     *                  <td>普通天
+     *                  <td><code>3, 12</code>
+     *                  <tr>
+     *                  <td><code>hh</code>
+     *                  <td>两位小时
+     *                  <td><code>03, 12</code>
+     *                  <tr bgcolor="#eeeeff">
+     *                  <td><code>h</code>
+     *                  <td>普通小时
+     *                  <td><code> 3, 12</code>
+     *                  <tr>
+     *                  <td><code>mm</code>
+     *                  <td>分
+     *                  <td><code>03 , 12</code>
+     *                  <tr bgcolor="#eeeeff">
+     *                  <td><code>m</code>
+     *                  <td>分
+     *                  <td><code>3 , 12</code>
+     *                  <tr>
+     *                  <td><code>ss</code>
+     *                  <td>秒
+     *                  <td><code>03 , 12</code>
+     *                  <tr bgcolor="#eeeeff">
+     *                  <td><code>s</code>
+     *                  <td>秒
+     *                  <td><code>3 , 12</code>
+     *                  <tr>
+     *                  <td><code>SSS</code>
+     *                  <td>三位微秒
+     *                  <td><code>003, 012 , 199</code>
+     *                  <tr bgcolor="#eeeeff">
+     *                  <td><code>S</code>
+     *                  <td>微秒
+     *                  <td><code>3, 12 , 199</code>
+     *                  <tr>
+     *                  <td><code>F</code>
+     *                  <td>周几 ,数值
+     *                  <td><code>3</code>
+     *                  <tr bgcolor="#eeeeff">
+     *                  <td><code>E</code>
+     *                  <td>周几 ,文本
+     *                  <td><code>星期三, Tuesday</code>
+     *                  <tr>
+     *                  <td><code>a</code>
+     *                  <td>Am/pm 标识
+     *                  <td><code> PM, 下午</code>
+     *                  </table>
      * @return 如果date 或者 strFormat 为null,则返回空串，否则返回指定格式串
+     * @since 1.0.1
      */
     public static String formartRandomDate(Date date, String strFormat) {
         if (date == null || strFormat == null) {
@@ -581,7 +560,7 @@ public class DateUtils {
 
     /**
      * 计算日期date增加day天后的日期
-     * 
+     *
      * @param date
      * @param day
      * @return
@@ -595,10 +574,10 @@ public class DateUtils {
 
         return c.getTime();
     }
-    
+
     /**
      * 得到由c指定的日期所在月的开始日期
-     * 
+     *
      * @param c
      * @return
      */
@@ -610,7 +589,7 @@ public class DateUtils {
 
     /**
      * 得到由c指定的日期所在月的结束日期
-     * 
+     *
      * @param c
      * @return
      */
@@ -623,7 +602,7 @@ public class DateUtils {
 
     /**
      * 获取上一月第一天
-     * 
+     *
      * @return
      */
     public static String getLastMonFirtDay() {
@@ -652,7 +631,7 @@ public class DateUtils {
 
     /**
      * 获取上一月最后一天
-     * 
+     *
      * @return
      */
     public static String getLastMonLastDay() {
@@ -688,7 +667,8 @@ public class DateUtils {
 
     /**
      * 获取每月第一天
-     * @param year 2017
+     *
+     * @param year  2017
      * @param month 0-11
      * @return
      */
@@ -703,7 +683,8 @@ public class DateUtils {
 
     /**
      * 获取每月最后一天
-     * @param year 2017
+     *
+     * @param year  2017
      * @param month 0-11
      * @return
      */
@@ -717,10 +698,10 @@ public class DateUtils {
         SimpleDateFormat simpleFormate = new SimpleDateFormat("yyyy-MM-dd");
         return simpleFormate.format(calendar.getTime());
     }
-    
+
     /**
      * 根据开始时间和结束时间返回时间段内的时间集合
-     * 
+     *
      * @param beginDate
      * @param endDate
      * @return List
@@ -745,40 +726,61 @@ public class DateUtils {
         lDate.add(endDate);// 把结束时间加入集合
         return lDate;
     }
-    
+
     /**
-	 * 指定时间加几个月
-	 * @param source
-	 * @param num
-	 * @return
-	 */
-	public static String monthByDate(Date source, int num) {
-		Calendar c = Calendar.getInstance();
-		c.setTime(source);
-		c.add(Calendar.MONTH, num);
-		Date newEnd = c.getTime();		
-		return formatDate(newEnd);
-	}
-	
-	/**
-	 * 指定时间加几年
-	 * @param source
-	 * @param num
-	 * @return
-	 */
-	public static String yearByDate(Date source, int num) {
-		Calendar c = Calendar.getInstance();
-		c.setTime(source);
-		c.add(Calendar.YEAR, num);
-		Date newEnd = c.getTime();		
-		return formatDate(newEnd);
-	}
-    
+     * 指定时间加几个月
+     *
+     * @param source
+     * @param num
+     * @return
+     */
+    public static String monthByDate(Date source, int num) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(source);
+        c.add(Calendar.MONTH, num);
+        Date newEnd = c.getTime();
+        return formatDate(newEnd);
+    }
+
+    /**
+     * 指定时间加几年
+     *
+     * @param source
+     * @param num
+     * @return
+     */
+    public static String yearByDate(Date source, int num) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(source);
+        c.add(Calendar.YEAR, num);
+        Date newEnd = c.getTime();
+        return formatDate(newEnd);
+    }
+
+    /**
+     * 6      * 时间戳转换成日期格式字符串
+     * 7      * @param seconds 精确到秒的字符串
+     * 8      * @param formatStr
+     * 9      * @return
+     * 10
+     */
+    public static String timeStamp2Date(String seconds, String format) {
+        if (seconds == null || seconds.isEmpty() || seconds.equals("null")) {
+            return "";
+        }
+        if (format == null || format.isEmpty()) {
+            format = "yyyy-MM-dd HH:mm:ss";
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(new Date(Long.valueOf(seconds + "000")));
+    }
+
     public static void main(String[] args) {
 //        System.out.println(DateUtils.monthByDate(new Date(),1));
-        String out_trade_no = "74773|456";
-        String[] outTradeNo = out_trade_no.split("\\|");
-        System.out.println(Integer.parseInt(outTradeNo[0]));
+//        String out_trade_no = "74773|456";
+//        String[] outTradeNo = out_trade_no.split("\\|");
+//        System.out.println(Integer.parseInt(outTradeNo[0]));
+        System.out.println(paseDatetime(timeStamp2Date("1524152189", null)));
     }
 
 }
