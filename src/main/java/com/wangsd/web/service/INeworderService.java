@@ -6,5 +6,5 @@ import com.wangsd.web.model.Roominfo;
 
 public interface INeworderService extends IService<Neworder>{
 
-    public boolean updateNeworderAndBillAccount(String orderId, String time_end);
+    public boolean updateNeworderAndBillAccount(String orderId, String time_end, String transaction_id);
 }

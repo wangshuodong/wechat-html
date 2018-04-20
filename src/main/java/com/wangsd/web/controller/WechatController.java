@@ -273,8 +273,9 @@ public class WechatController extends MyController {
         JSONObject orderContent = obj.getJSONObject("request_content").getJSONObject("order_content");
         String out_trade_no = orderContent.getString("out_trade_no");
         String time_end = orderContent.getString("time_end");
+        String transaction_id = orderContent.getString("transaction_id");
 
-        boolean bl = neworderService.updateNeworderAndBillAccount(out_trade_no, time_end);
+        boolean bl = neworderService.updateNeworderAndBillAccount(out_trade_no, time_end, transaction_id);
         if (bl) {
             Map<String, Object> responseContent = new HashMap<>();
             responseContent.put("status", 0);
