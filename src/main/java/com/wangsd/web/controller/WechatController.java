@@ -110,7 +110,7 @@ public class WechatController extends MyController {
         example.selectProperties("building");
         example.setDistinct(true);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("parent_id", roominfo.getParent_id());
+        criteria.andEqualTo("parent_id", roominfo.getParent_id()).andEqualTo("deleteStatus", false);
         List<Roominfo> list = roominfoService.selectByExample(example);
         List<Map<String, String>> retList = new ArrayList<>();
         if (list != null) {
@@ -126,18 +126,18 @@ public class WechatController extends MyController {
     /**
      * 查询单元
      *
-     * @param parentId
+     * @param parent_id
      * @param building
      * @return
      */
     @RequestMapping("/queryUnit")
     @ResponseBody
-    public List<Map<String, String>> queryUnit(Integer parentId, String building) {
+    public List<Map<String, String>> queryUnit(Integer parent_id, String building) {
         Example example = new Example(Roominfo.class);
         example.selectProperties("unit");
         example.setDistinct(true);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("parent_id", parentId).andEqualTo("building", building);
+        criteria.andEqualTo("parent_id", parent_id).andEqualTo("building", building).andEqualTo("deleteStatus", false);
         List<Roominfo> list = roominfoService.selectByExample(example);
         List<Map<String, String>> retList = new ArrayList<>();
         if (list != null) {
@@ -153,21 +153,22 @@ public class WechatController extends MyController {
     /**
      * 查询房间
      *
-     * @param parentId
+     * @param parent_id
      * @param building
      * @param unit
      * @return
      */
     @RequestMapping("/queryRoom")
     @ResponseBody
-    public List<Map<String, String>> queryRoom(Integer parentId, String building, String unit) {
+    public List<Map<String, String>> queryRoom(Integer parent_id, String building, String unit) {
         Example example = new Example(Roominfo.class);
         example.selectProperties("id", "room");
         example.setDistinct(true);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andEqualTo("parent_id", parentId)
+        criteria.andEqualTo("parent_id", parent_id)
                 .andEqualTo("building", building)
-                .andEqualTo("unit", unit);
+                .andEqualTo("unit", unit)
+                .andEqualTo("deleteStatus", false);
         List<Roominfo> list = roominfoService.selectByExample(example);
         List<Map<String, String>> retList = new ArrayList<>();
         if (list != null) {
@@ -244,7 +245,8 @@ public class WechatController extends MyController {
         System.out.println(shopId);
         yunzhifu_order = yunzhifu_order.substring(0, yunzhifu_order.length() - 1);
         yunzhifu_amount = yunzhifu_amount.substring(1, yunzhifu_amount.length());
-        Double amount = Double.parseDouble(yunzhifu_amount) * 100;
+        double temp = Double.parseDouble(yunzhifu_amount) * 100;
+        int amount = (int)temp;
         String orderId = order_prefix + System.currentTimeMillis();
         String[] billids = yunzhifu_order.split(",");
         for (String id : billids) {

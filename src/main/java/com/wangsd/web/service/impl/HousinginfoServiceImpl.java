@@ -43,7 +43,7 @@ public class HousinginfoServiceImpl extends ServiceImpl<Housinginfo> implements 
             Propertyinfo propertyinfo = propertyinfoMapper.selectOne(query2);
             Example example = new Example(Housinginfo.class);
             Example.Criteria criteria = example.createCriteria();
-            criteria.andEqualTo("parent_id", propertyinfo.getId());
+            criteria.andEqualTo("parent_id", propertyinfo.getId()).andEqualTo("deleteStatus", false);
             list = housinginfoMapper.selectByExample(example);
         }
         return list;
