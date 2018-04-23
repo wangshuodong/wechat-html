@@ -276,8 +276,10 @@ public class WechatController extends MyController {
         String out_trade_no = orderContent.getString("out_trade_no");
         String time_end = orderContent.getString("time_end");
         String transaction_id = orderContent.getString("transaction_id");
+        String total_fee = orderContent.getString("total_fee");
+        double total_amount = Double.parseDouble(total_fee) / 100;
 
-        boolean bl = neworderService.updateNeworderAndBillAccount(out_trade_no, time_end, transaction_id);
+        boolean bl = neworderService.updateNeworderAndBillAccount(out_trade_no, time_end, transaction_id, total_amount);
         if (bl) {
             Map<String, Object> responseContent = new HashMap<>();
             responseContent.put("status", 0);
@@ -324,6 +326,7 @@ public class WechatController extends MyController {
     public String sendReport(Report report) {
         Printinfo printinfo = new Printinfo();
         printinfo.setDepartment_id(report.getHousingId());
+        printinfo.setDeleteStatus(true);
         printinfo = printinfoService.selectOne(printinfo);
         StringBuffer message = new StringBuffer();
         message.append("<FH2><FB><center>报事报修单据</center></FB></FH2>\n")

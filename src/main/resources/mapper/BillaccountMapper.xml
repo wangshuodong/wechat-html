@@ -39,6 +39,7 @@
         LEFT JOIN costtype c ON b.cost_type = c.id
         WHERE
             b.roominfo_id = #{roomid}
-        AND deleteStatus = FALSE
+        AND b.deleteStatus = FALSE
+        AND b.payStatus = FALSE
     </select>
 </mapper>
