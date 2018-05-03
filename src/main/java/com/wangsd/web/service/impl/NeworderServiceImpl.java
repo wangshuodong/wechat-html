@@ -66,23 +66,25 @@ public class NeworderServiceImpl extends ServiceImpl<Neworder> implements INewor
                 propertyinfo = propertyinfoMapper.selectByPrimaryKey(housinginfo.getParent_id());
                 serviceinfo = serviceinfoMapper.selectByPrimaryKey(propertyinfo.getParent_id());
 
-                AlipayBaseRequest alipayRequest = new AlipayBaseRequest();
-                alipayRequest.setAppId(serviceinfo.getApp_id());
-                alipayRequest.setPrivateKey(serviceinfo.getMerchant_private_key());
-                alipayRequest.setApp_auth_token(propertyinfo.getToken());
+                if (serviceinfo != null) {
+                    AlipayBaseRequest alipayRequest = new AlipayBaseRequest();
+                    alipayRequest.setAppId(serviceinfo.getApp_id());
+                    alipayRequest.setPrivateKey(serviceinfo.getMerchant_private_key());
+                    alipayRequest.setApp_auth_token(propertyinfo.getToken());
 
-                BillDeleteRequest billRequest = new BillDeleteRequest();
-                billRequest.setCommunity_id(housinginfo.getCommunity_id());
-                List<String> ids = new ArrayList<>();
-                ids.add(billaccount.getId().toString());
-                billRequest.setBill_entry_id_list(ids);
-                alipayRequest.setBiz_content(JSONObject.toJSONString(billRequest));
+                    BillDeleteRequest billRequest = new BillDeleteRequest();
+                    billRequest.setCommunity_id(housinginfo.getCommunity_id());
+                    List<String> ids = new ArrayList<>();
+                    ids.add(billaccount.getId().toString());
+                    billRequest.setBill_entry_id_list(ids);
+                    alipayRequest.setBiz_content(JSONObject.toJSONString(billRequest));
 
-                AlipayUtil alipayUtil = new AlipayUtil(alipayRequest);
-                try {
-                    alipayUtil.billDelete();
-                } catch (AlipayApiException e) {
-                    e.printStackTrace();
+                    AlipayUtil alipayUtil = new AlipayUtil(alipayRequest);
+                    try {
+                        alipayUtil.billDelete();
+                    } catch (AlipayApiException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
             billaccount.setPayDate(date);
@@ -118,8 +120,10 @@ public class NeworderServiceImpl extends ServiceImpl<Neworder> implements INewor
         printinfo.setDepartment_id(housinginfo.getId());
         printinfo.setDeleteStatus(true);
         printinfo = printinfoMapper.selectOne(printinfo);
-        String originId = String.valueOf(System.currentTimeMillis());
-        Methods.getInstance().print(printinfo.getMachine_code(), sb.toString(), originId);
+        if (printinfo != null) {
+            String originId = String.valueOf(System.currentTimeMillis());
+            Methods.getInstance().print(printinfo.getMachine_code(), sb.toString(), originId);
+        }
         return true;
     }
 }
