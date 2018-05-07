@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>智慧物业社区</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="/weui/lib/weui.min.css">
+    <link rel="stylesheet" href="/weui/css/jquery-weui.css">
+    <link rel="stylesheet" href="/weui/css/demos.css">
+
+</head>
+
+<body ontouchstart>
+<header class='demos-header'>
+    <h1 class="demos-title">物业缴费</h1>
+</header>
+
+
+<div class="page__bd">
+    <div class="weui-cells__title">我的房间信息（提示左滑动删除）</div>
+    <div class="weui-cells">
+        <div class="weui-cell weui-cell_swiped" th:each="room : ${list}">
+            <div class="weui-cell__bd ">
+                <a class="weui-cell weui-cell_access" th:href="@{/wechat/openBill(roomid=${room.id})}">
+                    <!--<div class="weui-cell__hd"><img src="/weui/images/icon_nav_city.png" alt="" style="width:20px;margin-right:5px;display:block"></div>-->
+                    <div class="weui-cell__bd">
+                        <p style="color:#000000;" th:text="${room.housingName}"></p>
+                    </div>
+                    <div class="weui-cell__ft" th:text="${room.address}"></div>
+                </a>
+            </div>
+            <div class="weui-cell__ft">
+                <a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout" href="javascript:void(0);"
+                   th:value="${room.weixinuserId}">删除</a>
+            </div>
+        </div>
+    </div>
+    <div style="margin: 30px 15px 10px 15px">
+        <a href="javascript:void(0);" th:href="@{/haina/openHousing(appId=${session.appId}, openid=${session.openid})}"
+           class="weui-btn weui-btn_primary">添加房间</a>
+    </div>
+</div>
+
+
+<script src="/weui/lib/jquery-2.1.4.js"></script>
+
+<script src="/weui/js/jquery-weui.js"></script>
+
+
+<script>
+    $('.delete-swipeout').click(function () {
+        $(this).parents('.weui-cell').remove()
+        $.ajax({
+            type: 'POST',
+            url: '/wechat/deleteBingRoom',
+            dataType: 'json',
+            async: false,
+            data: {
+                id: $(this).attr('value')
+            },
+            success: function (data) {
+
+            }
+        });
+    })
+
+
+</script>
+</body>
+</html>

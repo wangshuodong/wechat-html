@@ -242,7 +242,6 @@ public class WechatController extends MyController {
      */
     @RequestMapping("/yunzhifuPay")
     public void yunzhifuPay(String yunzhifu_order, String yunzhifu_amount, String shopId, String order_prefix) {
-        System.out.println(shopId);
         yunzhifu_order = yunzhifu_order.substring(0, yunzhifu_order.length() - 1);
         yunzhifu_amount = yunzhifu_amount.substring(1, yunzhifu_amount.length());
         double temp = Double.parseDouble(yunzhifu_amount) * 100;
