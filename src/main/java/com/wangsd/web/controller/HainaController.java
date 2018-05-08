@@ -41,10 +41,9 @@ public class HainaController extends MyController {
     @Autowired
     IHousinginfoService housinginfoService;
 
-    @RequestMapping("/test")
-    @ResponseBody
-    public void test1() {
-        String open_code = request.getParameter("open_code");
+    @RequestMapping("/pcIndex")
+    public String pcIndex() {
+        return "haina/index";
     }
 
     @RequestMapping("/index")

@@ -59,12 +59,11 @@ public class NeworderServiceImpl extends ServiceImpl<Neworder> implements INewor
             neworderMapper.updateByPrimaryKey(order);
 
             billaccount = billaccountMapper.selectByPrimaryKey(order.getBillId());
+            housinginfo = housinginfoMapper.selectByPrimaryKey(billaccount.getHousing_id());
+            propertyinfo = propertyinfoMapper.selectByPrimaryKey(housinginfo.getParent_id());
+            serviceinfo = serviceinfoMapper.selectByPrimaryKey(propertyinfo.getParent_id());
             //如果已同步到支付宝
             if (billaccount.getStatus() && !billaccount.getPayStatus()) {
-
-                housinginfo = housinginfoMapper.selectByPrimaryKey(billaccount.getHousing_id());
-                propertyinfo = propertyinfoMapper.selectByPrimaryKey(housinginfo.getParent_id());
-                serviceinfo = serviceinfoMapper.selectByPrimaryKey(propertyinfo.getParent_id());
 
                 if (serviceinfo != null) {
                     AlipayBaseRequest alipayRequest = new AlipayBaseRequest();
@@ -87,6 +86,7 @@ public class NeworderServiceImpl extends ServiceImpl<Neworder> implements INewor
                     }
                 }
             }
+
             billaccount.setPayDate(date);
             billaccount.setPayStatus(true);
             billaccount.setWeixin_trade_no(transaction_id);

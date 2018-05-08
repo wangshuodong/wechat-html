@@ -27,7 +27,7 @@ public class AlipayUtilTest {
 
         BillQueryRequest billRequest = new BillQueryRequest();
         billRequest.setCommunity_id("A46CQMCT73301");
-        billRequest.setOut_room_id("119109");
+        billRequest.setOut_room_id("120066");
         alipayRequest.setBiz_content(JSONObject.toJSONString(billRequest));
 
         AlipayUtil alipayUtil = new AlipayUtil(alipayRequest);
@@ -44,8 +44,7 @@ public class AlipayUtilTest {
         BillDeleteRequest billRequest = new BillDeleteRequest();
         billRequest.setCommunity_id("A46CQMCT73301");
         List<String> ids = new ArrayList<>();
-        ids.add("140776");
-        ids.add("177885");
+        ids.add("142002");
         billRequest.setBill_entry_id_list(ids);
         alipayRequest.setBiz_content(JSONObject.toJSONString(billRequest));
 
