@@ -58,7 +58,7 @@ public class StaticVar {
     /**
      * 海纳套件内应用ID
      */
-    public final static String haina_agent_id = "agyBn9XCWMGv5KPEZY";
+    public final static String haina_agent_id = "agLjxxmhNVADW5gGj2";
 
     /**
      * 获取access_token

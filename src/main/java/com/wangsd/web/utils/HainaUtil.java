@@ -95,7 +95,8 @@ public class HainaUtil {
     public static void main(String[] args) throws IOException {
         HainaUtil hainaUtil = new HainaUtil();
 //        System.out.println(hainaUtil.getAccessToken());
-//        System.out.println(hainaUtil.getUserInfoByOpen_code("wVW9RLAMr"));
+//        System.out.println(hainaUtil.getUserInfoByOpen_code("gZz6zvAok"));
+        System.out.println(hainaUtil.getUserInfoByResident_code("k8EDqBZ8r"));
 //        System.out.println(hainaUtil.getCommunit("ff7ca3e8f7f0f8c3be664aa01e4cd99f"));
 
         String requestUrl = StaticVar.haina_import_info;
@@ -117,6 +118,6 @@ public class HainaUtil {
                 "      }" +
                 "  }";
 
-        System.out.println(HttpClientUtil.doPostJson(requestUrl, str));
+//        System.out.println(HttpClientUtil.doPostJson(requestUrl, str));
     }
 }
