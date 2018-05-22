@@ -7,9 +7,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" href="/weui/lib/weui.min.css">
-    <link rel="stylesheet" href="/weui/css/jquery-weui.css">
-    <link rel="stylesheet" href="/weui/css/demos.css">
+    <link rel="stylesheet" th:href="@{/weui/lib/weui.min.css}">
+    <link rel="stylesheet" th:href="@{/weui/css/jquery-weui.css}">
+    <link rel="stylesheet" th:href="@{/weui/css/demos.css}">
 
 </head>
 
@@ -18,7 +18,7 @@
     <h1 class="demos-title">账单信息</h1>
 </header>
 
-<form id="form" class="page__bd" action="/wechat/yunzhifuPay" method="post">
+<form id="form" class="page__bd" th:action="@{/wechat/yunzhifuPay}" method="post">
     <input type="hidden" name="yunzhifu_order" id="yunzhifu_order">
     <input type="hidden" name="yunzhifu_amount" id="yunzhifu_amount">
     <input type="hidden" name="shopId" th:value="${housinginfo.out_shop_id}">
@@ -49,14 +49,14 @@
     </div>
 </form>
 
-<script src="/weui/lib/jquery-2.1.4.js"></script>
-<script src="/weui/lib/fastclick.js"></script>
+<script th:src="@{/weui/lib/jquery-2.1.4.js}"></script>
+<script th:src="@{/weui/lib/fastclick.js}"></script>
 <script>
     $(function () {
         FastClick.attach(document.body);
     });
 </script>
-<script src="/weui/js/jquery-weui.js"></script>
+<script th:src="@{/weui/js/jquery-weui.js}"></script>
 
 
 <script th:inline="javascript">

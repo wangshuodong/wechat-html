@@ -7,9 +7,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" href="/weui/lib/weui.min.css">
-    <link rel="stylesheet" href="/weui/css/jquery-weui.css">
-    <link rel="stylesheet" href="/weui/css/demos.css">
+    <link rel="stylesheet" th:href="@{/weui/lib/weui.min.css}">
+    <link rel="stylesheet" th:href="@{/weui/css/jquery-weui.css}">
+    <link rel="stylesheet" th:href="@{/weui/css/demos.css}">
 
 </head>
 
@@ -72,15 +72,16 @@
 </form>
 
 
-<script src="/weui/lib/jquery-2.1.4.js"></script>
-<script src="/weui/js/jquery-weui.js"></script>
+<script th:src="@{/weui/lib/jquery-2.1.4.js}"></script>
+<script th:src="@{/weui/js/jquery-weui.js}"></script>
 
-<script>
+<script th:inline="javascript">
+    var basePath = /*[[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]]*/;
     $("#showTooltips").click(function () {
         var form = $("#form");
         $.ajax({
             type: 'POST',
-            url: '/wechat/sendReport',
+            url: basePath + '/wechat/sendReport',
             dataType: 'json',
             //async 设置为 false，则所有的请求均为同步请求
             async: false,
