@@ -62,26 +62,27 @@ public class HainaController extends MyController {
         if (resident_code != null) {
             str = hainaUtil.getUserInfoByResident_code(resident_code);
             logger.debug(str);
+            JSONObject obj = JSONObject.parseObject(str);
+            String property_id = obj.getJSONObject("data").getString("property_id");
 
+            request.getSession().setAttribute("property_id", property_id);
+            request.getSession().setAttribute("open_id", open_id);
+
+            List<RoomCustom> roomlist = weixinuserService.queryRoomBunding(open_id);
+
+            model.addAttribute("list", JSONArray.fromObject(roomlist));
+            return "haina/myHousing";
         } else { //如果没有注册 open_code 肯定有值
-//            try {
-//                response.sendRedirect(register_url + "?callback_url=" + callback_url + "&agent_id=" + StaticVar.haina_agent_id);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-            str = hainaUtil.getUserInfoByOpen_code(open_code);
-            logger.debug(str);
+            try {
+                response.sendRedirect(register_url + "?callback_url=" + callback_url + "&agent_id=" + StaticVar.haina_agent_id);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+//            str = hainaUtil.getUserInfoByOpen_code(open_code);
+//            logger.debug(str);
+            return null;
         }
-        JSONObject obj = JSONObject.parseObject(str);
-        String property_id = obj.getJSONObject("data").getString("property_id");
 
-        request.getSession().setAttribute("property_id", property_id);
-        request.getSession().setAttribute("open_id", open_id);
-
-        List<RoomCustom> roomlist = weixinuserService.queryRoomBunding(open_id);
-
-        model.addAttribute("list", JSONArray.fromObject(roomlist));
-        return "haina/myHousing";
     }
 
     /**
