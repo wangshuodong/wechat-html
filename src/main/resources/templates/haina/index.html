@@ -1,34 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>智慧物业社区</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="/app/css/main.css">
-    <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8" />
+    <title>海纳产品介绍</title>
+    <style type="text/css">
+        body>div{
+            min-width: 1200px;
+        }
+        header{
+            width: 100%;
+            height: 150px;
+        }
+        #header1-div{
+            width: 80%;
+            height: 150px;
+            margin: auto;
+        }
+        #header1-div>div{
+            display: inline-block;
+        }
+        #header1-div>div:nth-child(1){
+            width: 20%;
+            height: 150px;
+            float: left;
+        }
+        #header1-div>div:nth-child(2){
+            width: 66%;
+            height: 150px;
+            float: left;
+            margin-right: 2%;
+        }
+        #header1-div>div:nth-child(3){
+            width: 12%;
+            height: 150px;
+            float: left;
+        }
+        #header1-div1{
+            width: 100%;
+            height: 150px;
+            text-align: center;
+        }
+        #header1-div1 img{
+            margin-top: 15px;
+        }
+        #header1-div1 a{
+            text-decoration: none;
+        }
+
+        #section1-div{
+            width: 80%;
+            height: 350px;
+            margin: auto;
+        }
+        #section1-div>div:nth-child(1){
+            width: 40%;
+            height: 350px;
+            float: left;
+        }
+        #section1-div>div:nth-child(2){
+            width: 20%;
+            text-align: center;
+            height: 350px;
+            float: left;
+        }
+        #section1-div>div:nth-child(3){
+            width: 38%;
+            height: 350px;
+            float: left;
+        }
+        #section1-div li{
+            display: inline-block;
+            width: 49%;
+            height: 140px;
+        }
+        #section1-div1 p{
+            line-height: 30px;
+            height: 30px;
+            font-size: 20px;
+            margin:30px;
+        }
+        footer{
+            width: 100%;
+            height: 100px;
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
 </head>
-<body class="app sidebar-mini rtl">
+<body>
+<div>
+    <header>
+        <div id="header1-div">
+            <div>
+                <img th:src="@{/app/img/1.png}" width="150px" height="150px" />
+            </div>
+            <div>
+                <h1>交呗物业缴费</h1>
+                <h2>重庆钊炀科技有限公司</h2>
+            </div>
+            <div>
+                <div id="header1-div1">
+                    <img th:src="@{/app/img/2.png}" width="83px" height="69px" />
+                    <h3><a href="http://120.78.201.213/">登陆系统</a></h3>
+                </div>
+            </div>
+        </div>
+    </header><hr style="border: 1px solid #00A7EE; width: 80%; margin-top: 20px;" />
 
-<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <section style="margin-top: 20px;">
+        <div id="section1-div">
+            <div id="section1-nav">
+                <div>
+                    <ul>
+                        <li><img th:src="@{/app/img/3.png}" width="100%" height="140px"></li>
+                        <li><img th:src="@{/app/img/5.png}" width="100%" height="140px"></li>
+                    </ul>
+                    <ul>
+                        <li><img th:src="@{/app/img/6.png}" width="100%" height="140px"></li>
+                        <li><img th:src="@{/app/img/8.png}" width="130px" height="170px"></li>
+                    </ul>
+                </div>
+            </div>
+            <div><img th:src="@{/app/img/9.png}" width="200px" height="340px"></div>
+            <div id="section1-div1">
+                <p>交呗物业缴费平台是一款专业的车针对物业缴费难、催收难等问题的缴费平台；
+                    从平台上线经过交呗人的不断努力，平台接入小区数量接近200+；先后与杭州
+                    西开发物业、哈尔滨物业供热集团有限公司、杭州中都物业等大型物业公司达成
+                    合作！所有基本服务均免费向各物业合作伙伴提供，欢迎大家电话联系！</p>
+            </div>
+        </div>
+    </section><hr style="border: 1px solid #00A7EE; width: 80%; margin-top: 20px;" />
 
-<main class="app-content" style="margin: 0px;">
-    <div class="page-error tile">
-        <h1><i class="fa fa-exclamation-circle"></i> 请联系钊炀科技有限公司购买服务</h1>
-        <p><h2><i class="fa fa-phone"></i>联系电话：15213041124</h2></p>
-        <!--<p><a class="btn btn-primary" href="javascript:window.history.back();">Go Back</a></p>-->
-    </div>
-</main>
-<script src="/app/js/jquery-3.2.1.min.js"></script>
-<script src="/app/js/popper.min.js"></script>
-<script src="/app/js/bootstrap.min.js"></script>
-<script src="/app/js/main.js"></script>
-<script src="/app/js/plugins/pace.min.js"></script>
-
-<script type="text/javascript">
-
-</script>
+    <footer>
+        <p>重庆钊炀科技有限公司</p>
+        <p>公司地址：重庆市渝北区龙山街道盛世银座19楼   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;渝ICP备17007526号</p>
+        <p>联系邮箱：396492537@qq.com   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系电话：15213041124</p>
+    </footer>
+</div>
 </body>
 </html>

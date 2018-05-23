@@ -91,5 +91,10 @@ public class StaticVar {
      */
     public final static String haina_smsSend = "https://api.haina.com/ability/smsSend?access_token={access_token}&agent_id={agent_id}";
 
+    /**
+     * PC端临时票据获取用户基本信息
+     */
+    public final static String haina_getUser = "https://api.haina.com/access/getUser?access_token={access_token}&agent_id={agent_id}";
+
 
 }

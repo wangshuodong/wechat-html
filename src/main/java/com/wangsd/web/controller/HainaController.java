@@ -1,24 +1,24 @@
 package com.wangsd.web.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.wangsd.common.base.MyController;
 import com.wangsd.common.utils.Charsets;
+import com.wangsd.common.utils.DecimalFormatUtils;
 import com.wangsd.common.utils.StaticVar;
 import com.wangsd.common.utils.URLUtils;
 import com.wangsd.web.model.Housinginfo;
 import com.wangsd.web.model.Propertyinfo;
+import com.wangsd.web.model.Roominfo;
 import com.wangsd.web.model.Weixinuser;
+import com.wangsd.web.pojo.BillaccountCustom;
 import com.wangsd.web.pojo.RoomCustom;
-import com.wangsd.web.service.IHousinginfoService;
-import com.wangsd.web.service.IPropertyinfoService;
-import com.wangsd.web.service.IWeixinuserService;
+import com.wangsd.web.service.*;
 import com.wangsd.web.utils.HainaUtil;
-import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import tk.mybatis.mapper.entity.Example;
 
 import java.io.IOException;
@@ -40,15 +40,38 @@ public class HainaController extends MyController {
     IPropertyinfoService propertyinfoService;
     @Autowired
     IHousinginfoService housinginfoService;
+    @Autowired
+    IRoominfoService roominfoService;
+    @Autowired
+    IBillaccountService billaccountService;
 
     @RequestMapping("/pcIndex")
     public String pcIndex() {
-        return "haina/index";
+        String ret = "haina/index";
+        String user_code = request.getParameter("user_code");
+        logger.debug("user_code=" + user_code);
+        String str = hainaUtil.getUserByUserCode(user_code);
+        logger.debug(str);
+        JSONObject obj = JSONObject.parseObject(str);
+        if (obj.getIntValue("retcode") == 0) {
+            String property_id = obj.getJSONObject("data").getString("property_id");
+            Propertyinfo pquery = new Propertyinfo();
+            pquery.setWeixin_children_num(property_id);
+            Propertyinfo propertyinfo = propertyinfoService.selectOne(pquery);
+            if (propertyinfo != null) {
+                try {
+                    response.sendRedirect("https://www.alipayjf.com/");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return ret;
     }
 
     @RequestMapping("/index")
     public String index(Model model) {
-        String callback_url = URLUtils.encodeURL("http://www.cqzykj.top/haina/index", Charsets.UTF_8);
+        String callback_url = URLUtils.encodeURL("http://www.cqzykj.top/wechat/haina/index", Charsets.UTF_8);
         String resident_code = request.getParameter("resident_code");
         String open_id = request.getParameter("open_id");
         String open_code = request.getParameter("open_code");
@@ -68,9 +91,12 @@ public class HainaController extends MyController {
             request.getSession().setAttribute("property_id", property_id);
             request.getSession().setAttribute("open_id", open_id);
 
-            List<RoomCustom> roomlist = weixinuserService.queryRoomBunding(open_id);
+            //获取用户绑定的小区信息
+            JSONArray houses = obj.getJSONObject("data").getJSONArray("houses");
+            logger.debug("houses=" + houses);
+//            List<RoomCustom> roomlist = weixinuserService.queryRoomBunding(open_id);
 
-            model.addAttribute("list", JSONArray.fromObject(roomlist));
+            model.addAttribute("list", houses);
             return "haina/myHousing";
         } else { //如果没有注册 open_code 肯定有值
             try {
@@ -113,7 +139,7 @@ public class HainaController extends MyController {
                 retList.add(map);
             }
         }
-        model.addAttribute("list", JSONArray.fromObject(retList));
+        model.addAttribute("list", JSONArray.toJSON(retList));
         return "haina/housing";
     }
 
@@ -131,7 +157,46 @@ public class HainaController extends MyController {
         weixinuserService.bingRoom(weixinuser);
         List<RoomCustom> roomlist = weixinuserService.queryRoomBunding(openid);
 
-        model.addAttribute("list", JSONArray.fromObject(roomlist));
+        model.addAttribute("list", JSONArray.toJSON(roomlist));
         return "haina/myHousing";
+    }
+
+    /**
+     * 打开账单页面
+     *
+     * @param communityName
+     * @param roomName
+     * @param model
+     * @return
+     */
+    @RequestMapping("/openBill")
+    public String openBill(String communityName, String roomName, Model model) {
+        logger.debug("communityName=" + communityName);
+        logger.debug("roomName=" + roomName);
+        roomName = roomName.replaceAll("\\/", "");
+        Housinginfo hquery = new Housinginfo();
+        hquery.setDeleteStatus(false);
+        hquery.setName(communityName);
+        Housinginfo housinginfo = housinginfoService.selectOne(hquery);
+        if (housinginfo != null) {
+            Roominfo rquery = new Roominfo();
+            rquery.setDeleteStatus(false);
+            rquery.setParent_id(housinginfo.getId());
+            rquery.setAddress(roomName);
+            Roominfo roominfo = roominfoService.selectOne(rquery);
+            List<BillaccountCustom> list = billaccountService.queryBillByRoomId(roominfo.getId());
+            double sumAmount = 0;
+            for (BillaccountCustom bill : list) {
+                sumAmount += bill.getBill_entry_amount();
+            }
+
+            model.addAttribute("housinginfo", housinginfo);
+            model.addAttribute("sumAmount", DecimalFormatUtils.format(sumAmount));
+            model.addAttribute("list", list);
+            return "wechat/billaccount";
+        } else {
+            return "haina/success";
+        }
+
     }
 }

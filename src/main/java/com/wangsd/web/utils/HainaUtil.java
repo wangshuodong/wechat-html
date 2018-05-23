@@ -38,6 +38,26 @@ public class HainaUtil {
     }
 
     /**
+     * pc端获取用户信息
+     * @param user_code
+     * @return
+     */
+    public String getUserByUserCode(String user_code) {
+        String requestUrl = StaticVar.haina_getUser;
+        requestUrl = requestUrl.replace("{access_token}", getAccessToken());
+        requestUrl = requestUrl.replace("{agent_id}", StaticVar.haina_agent_id);
+        Map<String, String> map = new HashMap();
+        map.put("user_code", user_code);
+        String str = null;
+        try {
+            str = HttpClientUtil.doPost(requestUrl, map);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    /**
      * 根据open_code获取用户信息
      * @param open_code
      * @return
