@@ -29,7 +29,7 @@ public class AlipayUtil {
 
     public AlipayUtil(AlipayBaseRequest baseRequest) {
         this.baseRequest = baseRequest;
-        alipayClient = new DefaultAlipayClient(StaticVar.alipay_serverUrl, baseRequest.getAppId(), baseRequest.getPrivateKey());
+        alipayClient = new DefaultAlipayClient(StaticVar.alipay_serverUrl, baseRequest.getAppId(), baseRequest.getPrivateKey(), "json", "utf-8",baseRequest.getAlipayPulicKey(), "RSA2");
     }
 
     /**

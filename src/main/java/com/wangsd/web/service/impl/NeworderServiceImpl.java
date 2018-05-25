@@ -69,6 +69,7 @@ public class NeworderServiceImpl extends ServiceImpl<Neworder> implements INewor
                     AlipayBaseRequest alipayRequest = new AlipayBaseRequest();
                     alipayRequest.setAppId(serviceinfo.getApp_id());
                     alipayRequest.setPrivateKey(serviceinfo.getMerchant_private_key());
+                    alipayRequest.setAlipayPulicKey(serviceinfo.getAlipay_public_key());
                     alipayRequest.setApp_auth_token(propertyinfo.getToken());
 
                     BillDeleteRequest billRequest = new BillDeleteRequest();
