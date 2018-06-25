@@ -23,19 +23,21 @@ public class AlipayUtilTest {
 //    String publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAt3yano4JjndXL498YccsUh9+FyjOQtJ+qjLK1vxVpeWlCVukyRa5K9951PK0DCFg0PpYmjidcacfrdBq7rbZGAzesI8AdVeqzgjNF0yJIBpSxilvQKwPYPdfF1fFYLN0C25xfUoRIQN3QQG3VVXINhz1oYmZosoyFr++rW4CM6RlsHBLB+Jo2ej1JEos533oaQZhq9zK+DPmRByWhjewVhaHzRBUjiBL7SrLpgpmDzks/o9JUu5bGY5yX159RY3jHH2EzM/66A8j66Mja6l6CClN6Mo04ziOdcZC+CsFhvsBuV02bQ762OlPkOPHOG7CHF3+vg7dkfBqmO2C5or0zwIDAQAB";
     @Test
     public void billBatchquery() throws Exception {
+        //支付宝公共请求参数
         AlipayBaseRequest alipayRequest = new AlipayBaseRequest();
         alipayRequest.setAppId(appid);
         alipayRequest.setPrivateKey(privateKey);
         alipayRequest.setAlipayPulicKey(publicKey);
         alipayRequest.setApp_auth_token("201709BBdb06c71a5bd0432193e9a992ac3f7X20");
 
+        //账单查询请求参数
         BillQueryRequest billRequest = new BillQueryRequest();
         billRequest.setCommunity_id("A6IWVHER03301");
         billRequest.setOut_room_id("41844");
         alipayRequest.setBiz_content(JSONObject.toJSONString(billRequest));
 
         AlipayUtil alipayUtil = new AlipayUtil(alipayRequest);
-        alipayUtil.billBatchquery();
+        JSONObject obj = alipayUtil.billBatchquery();
     }
 
     @Test
