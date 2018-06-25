@@ -5,10 +5,7 @@ import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +18,7 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
 
     /**
      * 配置静态访问资源
+     *
      * @param registry
      */
     @Override
@@ -47,6 +45,7 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
 
     /**
      * 拦截器
+     *
      * @param registry
      */
     @Override
@@ -60,6 +59,7 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
 
     /**
      * 配置fastJson
+     *
      * @param converters
      */
     @Override
@@ -71,5 +71,21 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
         converters.add(fastConverter);
         super.configureMessageConverters(converters);
     }
+
+    /**
+     * 处理AJAX请求跨域的问题
+     *
+     * @author Levin
+     * @time 2017-07-13
+     */
+
+    static final String ORIGINS[] = new String[]{"GET", "POST", "PUT", "DELETE"};
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**").allowedOrigins("*").allowCredentials(true).allowedMethods(ORIGINS)
+                .maxAge(3600);
+    }
+
 }
 
