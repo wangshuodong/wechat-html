@@ -62,6 +62,8 @@ public class WechatController extends MyController {
      */
     @RequestMapping("/index")
     public String index(String code, String state, Model model) throws IOException {
+        log.info("code=" + code);
+        log.info("state=" + state);
         String appId = state;
         String openid = getOpenId(appId, code);
         log.debug("用户openid:" + openid);

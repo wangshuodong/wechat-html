@@ -4,22 +4,27 @@ import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
-import com.alipay.api.request.AlipayEcoCplifeBillBatchqueryRequest;
-import com.alipay.api.request.AlipayEcoCplifeBillDeleteRequest;
-import com.alipay.api.request.AlipayEcoCplifeCommunityBatchqueryRequest;
-import com.alipay.api.response.AlipayEcoCplifeBillBatchqueryResponse;
-import com.alipay.api.response.AlipayEcoCplifeBillDeleteResponse;
-import com.alipay.api.response.AlipayEcoCplifeCommunityBatchqueryResponse;
+import com.alipay.api.request.*;
+import com.alipay.api.response.*;
 import com.wangsd.common.utils.StaticVar;
 import com.wangsd.web.pojo.alipay.AlipayBaseRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Map;
+
 public class AlipayUtil {
 
-    private Logger log = LoggerFactory.getLogger(AlipayUtil.class);
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     private AlipayBaseRequest baseRequest;
+
+    public void setBaseRequest(AlipayBaseRequest baseRequest) {
+        this.baseRequest = baseRequest;
+    }
+
+    private AlipayClient alipayClient;
+
 
     private AlipayUtil() {
 
@@ -27,7 +32,10 @@ public class AlipayUtil {
 
     public AlipayUtil(AlipayBaseRequest baseRequest) {
         this.baseRequest = baseRequest;
+        this.alipayClient = new DefaultAlipayClient(StaticVar.alipay_serverUrl, baseRequest.getAppId(),
+                baseRequest.getPrivateKey(), "json", "utf-8", baseRequest.getAlipayPulicKey(), "RSA2");
     }
+
 
     /**
      * 物业费账单数据批量查询
@@ -36,17 +44,15 @@ public class AlipayUtil {
      * @throws AlipayApiException
      */
     public JSONObject billBatchquery() throws AlipayApiException {
-        AlipayClient alipayClient = new DefaultAlipayClient(StaticVar.alipay_serverUrl, baseRequest.getAppId(),
-                baseRequest.getPrivateKey(), "json", "utf-8", baseRequest.getAlipayPulicKey(), "RSA2");
         AlipayEcoCplifeBillBatchqueryRequest request = new AlipayEcoCplifeBillBatchqueryRequest();
         request.putOtherTextParam("app_auth_token", baseRequest.getApp_auth_token());
         request.setBizContent(baseRequest.getBiz_content());
         AlipayEcoCplifeBillBatchqueryResponse response = alipayClient.execute(request);
 
-        JSONObject ret = JSONObject.parseObject(response.getBody());
-        log.debug("物业费账单数据批量查询=========>" + ret);
+        JSONObject json = JSONObject.parseObject(response.getBody()).getJSONObject("alipay_eco_cplife_bill_batchquery_response");
+        logger.debug("物业费账单数据批量查询=========>" + json);
 
-        return ret;
+        return json;
     }
 
     /**
@@ -56,43 +62,72 @@ public class AlipayUtil {
      * @throws AlipayApiException
      */
     public JSONObject billDelete() throws AlipayApiException {
-        AlipayClient alipayClient = new DefaultAlipayClient(StaticVar.alipay_serverUrl, baseRequest.getAppId(),
-                baseRequest.getPrivateKey(), "json", "utf-8", baseRequest.getAlipayPulicKey(), "RSA2");
         AlipayEcoCplifeBillDeleteRequest request = new AlipayEcoCplifeBillDeleteRequest();
         request.putOtherTextParam("app_auth_token", baseRequest.getApp_auth_token());
         request.setBizContent(baseRequest.getBiz_content());
         AlipayEcoCplifeBillDeleteResponse response = alipayClient.execute(request);
 
-        JSONObject ret = JSONObject.parseObject(response.getBody());
-        log.debug("物业费账单数据批量删除=========>" + ret);
+        JSONObject json = JSONObject.parseObject(response.getBody()).getJSONObject("alipay_eco_cplife_bill_delete_response");
+        logger.debug("物业费账单数据批量删除=========>" + json);
 
-        return ret;
+        return json;
+    }
+
+    public JSONObject createcCmmunity() {
+
+        return null;
     }
 
     /**
      * 批量查询支付宝小区编号
+     *
      * @return
      * @throws AlipayApiException
      */
-    public JSONObject communityBatchquery() throws AlipayApiException {
-        AlipayClient alipayClient = new DefaultAlipayClient(StaticVar.alipay_serverUrl, baseRequest.getAppId(),
-                baseRequest.getPrivateKey(), "json", "utf-8", baseRequest.getAlipayPulicKey(), "RSA2");
+    public JSONObject queryCommunity() throws AlipayApiException {
         AlipayEcoCplifeCommunityBatchqueryRequest request = new AlipayEcoCplifeCommunityBatchqueryRequest();
         request.putOtherTextParam("app_auth_token", baseRequest.getApp_auth_token());
         request.setBizContent(baseRequest.getBiz_content());
         AlipayEcoCplifeCommunityBatchqueryResponse response = alipayClient.execute(request);
 
-        JSONObject ret = JSONObject.parseObject(response.getBody());
-        log.debug("批量查询支付宝小区编号=========>" + ret);
-        return ret;
+        JSONObject json = JSONObject.parseObject(response.getBody());
+        logger.debug("批量查询支付宝小区编号=========>" + json);
+        return json;
     }
 
-    public AlipayBaseRequest getBaseRequest() {
-        return baseRequest;
+    /**
+     * 查询小区房屋信息列表
+     *
+     * @return
+     * @throws AlipayApiException
+     */
+    public JSONObject queryRoominfo() throws AlipayApiException {
+        AlipayEcoCplifeRoominfoQueryRequest request = new AlipayEcoCplifeRoominfoQueryRequest();
+        request.putOtherTextParam("app_auth_token", baseRequest.getApp_auth_token());
+        request.setBizContent(baseRequest.getBiz_content());
+        AlipayEcoCplifeRoominfoQueryResponse response = alipayClient.execute(request);
+
+        JSONObject json = JSONObject.parseObject(response.getBody()).getJSONObject("alipay_eco_cplife_roominfo_query_response");
+        logger.debug("查询小区房屋信息列表=========>" + json);
+        return json;
     }
 
-    public void setBaseRequest(AlipayBaseRequest baseRequest) {
-        this.baseRequest = baseRequest;
+
+    /**
+     * 删除小区房屋信息列表
+     * 删除小区所有房间传all
+     * @return
+     * @throws AlipayApiException
+     */
+    public JSONObject deleteRoominfo() throws AlipayApiException {
+        AlipayEcoCplifeRoominfoDeleteRequest request = new AlipayEcoCplifeRoominfoDeleteRequest();
+        request.putOtherTextParam("app_auth_token", baseRequest.getApp_auth_token());
+        request.setBizContent(baseRequest.getBiz_content());
+        AlipayEcoCplifeRoominfoDeleteResponse response = alipayClient.execute(request);
+
+        JSONObject json = JSONObject.parseObject(response.getBody()).getJSONObject("alipay_eco_cplife_roominfo_delete_response");
+        logger.debug("查询小区房屋信息列表=========>" + json);
+        return json;
     }
 
 }
