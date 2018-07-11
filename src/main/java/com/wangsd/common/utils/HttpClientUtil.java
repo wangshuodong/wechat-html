@@ -29,6 +29,11 @@ import java.util.List;
 import java.util.Map;
 
 public class HttpClientUtil {
+
+    public static void main(String[] args) throws IOException, URISyntaxException {
+        System.out.println(doGet("https://restapi.amap.com/v3/place/text?key=dcb61f3f5e06c122b112e41c78980c87&keywords=小区&city=500103&page=1"));
+    }
+
     /**
      * 发送get请求
      *
