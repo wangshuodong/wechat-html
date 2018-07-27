@@ -126,7 +126,7 @@ public class AlipayUtil {
         AlipayEcoCplifeRoominfoDeleteResponse response = alipayClient.execute(request);
 
         JSONObject json = JSONObject.parseObject(response.getBody()).getJSONObject("alipay_eco_cplife_roominfo_delete_response");
-        logger.debug("查询小区房屋信息列表=========>" + json);
+        logger.debug("删除小区房屋信息列表=========>" + json);
         return json;
     }
 
