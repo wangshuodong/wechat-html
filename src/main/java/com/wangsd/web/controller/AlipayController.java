@@ -52,7 +52,7 @@ public class AlipayController {
         } catch (AlipayApiException e) {
             e.printStackTrace();
         }
-        return obj.getJSONObject("alipay_eco_cplife_bill_batchquery_response");
+        return obj;
     }
 
     @RequestMapping(value = "/deleteAlipayBill", produces = "application/json;charset=UTF-8")
@@ -80,6 +80,6 @@ public class AlipayController {
         } catch (AlipayApiException e) {
             e.printStackTrace();
         }
-        return obj.getJSONObject("alipay_eco_cplife_bill_delete_response");
+        return obj;
     }
 }

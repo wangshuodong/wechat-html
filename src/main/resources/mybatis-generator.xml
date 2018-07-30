@@ -54,7 +54,7 @@
         <!--
         加上useActualColumnNames这个属性，会按字段名生成代码，这种情况就不需要把表的字段用下划线方式
         -->
-        <table tableName="housinginfo">
+        <table tableName="%">
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>

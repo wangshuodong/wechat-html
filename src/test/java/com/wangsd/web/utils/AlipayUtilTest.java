@@ -117,11 +117,11 @@ public class AlipayUtilTest {
         alipayRequest.setAppId(appid);
         alipayRequest.setPrivateKey(privateKey);
         alipayRequest.setAlipayPulicKey(publicKey);
-        alipayRequest.setApp_auth_token("201806BBf4327e54c7c64dc59e8142fca7ca5X99");
+        alipayRequest.setApp_auth_token("201805BB167d6f075f1d4165a88e7c874e0c8X57");
 
         //查询条件
         RoominfoQueryRequest request = new RoominfoQueryRequest();
-        request.setCommunity_id("ASPLR1WBV3710");
+        request.setCommunity_id("AYQXETSB53710");
         alipayRequest.setBiz_content(JSONObject.toJSONString(request));
 
         //执行
