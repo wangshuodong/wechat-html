@@ -106,8 +106,13 @@
                     building: d.data.titles,
                 },
                 success: function (data) {
-                    $("#selectUnit").select("update", {items: data})
-                    $("#selectUnit").select("open");
+                    if(data.unitList.length != 0) {
+                        $("#selectUnit").select("update", {items: data.unitList})
+                        $("#selectUnit").select("open");
+                    }else {
+                        $("#selectRoom").select("update", {items: data.roomList})
+                        $("#selectRoom").select("open");
+                    }
                 }
             });
         }
