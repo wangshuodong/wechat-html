@@ -134,7 +134,7 @@ public class WechatController extends MyController {
      */
     @RequestMapping("/queryUnit")
     @ResponseBody
-    public Map queryUnit(Integer parent_id, String building) {
+    public List<Map<String, String>> queryUnit(Integer parent_id, String building) {
         Example example = new Example(Roominfo.class);
         example.selectProperties("unit");
         example.setDistinct(true);
@@ -144,15 +144,14 @@ public class WechatController extends MyController {
                 .andNotEqualTo("unit", "")
                 .andEqualTo("deleteStatus", false);
         List<Roominfo> list = roominfoService.selectByExample(example);
-//        List<Map<String, String>> retList = new ArrayList<>();
-//        if (list != null) {
-//            for (Roominfo info : list) {
-//                Map map = new HashMap();
-//                map.put("title", info.getUnit());
-//                retList.add(map);
-//            }
-        Map map = new HashMap();
-        map.put("unitList",list);
+        List<Map<String, String>> retList = new ArrayList<>();
+        if (list != null) {
+            for (Roominfo info : list) {
+                Map map = new HashMap();
+                map.put("title", info.getUnit());
+                retList.add(map);
+            }
+        }
         if(list.size() == 0){//没有单元查询房间
             Example roomExample = new Example(Roominfo.class);
             roomExample.selectProperties("id", "room");
@@ -162,10 +161,17 @@ public class WechatController extends MyController {
                     .andEqualTo("building", building)
                     .andEqualTo("deleteStatus", false);
             list = roominfoService.selectByExample(roomExample);
-            map.put("roomList",list);
+            if (list != null) {
+                for (Roominfo info : list) {
+                    Map map = new HashMap();
+                    map.put("title", info.getRoom());
+                    map.put("value", info.getId());
+                    retList.add(map);
+                }
+            }
 
         }
-        return map;
+        return retList;
     }
 
     /**
