@@ -20,5 +20,13 @@
     <result column="deleteStatus" jdbcType="BIT" property="deleteStatus" />
     <result column="status" jdbcType="BIT" property="status" />
     <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="delete_time" />
+    <result column="delete_user" jdbcType="INTEGER" property="delete_user" />
+    <result column="square" jdbcType="DOUBLE" property="square" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="proportion" jdbcType="DOUBLE" property="proportion" />
+    <result column="latefee" jdbcType="BIT" property="latefee" />
+    <result column="amount" jdbcType="DOUBLE" property="amount" />
+    <result column="batch_id" jdbcType="VARCHAR" property="batch_id" />
   </resultMap>
 </mapper>

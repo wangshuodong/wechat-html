@@ -105,6 +105,7 @@ public class NeworderServiceImpl extends ServiceImpl<Neworder> implements INewor
         sb.append("小区名称：" + housinginfo.getName() + "\n");
         sb.append(roominfo.getAddress() + "\n");
         sb.append("业主姓名：" + roominfo.getOwner_name() + "\n");
+        sb.append("房屋面积：" + String.format("%.2f",roominfo.getSquare()) + "平方米\n");
         sb.append("付款时间：" + DateUtils.formatDatetime(new Date()) + "\n");
         sb.append("订单编号：" + billaccount.getId() + "\n");
         sb.append("微信订单号：" + transaction_id + "\n");

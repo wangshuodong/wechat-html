@@ -71,6 +71,46 @@ public class Roominfo {
     private Date create_time;
 
     /**
+     * 删除时间
+     */
+    private Date delete_time;
+
+    /**
+     * 删除人
+     */
+    private Integer delete_user;
+
+    /**
+     * 房屋面积
+     */
+    private Double square;
+
+    /**
+     * 每平方单价
+     */
+    private Double price;
+
+    /**
+     * 滞纳金计算公式输入1就是1/1000,01就是0.1/1000
+     */
+    private Double proportion;
+
+    /**
+     * 是否生成滞纳金
+     */
+    private Boolean latefee;
+
+    /**
+     * 账户余额
+     */
+    private Double amount;
+
+    /**
+     * 上传支付宝用的批次id
+     */
+    private String batch_id;
+
+    /**
      * @return id
      */
     public Integer getId() {
@@ -322,5 +362,149 @@ public class Roominfo {
      */
     public void setCreate_time(Date create_time) {
         this.create_time = create_time;
+    }
+
+    /**
+     * 获取删除时间
+     *
+     * @return delete_time - 删除时间
+     */
+    public Date getDelete_time() {
+        return delete_time;
+    }
+
+    /**
+     * 设置删除时间
+     *
+     * @param delete_time 删除时间
+     */
+    public void setDelete_time(Date delete_time) {
+        this.delete_time = delete_time;
+    }
+
+    /**
+     * 获取删除人
+     *
+     * @return delete_user - 删除人
+     */
+    public Integer getDelete_user() {
+        return delete_user;
+    }
+
+    /**
+     * 设置删除人
+     *
+     * @param delete_user 删除人
+     */
+    public void setDelete_user(Integer delete_user) {
+        this.delete_user = delete_user;
+    }
+
+    /**
+     * 获取房屋面积
+     *
+     * @return square - 房屋面积
+     */
+    public Double getSquare() {
+        return square;
+    }
+
+    /**
+     * 设置房屋面积
+     *
+     * @param square 房屋面积
+     */
+    public void setSquare(Double square) {
+        this.square = square;
+    }
+
+    /**
+     * 获取每平方单价
+     *
+     * @return price - 每平方单价
+     */
+    public Double getPrice() {
+        return price;
+    }
+
+    /**
+     * 设置每平方单价
+     *
+     * @param price 每平方单价
+     */
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    /**
+     * 获取滞纳金计算公式输入1就是1/1000,01就是0.1/1000
+     *
+     * @return proportion - 滞纳金计算公式输入1就是1/1000,01就是0.1/1000
+     */
+    public Double getProportion() {
+        return proportion;
+    }
+
+    /**
+     * 设置滞纳金计算公式输入1就是1/1000,01就是0.1/1000
+     *
+     * @param proportion 滞纳金计算公式输入1就是1/1000,01就是0.1/1000
+     */
+    public void setProportion(Double proportion) {
+        this.proportion = proportion;
+    }
+
+    /**
+     * 获取是否生成滞纳金
+     *
+     * @return latefee - 是否生成滞纳金
+     */
+    public Boolean getLatefee() {
+        return latefee;
+    }
+
+    /**
+     * 设置是否生成滞纳金
+     *
+     * @param latefee 是否生成滞纳金
+     */
+    public void setLatefee(Boolean latefee) {
+        this.latefee = latefee;
+    }
+
+    /**
+     * 获取账户余额
+     *
+     * @return amount - 账户余额
+     */
+    public Double getAmount() {
+        return amount;
+    }
+
+    /**
+     * 设置账户余额
+     *
+     * @param amount 账户余额
+     */
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    /**
+     * 获取上传支付宝用的批次id
+     *
+     * @return batch_id - 上传支付宝用的批次id
+     */
+    public String getBatch_id() {
+        return batch_id;
+    }
+
+    /**
+     * 设置上传支付宝用的批次id
+     *
+     * @param batch_id 上传支付宝用的批次id
+     */
+    public void setBatch_id(String batch_id) {
+        this.batch_id = batch_id == null ? null : batch_id.trim();
     }
 }
