@@ -145,11 +145,13 @@ public class WechatController extends MyController {
                 .andEqualTo("deleteStatus", false);
         List<Roominfo> list = roominfoService.selectByExample(example);
         List<Map<String, String>> retList = new ArrayList<>();
-        if (list != null) {
-            for (Roominfo info : list) {
-                Map map = new HashMap();
-                map.put("title", info.getUnit());
-                retList.add(map);
+        if(list.size() > 0) {
+            if (list != null) {
+                for (Roominfo info : list) {
+                    Map map = new HashMap();
+                    map.put("title", info.getUnit());
+                    retList.add(map);
+                }
             }
         }
         if(list.size() == 0){//没有单元查询房间
@@ -169,7 +171,6 @@ public class WechatController extends MyController {
                     retList.add(map);
                 }
             }
-
         }
         return retList;
     }

@@ -106,12 +106,12 @@
                     building: d.data.titles,
                 },
                 success: function (data) {
-                    if(data[0].length == 1) {
-                        $("#selectUnit").select("update", {items: data})
-                        $("#selectUnit").select("open");
-                    }else {
+                    if(data[0].value) {
                         $("#selectRoom").select("update", {items: data})
                         $("#selectRoom").select("open");
+                    }else {
+                        $("#selectUnit").select("update", {items: data})
+                        $("#selectUnit").select("open");
                     }
                 }
             });
