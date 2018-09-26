@@ -186,13 +186,17 @@ public class HainaController extends MyController {
             Roominfo roominfo = roominfoService.selectOne(rquery);
             List<BillaccountCustom> list = billaccountService.queryBillByRoomId(roominfo.getId());
             double sumAmount = 0;
+            StringBuffer id = new StringBuffer();
             for (BillaccountCustom bill : list) {
                 sumAmount += bill.getBill_entry_amount();
+                id.append(bill.getId());
+                id.append(",");
             }
-
+            id.substring(0,id.length()-1);
             model.addAttribute("housinginfo", housinginfo);
             model.addAttribute("sumAmount", DecimalFormatUtils.format(sumAmount));
             model.addAttribute("list", list);
+            model.addAttribute("id",id.toString());
             return "wechat/billaccount";
         } else {
             return "haina/success";
