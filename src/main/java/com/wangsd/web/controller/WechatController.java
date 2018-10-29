@@ -246,7 +246,6 @@ public class WechatController extends MyController {
             id.append(bill.getId());
             id.append(",");
         }
-        id.substring(0,id.length()-1);
         model.addAttribute("housinginfo", housinginfo);
         model.addAttribute("sumAmount", DecimalFormatUtils.format(sumAmount));
         model.addAttribute("list", list);
